@@ -1,18 +1,14 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InmateController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return view("welcome");
-});
+Route::get('/', [HomeController::class, "home"])->name("admin");
+
+Route::get('/inmate',[InmateController::class, "inmate"])->name("inmate");
+Route::get('/inmate_add',[InmateController::class, "list"])->name("inmate_list");
+Route::post('/inmate_store',[InmateController::class, "store"])->name("inmate_list_store");
+Route::get('/inmate/delete/{inmate_id}', [InmateController::class, 'deleteinmate'])->name('inmate.delete');
+Route::get('/inmate/view/{inmate_id}', [InmateController::class, 'viewinmate'])->name('inmate.view');
