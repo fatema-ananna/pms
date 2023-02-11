@@ -1,8 +1,9 @@
 @extends('backend.master')
 @section('content')
-<form action="{{route('inmate_list_store')}}" method="post" enctype="multipart/form-data">
+<h1>Update Inmate</h1>
+<form action="{{route('inmate.update',$inma->id)}}" method="post" enctype="multipart/form-data">
 
-
+@method('put')
 @if($errors->any())
     @foreach($errors->all() as $message)
     <p class="alert alert-danger">{{$message}}</p>
@@ -52,7 +53,7 @@
   <input type="text" class="form-control" name="punishment" placeholder="Enter Inmate Name">
 </div>
 
-<input type="submit" name="submit" class="mt-3 btn btn-info" value="submit">
+<input type="submit" name="submit" class="mt-3 btn btn-info" value="update">
 
 
 </form>

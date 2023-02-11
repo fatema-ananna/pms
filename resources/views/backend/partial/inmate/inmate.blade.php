@@ -22,7 +22,7 @@
   <tbody>
   @foreach($inma as $key=>$data)
     <tr>
-      <th scope="row"></th>
+    <th scope="row">{{$inma->firstItem()+$key}}</th>
       <td>{{$data->name}}</td>
       <td><img width="100px" src="{{url('/backend/uploads/'.$data->image)}}" alt="image"></td>
       <td>{{$data->dob}}</td>
@@ -35,12 +35,13 @@
       <td>
         <a href="{{route('inmate.view',$data->id)}}" class="btn btn-primary">View</a>
         <a href="{{route('inmate.delete',$data->id)}}" class="btn btn-danger">Delete</a>
-        <a href="" class="btn btn-warning">Edit</a>
+        <a href="{{route('inmate.edit',$data->id)}}" class="btn btn-warning">Edit</a>
      </td>
     </tr>
     @endforeach
   </tbody>
 </table>
+{{$inma->links()}}
 
 
 

@@ -4,7 +4,7 @@
 }
 
 body {
-    background-color: #000
+    background-color: #e9e3e3
 }
 
 .card {
@@ -52,7 +52,7 @@ body {
     height: 40px;
     width: 150px;
     border: none;
-    background-color: #000;
+    background-color: #e8e1e1;
     color: #aeaeae;
     font-size: 15px
 }
