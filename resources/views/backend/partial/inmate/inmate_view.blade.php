@@ -1,44 +1,46 @@
 @extends('backend.master')
 @section('content')
-<h1>Inmate Details</h1>
 <link rel="stylesheet" href="{{url('/backend/css/inmate.css')}}">
-<div class="container mt-6 mb-6  d-flex justify-content-center">
-    <div class="card p-6">
-        <div class=" image d-flex flex-column justify-content-center    align-items-center">
-            <button class="btn btn-secondary">
-                <img src="{{url('/backend/uploads',$inma->image)}}" height="100" width="100" />
-            </button>
-            <div>
-            <span class="name mt-3">{{$inma->name}}</span></div>
-            <div>
-            <span class="idd">{{$inma->dob}}</span></div>
-
-           <div> <span class="idd">{{$inma->address}}</span>
-          
-            <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-                <span class="idd1">{{$inma->phone}}</span>
-                <span><i class="idd1">{{$inma->gender}}</i></span>
-            </div>
-
-            <div class="d-flex flex-row justify-content-center align-items-center mt-3">
-            <span><i class="idd1">{{$inma->case}}</i></span>
-            <span><i class="idd1">{{$inma->ecd}}</i></span>
-            <span><i class="idd1">{{$inma->punishment}}</i></span>
-            </div>
-           
-            
-       
-              
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-3 border-right">
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-square mt-5" width="200px" src="{{url('/backend/uploads',$inma->image)}}"></div>
         </div>
+        <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Inmate Profile</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">Name</label><input type="text" class="form-control" placeholder="name" value="{{$inma->name}}"></div>
+                    
+                    <div class="col-md-6"><label class="labels">Surname</label><input type="text" class="form-control" value="" placeholder="surname"></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" placeholder="enter phone number" value="{{$inma->phone}}"></div>
+
+                    <div class="col-md-12"><label class="labels">Address </label><input type="text" class="form-control" placeholder="enter address " value="{{$inma->address}}"></div>
+
+                    
+
+                    <div class="col-md-12"><label class="labels">Case Details</label><input type="text" class="form-control"value="{{$inma->case}}"></div>
+                    <div class="col-md-12"><label class="labels">Punishment</label><input type="text" class="form-control"  value="{{$inma->punishment}}"></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value=""></div>
+                    <div class="col-md-6"><label class="labels">Region</label><input type="text" class="form-control" value="" placeholder="state"></div>
+                </div>
+                     <h4>Emergency Contact Details</h4>
+                    <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control"  value="{{$inma->ecd}}"></div>
+                    <div class="col-md-12"><label class="labels">Number</label><input type="text" class="form-control" placeholder="enter address line 2" value="{{$inma->ecd}}"></div>
+                    <div class="col-md-12"><label class="labels">Relation</label><input type="text" class="form-control" placeholder="enter email id" value="{{$inma->ecd}}"></div>
+               
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
+            </div>
+        </div>
+    
     </div>
 </div>
-
-
-
-
-
-
-
-
-
+</div>
+</div>
 @endsection

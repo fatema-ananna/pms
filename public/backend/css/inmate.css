@@ -1,82 +1,44 @@
-* {
-    margin: 0;
-    padding: 0
-}
-
 body {
-    background-color: #e9e3e3
+    background: rgb(99, 39, 120)
 }
 
-.card {
-    width: 350px;
-    background-color: #efefef;
-    border: none;
+.form-control:focus {
+    box-shadow: none;
+    border-color: #BA68C8
+}
+
+.profile-button {
+    background: rgb(99, 39, 120);
+    box-shadow: none;
+    border: none
+}
+
+.profile-button:hover {
+    background: #682773
+}
+
+.profile-button:focus {
+    background: #682773;
+    box-shadow: none
+}
+
+.profile-button:active {
+    background: #682773;
+    box-shadow: none
+}
+
+.back:hover {
+    color: #682773;
+    cursor: pointer
+}
+
+.labels {
+    font-size: 11px
+}
+
+.add-experience:hover {
+    background: #BA68C8;
+    color: #fff;
     cursor: pointer;
-    transition: all 0.5s;
-}
-
-.image img {
-    transition: all 0.5s
-}
-
-.card:hover .image img {
-    transform: scale(1.5)
-}
-
-.name {
-    font-size: 22px;
-    font-weight: bold
-}
-
-.idd {
-    font-size: 14px;
-    font-weight: 600
-}
-
-.idd1 {
-    font-size: 12px
-}
-
-.number {
-    font-size: 22px;
-    font-weight: bold
-}
-
-.follow {
-    font-size: 12px;
-    font-weight: 500;
-    color: #444444
-}
-
-.btn1 {
-    height: 40px;
-    width: 150px;
-    border: none;
-    background-color: #e8e1e1;
-    color: #aeaeae;
-    font-size: 15px
-}
-
-.text span {
-    font-size: 13px;
-    color: #545454;
-    font-weight: 500
-}
-
-.icons i {
-    font-size: 19px
-}
-
-hr .new1 {
-    border: 1px solid
-}
-
-.join {
-    font-size: 14px;
-    color: #a0a0a0;
-    font-weight: bold
-}
-
-.date {
-    background-color: #ccc
+    border: solid 1px #BA68C8
 }
