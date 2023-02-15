@@ -1,5 +1,7 @@
 @extends('backend.master')
 @section('content')
+<div class="container">
+  <h1>Inmate Registration Form</h1>
 <form action="{{route('inmate_list_store')}}" method="post" enctype="multipart/form-data">
 
 
@@ -11,50 +13,96 @@
 
 @csrf
 
-<div class="mb-2">
-  <label > Name</label>
-  <input type="text" class="form-control" name="name" placeholder="Enter Inmate Name">
+<div class="form-row">
+<div class="form-group col-md-6">
+  <label ><b>First_Name</b> </label>
+  <input type="text" class="form-control" name="first_name">
 </div>
-<div>
-        <label for="image">Image</label>
+<div class="form-row">
+<div class="form-group col-md-6">
+  <label > <b>Last_Name</b></label>
+  <input type="text" class="form-control" name="last_name">
+</div>
+<div class="form-row">
+<div class="form-group col-md-6">
+        <label for="image"><b>Image</b></label>
         <input type="file" class="form-control" name="image">
     </div>
-<div class="mb-2">
-  <label > Dob</label>
-  <input type="date" class="form-control" name="dob" placeholder="Enter Inmate Date of Birth">
+<div class="form-row">
+<div class="form-group col-md-6">
+  <label ><b>Date of Birth</b></label>
+  <input type="date" class="form-control" name="dob">
 </div>
-<div class="mb-2">
-  <label > Address</label>
-  <input type="text" class="form-control" name="address" placeholder="Enter Inmate Address">
+<div class="form-row">
+<div class="form-group col-md-6">
+  <label ><b>Address</b></label>
+  <input type="text" class="form-control" name="address">
 </div>
-<div class="mb-2">
-  <label > Phone</label>
-  <input type="tel" class="form-control" name="phone" placeholder="Enter Inmate phone number">
+<div class="form-row">
+<div class="form-group col-md-6">
+  <label ><b>Phone</b></label>
+  <input type="tel" class="form-control" name="phone">
 </div>
-<div class="form-group" name="gender">
-            <label >Gender</label>
+<div class="form-row">
+<div class="form-group col-md-6">
+  <label ><b>Country</b></label>
+  <input type="text" class="form-control" name="country" >
+</div>
+<div class="form-row" name="religon">
+<div class="form-group col-md-6">
+            <label ><b>Religon</b></label>
+            <select name="religon" id="" class="form-control">
+                <option value="islam">Islam</option>
+                <option value="hindu">Hindu</option>
+                <option value="Others">Others</option>
+         
+            </select>
+</div>
+<div class="form-row" name="gender">
+<div class="form-group col-md-6">
+            <label ><b>Gender</b></label>
             <select name="gender" id="" class="form-control">
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Others">Others</option>
          
             </select>
-<div class="mb-2">
-  <label > Case</label>
-  <input type="text" class="form-control" name="case" placeholder="Enter Case">
 </div>
-<div class="mb-2">
-  <label > Ecd</label>
-  <input type="text" class="form-control" name="ecd" placeholder="Enter Inmate Emmergency contact">
+<div class="form-row">
+<div class="form-group col-md-6">
+  <label ><b>Case</b></label>
+  <input type="text" class="form-control" name="case">
 </div>
-<div class="mb-2">
-  <label > Punishment</label>
-  <input type="text" class="form-control" name="punishment" placeholder="Enter Inmate Name">
+<div class="form-row">
+<div class="form-group col-md-6">
+  <label ><b>Relatives Name</b></label>
+  <input type="text" class="form-control" name="relatives_name">
+</div>
+<div class="form-row">
+<div class="form-group col-md-6">
+  <label ><b>Relatives Number</b></label>
+  <input type="text" class="form-control" name="relatives_number" >
+</div>
+<div class="form-row">
+<div class="form-group col-md-6">
+  <label ><b>Relation</b></label>
+  <input type="text" class="form-control" name="relation" >
+</div>
+<div class="form-row">
+<div class="form-group col-md-4">
+  <label > <b>Punishment</b></label>
+  <input type="text" class="form-control" name="punishment">
+</div>
+<div class="form-row">
+<div class="form-group col-md-2">
+  <label ><b>Activity</b></label>
+  <input type="text" class="form-control" name="activity" >
 </div>
 
 <input type="submit" name="submit" class="mt-3 btn btn-info" value="submit">
 
 
 </form>
+</div>
 
 @endsection
