@@ -22,7 +22,12 @@ class InmateController extends Controller
 
     public function store(Request $req)
     {
-
+        $req->validate(
+            [
+                "image" => "required|unique:inmates,image",
+                "case" => "required"
+            ]
+        );
    
         //dd($req->all());
         
