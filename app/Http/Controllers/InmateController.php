@@ -84,6 +84,14 @@ class InmateController extends Controller
     public function update_inmate(Request $req, $id)
     {
 
+
+        $req->validate(
+            [
+                "image" => "required|unique:inmates,image",
+                "case" => "required"
+            ]
+        );
+
         $inma = Inmate::find($id);
         $fileName = $inma->image;
 

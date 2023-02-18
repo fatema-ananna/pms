@@ -9,7 +9,7 @@
         <div class="col-md-5 border-right">
             <div class="p-3 py-5">
                 <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4 class="text-right">Inmate Profile</h4>
+                    <h1 class="text-right">Inmate Profile</h1>
                 </div>
                 <div class="row mt-2">
                     <div class="col-md-6"><label class="labels">First_Name</label><input type="text" class="form-control" placeholder="name" value="{{$inma->first_name}}"></div>

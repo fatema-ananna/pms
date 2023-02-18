@@ -2,9 +2,9 @@
 @section('content')
 <div class="container">
   <h1>Staff Registration Form</h1>
-<form action="{{route('staff_store')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('update.staff',$sta->id)}}" method="post" enctype="multipart/form-data">
 
-
+@method('put')
 @if($errors->any())
     @foreach($errors->all() as $message)
     <p class="alert alert-danger">{{$message}}</p>
@@ -41,12 +41,12 @@
 <div class="form-row">
 <div class="form-group col-md-6">
   <label ><b>Phone</b></label>
-  <input type="telephone" class="form-control" name="phone">
+  <input type="tel" class="form-control" name="phone">
 </div>
 <div class="form-row">
 <div class="form-group col-md-6">
   <label ><b>Nic</b></label>
-  <input type="number" class="form-control" min="10000000000000000" max="99999999999999999"  name="nic" id='nationalID'>
+  <input type="number" class="form-control" name="nic" >
 </div>
 <div class="form-row" name="religon">
 <div class="form-group col-md-6">
@@ -81,7 +81,7 @@
 
 
 
-<input type="submit" name="submit" class="mt-3 btn btn-info" value="submit">
+<input type="submit" name="submit" class="mt-3 btn btn-info" value="update">
 
 
 </form>

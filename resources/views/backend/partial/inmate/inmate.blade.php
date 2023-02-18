@@ -1,9 +1,11 @@
 @extends('backend.master')
 @section('content')
+<div class="container mt-5">
 <div class="form-group" class="container"><a class="btn btn-primary" href="{{route('inmate_list')}}">Add Inmate</a></div>
+<br>
 
 <table class="table">
-  <thead>
+<thead class="bg-secondary">
     <tr>
       <th scope="col">No</th>
       <th scope="col">First_Name</th>
@@ -57,6 +59,7 @@
     @endforeach
   </tbody>
 </table>
+</div>
 {{$inma->links()}}
 
 

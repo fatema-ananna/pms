@@ -18,13 +18,13 @@ return new class extends Migration
             $table->string("first_name");
             $table->string("last_name");
             $table->string("image");
-            $table->string("age");
+            $table->string("dob");
             $table->string("address");
             $table->string("phone",20);
             $table->string("gender",20);
             $table->string("designation",50);
             $table->string("religon",50);
-            $table->string("nic");
+            $table->string("nic",17);
             $table->string("assign_in");
             $table->timestamps();
         });
