@@ -34,7 +34,7 @@
     <th scope="row">{{$inma->firstItem()+$key}}</th>
       <td>{{$data->first_name}}</td>
       <td>{{$data->last_name}}</td>
-      <td><img width="100px" src="{{url('/backend/uploads/'.$data->image)}}" alt="image"></td>
+      <td><img  src="{{url('/backend/uploads/'.$data->image)}}" alt="image" height="80px" width="auto"></td>
       <!-- <td>{{$data->dob}}</td> -->
       <!-- <td>{{$data->address}}</td> -->
       <td>{{$data->phone}}</td>

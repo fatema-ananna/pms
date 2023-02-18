@@ -35,7 +35,7 @@ class InmateController extends Controller
         if ($req->hasFile('image')) {
             // generate name
             $fileName = date('Ymdhmi') . '.' . $req->file('image')->getClientOriginalExtension();
-            $req->file('image')->storeAs('/backend/uploads', $fileName);
+            $req->file('image')->storeAs('/backend/uploads/', $fileName);
         }
       
         Inmate ::create([

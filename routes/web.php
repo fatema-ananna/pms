@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CrimeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InmateController;
+use App\Http\Controllers\StaffController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,7 +12,7 @@ Route::post('do-login', [UserController::class, 'doLogin'])->name('do.login');
 // --loging korte hobe 
 Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 
-   
+
 Route::get('/', [HomeController::class, "home"])->name("Dashboard");
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/inmate',[InmateController::class, "inmate"])->name("inmate");
@@ -22,3 +24,7 @@ Route::get('/inmate/edit/{inmate_id}', [InmateController::class, 'edit_inmate'])
 Route::put('/inmate/update/{inmate_id}', [InmateController::class, 'update_inmate'])->name('inmate.update');
 });
 
+//  for staff
+ Route::get('/staff',[StaffController::class, "staff"])->name("staff");
+ Route::get('/staff/add',[StaffController::class, "list"])->name("staff_add");
+ Route::post('/staff/store',[StaffController::class, "store"])->name("staff_store");
