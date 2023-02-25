@@ -4,7 +4,10 @@ use App\Http\Controllers\CrimeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InmateController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\StationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VisitorController;
+use App\Models\Station;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [UserController::class, 'login'])->name('login');
@@ -32,3 +35,12 @@ Route::get('/staff/delete/{staff_id}',[StaffController::class,'delete_staff'])->
 Route::get('/staff/view/{staff_id}',[StaffController::class,'view_staff'])->name("staff.view");
 Route::get('/staff/edit/{staff_id}',[StaffController::class,'edit_staff'])->name("staff.edit");
 Route::put('/staff/update/{staff_id}',[StaffController::class,'update_staff'])->name('update.staff');
+// for visitor
+Route::get('/visitor',[VisitorController::class,'visitor'])->name("visitor");
+Route::get('/visitor/add',[VisitorController::class,'list'])->name("visitor.add");
+// for police station
+Route::get('/station',[StationController::class,'station'])->name("station");
+Route::get('/station/list',[StationController::class,'list'])->name("list");
+Route::post('/station/list/store',[StationController::class,'station_store'])->name("store");
+Route::get('/station/edit/{station_id}',[StationController::class,'edit_station'])->name("station.edit");
+Route::put('/station/update/{station_id}',[StationController::class,'update_station'])->name('update.station');

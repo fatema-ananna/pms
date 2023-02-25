@@ -15,7 +15,12 @@
 
                 <a class="nav-link" href="">
                     <div class="fa fa-bars"><i class="fas fa-tachometer-alt"></i></div>
-                    Crime
+                    Case
+                </a>
+
+                <a class="nav-link" href="{{route('station')}}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Police Station
                 </a>
 
                 <a class="nav-link" href="">
@@ -26,7 +31,7 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Activity
                 </a>
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{route('visitor')}}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Visitor
                 </a>
