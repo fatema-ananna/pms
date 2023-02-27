@@ -13,15 +13,12 @@
                     Inmates
                 </a>
 
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{route('case')}}">
                     <div class="fa fa-bars"><i class="fas fa-tachometer-alt"></i></div>
                     Case
                 </a>
 
-                <a class="nav-link" href="{{route('station')}}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                    Police Station
-                </a>
+                
 
                 <a class="nav-link" href="">
                     <div class="fa fa-bars"><i class="fas fa-tachometer-alt"></i></div>
@@ -42,6 +39,14 @@
                 <a class="nav-link" href="">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Punishment
+                </a>
+                <a class="nav-link" href="{{route('station')}}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Police Station
+                </a>
+                <a class="nav-link" href="{{route('crime')}}">
+                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    Crime Type
                 </a>
                 <a class="nav-link" href="">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

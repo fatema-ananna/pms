@@ -13,10 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('crimes', function (Blueprint $table) {
+        Schema::create('police__cases', function (Blueprint $table) {
             $table->id();
-            $table->string("name");
-            $table->string("status");
+            $table->string("first_name",20);
+            $table->string("last_name",20);
+            $table->string("court",20);
+            $table->string("crime_type");
+            $table->string("case_start");
+            $table->string("date");
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('crimes');
+        Schema::dropIfExists('police__cases');
     }
 };

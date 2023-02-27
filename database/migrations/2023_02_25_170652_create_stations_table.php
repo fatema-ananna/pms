@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string("name",20);
             $table->string("zilla",20);
             $table->string("thana",20);
-            $table->string("image");
+            
             $table->string("phone");
+            $table->string("postal_code");
             $table->timestamps();
         });
     }

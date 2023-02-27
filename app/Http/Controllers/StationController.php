@@ -21,26 +21,23 @@ class StationController extends Controller
     {
         $req->validate(
             [
-                "image" => "required|unique:stations,image",
+                
                 'phone' => 'digits:11|required|numeric|unique:stations,phone',]
         );
    
-        //dd($req->all());
-        
-        $fileName = null;
-        if ($req->hasFile('image')) {
-            // generate name
-            $fileName = date('Ymdhmi') . '.' . $req->file('image')->getClientOriginalExtension();
-            $req->file('image')->storeAs('/backend/uploads/', $fileName);
-        }
+        // $fileName = null;
+        // if ($req->hasFile('image')) {
+        //     // generate name
+        //     $fileName = date('Ymdhmi') . '.' . $req->file('image')->getClientOriginalExtension();
+        //     $req->file('image')->storeAs    }
       
         Station ::create([
             "name" => $req->name,
           
-            "image" => $fileName,
             "zilla"=>$req->zilla,
             "thana" =>$req->thana,
             "phone" => $req->phone,
+            "postal_code"=>$req->postal_code,
            
         ]);
 
@@ -54,24 +51,12 @@ class StationController extends Controller
     public function update_station(Request $req, $id)
     {
 
-        $req->validate(
-            [
-                "image" => "required|unique:stations,image",
-                'phone' => 'digits:11|required|numeric|unique:stations,phone',]
-        );
+     
         $pols = station::find($id);
-        $fileName = $pols->image;
-
-        $fileName = null;
-        if ($req->hasFile('image')) {
-            // generate name
-            $fileName = date('Ymdhmi') . '.' . $req->file('image')->getClientOriginalExtension();
-            $req->file('image')->storeAs('/backend/uploads/staff/', $fileName);
-        }
 
         $pols->name = $req->name;
         $pols->phone = $req->phone;
-        $pols->image = $fileName;
+        $pols->postal_code = $req->postal_code;
         $pols->zilla = $req->zilla;
         $pols->thana = $req->thana;
      
@@ -80,7 +65,12 @@ class StationController extends Controller
 
       return redirect()->route('station')->with('message', 'Update success');
     }
+    public function view_station($id)
+    {
+        $pols = Station::find($id);
 
+        return view('backend.partial.station.station_view', compact('pols'));
+    }
     
 
 

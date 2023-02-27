@@ -42,10 +42,6 @@
                     <div class="col-md-12"><label class="labels">Assign_in</label><input type="text" class="form-control" value="{{$sta->assign_in}}"></div>
 
                    
-            
-
-                  
-                <!-- <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"></button></div> -->
             </div>
         </div>
 

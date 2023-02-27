@@ -16,7 +16,7 @@
       <!-- <th scope="col">Address</th> -->
       <th scope="col">Phone</th>
        <!-- <th scope="col">Country</th> -->
-      <th scope="col">Religon</th>
+      <!-- <th scope="col">Religon</th> -->
      
       <!-- <th scope="col">Activity</th> -->
        <th scope="col">Gender</th> 
@@ -40,7 +40,7 @@
       <!-- <td>{{$data->dob}}</td> -->
       <!-- <td>{{$data->address}}</td> -->
       <td>{{$data->phone}}</td>
-      <td>{{$data->religon}}</td>
+      <!-- <td>{{$data->religon}}</td> -->
         <td>{{$data->gender}}</td> 
        
        <!-- <td>{{$data->case}}</td>
@@ -54,7 +54,9 @@
         <a href="{{route('inmate.view',$data->id)}}" class="btn btn-primary">View</a>
         <a href="{{route('inmate.delete',$data->id)}}" class="btn btn-danger">Delete</a>
         <a href="{{route('inmate.edit',$data->id)}}" class="btn btn-warning">Edit</a>
-     </td>
+        <a href="{{route('case_list')}}" class="btn btn-danger">Add Case</a>
+  
+      </td>
     </tr>
     @endforeach
   </tbody>
