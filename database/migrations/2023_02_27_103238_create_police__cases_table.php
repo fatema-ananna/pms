@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('police__cases', function (Blueprint $table) {
             $table->id();
             $table->string("first_name",20);
+            $table->foreignId("inmate_id");
             $table->string("last_name",20);
             $table->string("court",20);
             $table->string("crime_type");

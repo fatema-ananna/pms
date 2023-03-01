@@ -12,16 +12,20 @@
     @endif
 
 @csrf
-
+<div class="form-row">
+<div class="form-group col-md-6">
+  <label ><b>Inmate_Id</b> </label>
+  <input type="text" class="form-control" name="inmate_id"  value="{{$inmate->id}}">
+</div>
 <div class="form-row">
 <div class="form-group col-md-6">
   <label ><b>First_Name</b> </label>
-  <input type="text" class="form-control" name="first_name">
+  <input type="text" class="form-control" name="first_name" value="{{$inmate->first_name}}">
 </div>
 <div class="form-row">
 <div class="form-group col-md-6">
   <label > <b>Last_Name</b></label>
-  <input type="text" class="form-control" name="last_name">
+  <input type="text" class="form-control" name="last_name"value="{{$inmate->last_name}}">
 </div>
 
 <div class="form-row">

@@ -54,7 +54,7 @@
         <a href="{{route('inmate.view',$data->id)}}" class="btn btn-primary">View</a>
         <a href="{{route('inmate.delete',$data->id)}}" class="btn btn-danger">Delete</a>
         <a href="{{route('inmate.edit',$data->id)}}" class="btn btn-warning">Edit</a>
-        <a href="{{route('case_list')}}" class="btn btn-danger">Add Case</a>
+        <a href="{{route('case_list',$data->id)}}" class="btn btn-danger">Add Case</a>
   
       </td>
     </tr>

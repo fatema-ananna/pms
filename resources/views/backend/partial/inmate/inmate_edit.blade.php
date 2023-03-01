@@ -14,29 +14,29 @@
 
 <div class="mb-2">
   <label >First_Name</label>
-  <input type="text" class="form-control" name="first_name" placeholder="Enter Inmate first_Name">
+  <input type="text" class="form-control" name="first_name" placeholder="Enter Inmate first_Name" value="{{$inma->first_name}}">
 </div>
 <div class="mb-2">
   <label >Last_Name</label>
-  <input type="text" class="form-control" name="last_name" placeholder="Enter Inmate last Name">
+  <input type="text" class="form-control" name="last_name" placeholder="Enter Inmate last Name" value="{{$inma->last_name}}">
 </div>
 <div>
         <label for="image">Image</label>
-        <input type="file" class="form-control" name="image">
+        <input type="file" class="form-control" name="image"value="{{$inma->image}}">
     </div>
 <div class="mb-2">
   <label > Dob</label>
-  <input type="date" class="form-control" name="dob" placeholder="Enter Inmate Date of Birth">
+  <input type="date" class="form-control" name="dob" placeholder="Enter Inmate Date of Birth" value="{{$inma->dob}}">
 </div>
 <div class="mb-2">
   <label > Address</label>
-  <input type="text" class="form-control" name="address" placeholder="Enter Inmate Address">
+  <input type="text" class="form-control" name="address" placeholder="Enter Inmate Address" value="{{$inma->address}}">
 </div>
 <div class="mb-2">
   <label > Phone</label>
-  <input type="tel" class="form-control" name="phone" placeholder="Enter Inmate phone number">
+  <input type="tel" class="form-control" name="phone" placeholder="Enter Inmate phone number" value="{{$inma->phone}}">
 </div>
-<div class="form-group" name="gender">
+<div class="form-group" name="gender" value="{{$inma->gender}}">
             <label >Gender</label>
             <select name="gender" id="" class="form-control">
                 <option value="Male">Male</option>
@@ -44,11 +44,8 @@
                 <option value="Others">Others</option>
          
             </select>
-<div class="mb-2">
-  <label > Case</label>
-  <input type="text" class="form-control" name="case" placeholder="Enter Case">
-</div>
-<div class="form-group" name="religon">
+
+<div class="form-group" name="religon" value="{{$inma->religon}}">
             <label >Religon</label>
             <select name="religon" id="" class="form-control">
                 <option value="Islam">Islam</option>
@@ -59,26 +56,26 @@
 </div>
 <div class="mb-2">
   <label >Relatives_Name</label>
-  <input type="text" class="form-control" name="relatives_name" >
+  <input type="text" class="form-control" name="relatives_name" value="{{$inma->relatives_name}}">
 </div>
 <div class="mb-2">
   <label >Relatives_Number</label>
-  <input type="text" class="form-control" name="relatives_number" >
+  <input type="text" class="form-control" name="relatives_number"  value="{{$inma->relatives_number}}">
 </div>
 <div class="mb-2">
   <label >Relation</label>
-  <input type="text" class="form-control" name="relation" >
+  <input type="text" class="form-control" name="relation" value="{{$inma->relation}}" >
 </div>
 <div class="mb-2">
   <label >Country</label>
-  <input type="text" class="form-control" name="country" >
+  <input type="text" class="form-control" name="country"  value="{{$inma->country}}" >
 </div>
 <div class="mb-2">
   <label > Punishment</label>
-  <input type="text" class="form-control" name="punishment" placeholder="Enter Inmate Name">
+  <input type="text" class="form-control" name="punishment" placeholder="Enter Inmate Name"  value="{{$inma->punishment}}">
   <div class="mb-2">
   <label > Activity</label>
-  <input type="date" class="form-control" name="activity" placeholder="Enter Inmate Date of Birth">
+  <input type="date" class="form-control" name="activity" placeholder="Enter Inmate Date of Birth"  value="{{$inma->activity}}">
 </div>
 </div>
 

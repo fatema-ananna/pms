@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Inmate;
 use App\Models\Police_Case;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,9 @@ class Police_CaseController extends Controller
 
       return view("backend.partial.case.case",compact('pcase'));
     }
-    public function list(){
-      return view('backend.partial.case.case_add');
+    public function list($id){
+      $inmate=Inmate::find($id);
+      return view('backend.partial.case.case_add',compact('inmate'));
   }
   public function store(Request $req)
     {

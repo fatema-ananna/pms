@@ -9,4 +9,8 @@ class Inmate extends Model
 {
     use HasFactory;
     protected $guarded = [];
+
+    public function inmate_case (){
+        return $this->belongsTo(Police_Case::class,'case','id');
+    }
 }

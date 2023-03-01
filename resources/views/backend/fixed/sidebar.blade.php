@@ -20,7 +20,7 @@
 
                 
 
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{route('ward')}}">
                     <div class="fa fa-bars"><i class="fas fa-tachometer-alt"></i></div>
                     ward
                 </a>
