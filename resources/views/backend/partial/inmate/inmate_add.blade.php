@@ -68,6 +68,17 @@
          
             </select>
 </div>
+
+
+<div class="form-group col-md-6">
+    <label ><b>Ward</b></label>
+    <select name="ward_id" id="" class="form-control">
+
+    @foreach($wards as $ward)
+        <option value="{{$ward->id}}">{{$ward->name}}</option>
+    @endforeach
+    </select>
+</div>
 <div class="form-row">
 <div class="form-group col-md-6">
   <label ><b>Case</b></label>

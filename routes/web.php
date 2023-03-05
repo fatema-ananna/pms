@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\CrimeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InmateController;
@@ -9,9 +10,10 @@ use App\Http\Controllers\StationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VisitorController;
 use App\Http\Controllers\WardController;
-use App\Models\Station;
 use Illuminate\Support\Facades\Route;
 
+
+Route::get("/",function(){return to_route("Dashboard");});
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('do-login', [UserController::class, 'doLogin'])->name('do.login');
 // --loging korte hobe 
@@ -29,7 +31,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::get('/inmate/view/{inmate_id}', [InmateController::class, 'viewinmate'])->name('inmate.view');
     Route::get('/inmate/edit/{inmate_id}', [InmateController::class, 'edit_inmate'])->name('inmate.edit');
     Route::put('/inmate/update/{inmate_id}', [InmateController::class, 'update_inmate'])->name('inmate.update');
-});
+
 
 //  for staff
 Route::get('/staff', [StaffController::class, 'staff'])->name("staff");
@@ -39,9 +41,11 @@ Route::get('/staff/delete/{staff_id}', [StaffController::class, 'delete_staff'])
 Route::get('/staff/view/{staff_id}', [StaffController::class, 'view_staff'])->name("staff.view");
 Route::get('/staff/edit/{staff_id}', [StaffController::class, 'edit_staff'])->name("staff.edit");
 Route::put('/staff/update/{staff_id}', [StaffController::class, 'update_staff'])->name('update.staff');
+
 // for visitor
 Route::get('/visitor', [VisitorController::class, 'visitor'])->name("visitor");
 Route::get('/visitor/add', [VisitorController::class, 'list'])->name("visitor.add");
+
 // for police station
 Route::get('/station', [StationController::class, 'station'])->name("station");
 Route::get('/station/list', [StationController::class, 'list'])->name("list");
@@ -63,3 +67,11 @@ Route::post('/case/add/store', [Police_CaseController::class,'store'])->name("ca
 Route::get('/ward', [WardController::class,'ward'])->name("ward");
 Route::get('/ward/add', [WardController::class,'list'])->name("ward_list");
 Route::post('/ward/store', [WardController::class,'store'])->name("ward_store");
+Route::get('/ward/edit/{ward_id}', [WardController::class,'edit'])->name("ward_edit");
+Route::put('/ward/update/{ward_id}', [WardController::class,'update'])->name("ward_update");
+
+// // for activity
+ Route::get('/activity', [ActivityController::class,'activity'])->name("activity");
+ Route::get('/activity/add', [ActivityController::class,'list'])->name("activity_list");
+ Route::post('/activity/store', [ActivityController::class,'store'])->name("activity_store");
+});

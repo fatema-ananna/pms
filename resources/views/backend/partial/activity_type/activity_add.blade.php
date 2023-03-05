@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
   <h1> Register Here</h1>
-<form action="{{route('ward_store')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('activity_store')}}" method="post" enctype="multipart/form-data">
 
 
 @if($errors->any())
@@ -15,13 +15,13 @@
 
 <div class="form-row">
 <div class="form-group col-md-6">
-  <label ><b>Ward_Name</b> </label>
-  <input type="number" class="form-control" name="name">
+  <label ><b>Activity_Name</b> </label>
+  <input type="text" class="form-control" name="name">
 </div>
 <div class="form-row">
 <div class="form-group col-md-6">
-  <label ><b>Cell_no</b> </label>
-  <input type="number" class="form-control" name="cell_no">
+  <label ><b>Inmate_no</b> </label>
+  <input type="number" class="form-control" name="inmate_no">
 </div>
 <div class="form-group col-md-6">
             <label ><b>Status</b></label>

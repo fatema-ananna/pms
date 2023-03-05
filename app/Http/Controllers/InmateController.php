@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Inmate;
+use App\Models\Ward;
 use Illuminate\Http\Request;
 
 class InmateController extends Controller
@@ -17,7 +18,8 @@ class InmateController extends Controller
         return view("backend.partial.inmate.inmate",compact('inma'));
     }
     public function list(){
-        return view('backend.partial.inmate.inmate_add');
+        $wards = Ward::all();
+        return view('backend.partial.inmate.inmate_add',compact("wards"));
     }
 
     public function store(Request $req)
@@ -117,6 +119,7 @@ class InmateController extends Controller
         $inma->relation = $req->relation;
         $inma->punishment = $req->punishment;
         $inma->activity = $req->activity;
+        
         $inma->update();
         return redirect()->route('inmate')->with('message', 'Update success');
     }

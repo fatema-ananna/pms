@@ -15,7 +15,7 @@
 <div class="form-row">
 <div class="form-group col-md-6">
   <label ><b>Inmate_Id</b> </label>
-  <input type="text" class="form-control" name="inmate_id"  value="{{$inmate->id}}">
+  <input type="hidden" class="form-control" name="inmate_id"  value="{{$inmate->id}}">
 </div>
 <div class="form-row">
 <div class="form-group col-md-6">

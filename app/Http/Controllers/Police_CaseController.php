@@ -21,8 +21,6 @@ class Police_CaseController extends Controller
   public function store(Request $req)
     {
       
-   
-      
         Police_Case ::create([
             "first_name" => $req->first_name,
             "last_name" => $req->last_name,

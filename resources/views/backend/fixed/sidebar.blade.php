@@ -24,7 +24,7 @@
                     <div class="fa fa-bars"><i class="fas fa-tachometer-alt"></i></div>
                     ward
                 </a>
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{route('activity')}}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Activity
                 </a>
