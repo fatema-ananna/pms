@@ -15,6 +15,7 @@
       
       <!-- <th scope="col">Address</th> -->
       <th scope="col">Phone</th>
+      <!-- <th scope="col">Ward_id</th> -->
        <!-- <th scope="col">Country</th> -->
       <!-- <th scope="col">Religon</th> -->
      
@@ -42,6 +43,7 @@
       <td>{{$data->phone}}</td>
       <!-- <td>{{$data->religon}}</td> -->
         <td>{{$data->gender}}</td> 
+        <!-- <td>{{$data->inmate_ward->ward_id}}</td> -->
        
        <!-- <td>{{$data->case}}</td>
       <td>{{$data->relative_name}}</td> -->

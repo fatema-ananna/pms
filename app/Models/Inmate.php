@@ -13,4 +13,7 @@ class Inmate extends Model
     public function inmate_case (){
         return $this->belongsTo(Police_Case::class,'case','id');
     }
+    public function inmate_ward (){
+        return $this->belongsTo(Ward::class,'ward','ward_id');
+    }
 }

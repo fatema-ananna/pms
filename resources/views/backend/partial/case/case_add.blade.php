@@ -12,20 +12,34 @@
     @endif
 
 @csrf
-<div class="form-row">
+
 <div class="form-group col-md-6">
-  <label ><b>Inmate_Id</b> </label>
-  <input type="hidden" class="form-control" name="inmate_id"  value="{{$inmate->id}}">
+    <label ><b>Inmate_Id</b></label>
+    <select name="inmate_id" id="" class="form-control">
+
+    @foreach($inmates as $inmate)
+        <option value="{{$inmate->id}}">{{$inmate->name}}</option>
+    @endforeach
+    </select>
 </div>
 <div class="form-row">
 <div class="form-group col-md-6">
   <label ><b>First_Name</b> </label>
-  <input type="text" class="form-control" name="first_name" value="{{$inmate->first_name}}">
+  <select name="inmate_first_name" id="" class="form-control">
+
+@foreach($inmates as $inmate)
+    <option value="{{$inmate->first_name}}">{{$inmate->first_name}}</option>
+@endforeach
+</select>
 </div>
-<div class="form-row">
 <div class="form-group col-md-6">
-  <label > <b>Last_Name</b></label>
-  <input type="text" class="form-control" name="last_name"value="{{$inmate->last_name}}">
+  <label ><b>last_Name</b> </label>
+  <select name="inmate_last_name" id="" class="form-control">
+
+@foreach($inmates as $inmate)
+    <option value="{{$inmate->last_name}}">{{$inmate->last_name}}</option>
+@endforeach
+</select>
 </div>
 
 <div class="form-row">
@@ -48,6 +62,17 @@
   <label ><b>Date_of_Crime</b></label>
   <input type="date" class="form-control"name="date" >
 </div>
+
+<div class="form-group col-md-6">
+    <label ><b>police_station</b></label>
+    <select name="police_station_id" id="" class="form-control">
+
+    @foreach($police_stations as $police_station)
+        <option value="{{$police_station->id}}">{{$police_station->name}}</option>
+    @endforeach
+    </select>
+</div>
+
 </div>
 
 

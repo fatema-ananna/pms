@@ -16,7 +16,7 @@
 <div class="form-row">
 <div class="form-group col-md-6">
   <label ><b>Ward_Name</b> </label>
-  <input type="number" class="form-control" name="name">
+  <input type="text" class="form-control" name="name">
 </div>
 <div class="form-row">
 <div class="form-group col-md-6">

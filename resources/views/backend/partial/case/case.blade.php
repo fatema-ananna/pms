@@ -15,6 +15,7 @@
                 <th scope="col">Court_of_Comittal</th>
                 <th scope="col">Crime_Type</th>
                 <th scope="col">Case_Start_Date</th>
+                <th scope="col">police_station</th>
                 <!-- <th scope="col">Date_of_Crime</th> -->
 
                 <th scope="col">Action</th>
@@ -30,6 +31,7 @@
 
                 <td>{{$data->crime_type}}</td>
                 <td>{{$data->case_start}}</td>
+                <td>{{$data->case_station->name}}</td>
                 <!-- <td>{{$data->date}}</td> -->
                <td>
                     <a href="" class="btn btn-primary">View</a>

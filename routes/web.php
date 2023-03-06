@@ -5,6 +5,7 @@ use App\Http\Controllers\CrimeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InmateController;
 use App\Http\Controllers\Police_CaseController;
+use App\Http\Controllers\PunishmentController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\UserController;
@@ -61,7 +62,7 @@ Route::post('/crime/list/store', [CrimeController::class,'store'])->name("crime_
 // for case
 Route::get('/case', [Police_CaseController::class,'case'])->name("case");
 
-Route::get('/case/add/{id}', [Police_CaseController::class,'list'])->name("case_list");
+Route::get('/case/add', [Police_CaseController::class,'list'])->name("case_list");
 Route::post('/case/add/store', [Police_CaseController::class,'store'])->name("case_store");
 // for ward
 Route::get('/ward', [WardController::class,'ward'])->name("ward");
@@ -74,4 +75,10 @@ Route::put('/ward/update/{ward_id}', [WardController::class,'update'])->name("wa
  Route::get('/activity', [ActivityController::class,'activity'])->name("activity");
  Route::get('/activity/add', [ActivityController::class,'list'])->name("activity_list");
  Route::post('/activity/store', [ActivityController::class,'store'])->name("activity_store");
+
+ Route::get('/punishment', [PunishmentController::class,'punishment'])->name("punishment");
+
+
+
+
 });

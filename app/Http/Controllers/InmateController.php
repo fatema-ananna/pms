@@ -50,6 +50,7 @@ class InmateController extends Controller
             "religon" => $req->religon,
             "phone" => $req->phone,
             "gender" => $req->gender,
+            "ward_id" => $req->ward_id,
             "case" => $req->case,
             "relatives_name" => $req->relatives_name,
             "relatives_number" => $req->relatives_number,

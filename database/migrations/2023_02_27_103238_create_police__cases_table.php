@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('police__cases', function (Blueprint $table) {
+        Schema::create('police_cases', function (Blueprint $table) {
             $table->id();
             $table->string("first_name",20);
             $table->foreignId("inmate_id");
@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string("crime_type");
             $table->string("case_start");
             $table->string("date");
+            $table->string("police_station");
             $table->timestamps();
         });
     }
