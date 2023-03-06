@@ -15,13 +15,13 @@
       
       <!-- <th scope="col">Address</th> -->
       <th scope="col">Phone</th>
-      <!-- <th scope="col">Ward_id</th> -->
+     <!-- <th scope="col">ward </th>  -->
        <!-- <th scope="col">Country</th> -->
       <!-- <th scope="col">Religon</th> -->
      
       <!-- <th scope="col">Activity</th> -->
        <th scope="col">Gender</th> 
-      <!-- <th scope="col">Case</th> -->
+
       <!-- <th scope="col">Relatives Name</th>
        <th scope="col">Relatives Number</th>
         <th scope="col">Relation</th>
@@ -33,6 +33,7 @@
   </thead>
   <tbody>
   @foreach($inma as $key=>$data)
+
     <tr>
     <th scope="row">{{$inma->firstItem()+$key}}</th>
       <td>{{$data->first_name}}</td>
@@ -42,11 +43,12 @@
       <!-- <td>{{$data->address}}</td> -->
       <td>{{$data->phone}}</td>
       <!-- <td>{{$data->religon}}</td> -->
-        <td>{{$data->gender}}</td> 
-        <!-- <td>{{$data->inmate_ward->ward_id}}</td> -->
        
-       <!-- <td>{{$data->case}}</td>
-      <td>{{$data->relative_name}}</td> -->
+         <!-- <td>{{$data->ward->name}}</td>  -->
+         <td>{{$data->gender}}</td> 
+       
+    
+      <td>{{$data->relative_name}}</td> 
       <!-- <td>{{$data->relative_number}}</td>
       <td>{{$data->relation}}</td>
       <td>{{$data->activity}}</td>

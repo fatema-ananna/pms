@@ -75,15 +75,12 @@
     <select name="ward_id" id="" class="form-control">
 
     @foreach($wards as $ward)
-        <option value="{{$ward->id}}">{{$ward->name}}</option>
+        <option value="{{$ward->id}}">{{$ward->id}}</option>
+        
     @endforeach
     </select>
 </div>
-<div class="form-row">
-<div class="form-group col-md-6">
-  <label ><b>Case</b></label>
-  <input type="text" class="form-control" name="case">
-</div>
+
 <div class="form-row">
 <div class="form-group col-md-6">
   <label ><b>Relatives Name</b></label>

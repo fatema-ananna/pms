@@ -27,7 +27,8 @@ class InmateController extends Controller
         $req->validate(
             [
                 "image" => "required|unique:inmates,image",
-                "case" => "required"
+                "phone"=> "required|unique:inmates,phone",
+                "relatives_number"=> "required|unique:inmates,relatives_number"
             ]
         );
    
@@ -51,7 +52,7 @@ class InmateController extends Controller
             "phone" => $req->phone,
             "gender" => $req->gender,
             "ward_id" => $req->ward_id,
-            "case" => $req->case,
+     
             "relatives_name" => $req->relatives_name,
             "relatives_number" => $req->relatives_number,
             "relation" => $req->relation,
@@ -114,7 +115,8 @@ class InmateController extends Controller
         $inma->country = $req->country;
         $inma->gender = $req->gender;
         $inma->religon = $req->religon;
-        $inma->case = $req->case;
+      
+        $inma->ward_id = $req->ward_id;
         $inma->relatives_name = $req->relatives_name;
         $inma->relatives_number = $req->relatives_number;
         $inma->relation = $req->relation;

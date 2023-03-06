@@ -26,7 +26,7 @@
 
                     <div class="col-md-12"><label class="labels">Country</label><input type="text" class="form-control"value="{{$inma->country}}"></div>
 
-                    <div class="col-md-12"><label class="labels">Case Details</label><input type="text" class="form-control"value="{{$inma->case}}"></div>
+              
 
                     <div class="col-md-12"><label class="labels">Punishment</label><input type="text" class="form-control"  value="{{$inma->punishment}}"></div>
                 </div>

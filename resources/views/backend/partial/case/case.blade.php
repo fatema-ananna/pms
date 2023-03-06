@@ -25,7 +25,7 @@
             @foreach($pcase as $key=>$data)
             <tr>
                 <th scope="row">{{$pcase->firstItem()+$key}}</th>
-                <td>{{$data->inmate_case->id}}</td>
+                <td>{{$data->police_case->id}}</td>
                 <td>{{$data->first_name}}</td>
                 <td>{{$data->last_name}}</td>
 

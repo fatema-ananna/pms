@@ -54,6 +54,15 @@
          
             </select>
 </div>
+<div class="form-group col-md-6">
+    <label ><b>Ward</b></label>
+    <select name="ward_id" id="" class="form-control">
+
+    @foreach($wards as $ward)
+        <option value="{{$ward->id}}">{{$ward->id}}</option>
+    @endforeach
+    </select>
+</div>
 <div class="mb-2">
   <label >Relatives_Name</label>
   <input type="text" class="form-control" name="relatives_name" value="{{$inma->relatives_name}}">
