@@ -20,12 +20,12 @@
         @include('backend.fixed.sidebar')
 
         <div id="layoutSidenav_content">
-    <main>
-    @yield('content')
-</main>
+            <main>
+                @yield('content')
+            </main>
 
-              
-            
+
+
 
             @include('backend.fixed.footer')
 

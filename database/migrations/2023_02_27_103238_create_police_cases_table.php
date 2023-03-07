@@ -15,14 +15,15 @@ return new class extends Migration
     {
         Schema::create('police_cases', function (Blueprint $table) {
             $table->id();
+            $table->foreignId("inmate_id")->constrained("inmates");;
             $table->string("first_name",20);
-            $table->foreignId("inmate_id");
+           
             $table->string("last_name",20);
             $table->string("court",20);
-            $table->string("crime_type");
+            $table->foreignId("crime_id")->constrained("crimes");
             $table->string("case_start");
-            $table->string("date");
-            $table->string("police_station");
+            $table->date("date");
+            $table->foreignId("station_id",)->constrained("stations");
             $table->timestamps();
         });
     }

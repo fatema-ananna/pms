@@ -47,8 +47,8 @@
          <!-- <td>{{$data->ward->name}}</td>  -->
          <td>{{$data->gender}}</td> 
        
-    
-      <td>{{$data->relative_name}}</td> 
+      
+      <!-- <td>{{$data->relative_name}}</td>  -->
       <!-- <td>{{$data->relative_number}}</td>
       <td>{{$data->relation}}</td>
       <td>{{$data->activity}}</td>
@@ -59,7 +59,6 @@
         <a href="{{route('inmate.delete',$data->id)}}" class="btn btn-danger">Delete</a>
         <a href="{{route('inmate.edit',$data->id)}}" class="btn btn-warning">Edit</a>
         <a href="{{route('case_list',$data->id)}}" class="btn btn-danger">Add Case</a>
-  
       </td>
     </tr>
     @endforeach

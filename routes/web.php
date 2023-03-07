@@ -62,7 +62,7 @@ Route::post('/crime/list/store', [CrimeController::class,'store'])->name("crime_
 // for case
 Route::get('/case', [Police_CaseController::class,'case'])->name("case");
 
-Route::get('/case/add', [Police_CaseController::class,'list'])->name("case_list");
+Route::get('/case/add/{id}', [Police_CaseController::class,'list'])->name("case_list");
 Route::post('/case/add/store', [Police_CaseController::class,'store'])->name("case_store");
 // for ward
 Route::get('/ward', [WardController::class,'ward'])->name("ward");

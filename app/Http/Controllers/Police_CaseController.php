@@ -2,24 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Crime;
 use App\Models\Inmate;
 use App\Models\PoliceCase;
+use App\Models\Staff;
+use App\Models\Station;
 use Illuminate\Http\Request;
+use PhpParser\Node\Stmt\Case_;
 
 class Police_CaseController extends Controller
 {
     public function case(){
+    
       
-        $pcase=PoliceCase::paginate(5);
+        $pcase=PoliceCase::with("station")->paginate(5);
 
       return view("backend.partial.case.case",compact('pcase'));
     }
-    public function list(){
+    public function list($id){
 
-      $inmates=Inmate::all();
-      $police_stations=PoliceCase::all();
+      $inmate=Inmate::find($id);
+      $police_stations=Station::all();
+      $crimes=Crime::all();
 
-      return view('backend.partial.case.case_add',compact('inmates','police_stations'));
+      return view('backend.partial.case.case_add',compact('inmate','police_stations','crimes'));
 
 
 
@@ -27,20 +33,20 @@ class Police_CaseController extends Controller
   }
   public function store(Request $req)
     {
-      
         PoliceCase ::create([
+          "inmate_id"=>$req->inmate_id,
             "first_name" => $req->first_name,
             "last_name" => $req->last_name,
             "court" => $req->court,
-            "crime_type"=>$req->crime_type,
+            "crime_id"=>$req->crime_id,
             "case_start" =>$req->case_start,
             "date" => $req->date,
-            "police_station" => $req->police_station,
+            "station_id" => $req->police_station_id,
          
          
            
         ]);
 
-        return redirect()->route('case')->with('message', 'Created successfully');
+        return redirect()->route('inmate')->with('message', 'Created successfully');
     }
 }
