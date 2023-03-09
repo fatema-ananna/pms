@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Activity;
 use App\Models\Inmate;
+use App\Models\PoliceCase;
 use App\Models\Ward;
 use Illuminate\Http\Request;
 
@@ -19,8 +20,9 @@ class InmateController extends Controller
     }
     public function list(){
         $wards = Ward::all();
-        $activities= Activity::all();
-        return view('backend.partial.inmate.inmate_add',compact('wards','activities'));
+        // $activities= Activity::all();
+        // dd( $activities);
+        return view('backend.partial.inmate.inmate_add',compact('wards'));
     }
 
     public function store(Request $req)
@@ -74,8 +76,9 @@ class InmateController extends Controller
     public function viewinmate($id)
     {
         $inma = Inmate::find($id);
-        $activities= Activity::all();
-        return view('backend.partial.inmate.inmate_view', compact('inma',' $activities'));
+        $activities= Activity::find($id);
+        $cases=PoliceCase::where('inmate_id',$id)->get();
+        return view('backend.partial.inmate.inmate_view', compact('inma','activities','cases'));
     }
 
 

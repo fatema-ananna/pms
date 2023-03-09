@@ -63,10 +63,9 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
 
     // for case
     Route::get('/case', [Police_CaseController::class, 'case'])->name("case");
-
     Route::get('/case/add/{id}', [Police_CaseController::class, 'list'])->name("case_list");
     Route::post('/case/add/store', [Police_CaseController::class, 'store'])->name("case_store");
-    
+    Route::get('/case/view/{id}', [Police_CaseController::class, 'view'])->name("case_view");
     // for ward
     Route::get('/ward', [WardController::class, 'ward'])->name("ward");
     Route::get('/ward/add', [WardController::class, 'list'])->name("ward_list");
@@ -80,4 +79,6 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::post('/activity/store', [ActivityController::class, 'store'])->name("activity_store");
 
     Route::get('/punishment', [PunishmentController::class, 'punishment'])->name("punishment");
+    Route::get('/punishment/add', [PunishmentController::class, 'list'])->name("punishment_list");
+    Route::post('/punishment/store', [PunishmentController::class, 'store'])->name("punishment_store");
 });

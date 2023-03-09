@@ -17,12 +17,15 @@
       <input type="text" name="inmate_id" id="" value='{{$inmate->id}}' class="form-control"readonly>
 
     </div>
+    
     <div class="form-row">
       <div class="form-group col-md-6">
+     
         <label><b>First_Name</b> </label>
         <input type="text" name="first_name" id="" value='{{$inmate->first_name}}' class="form-control"readonly>
 
       </div>
+      
       <div class="form-group col-md-6">
         <label><b>last_Name</b> </label>
         <input type="text" name="last_name" id="" value='{{$inmate->last_name}}' class="form-control"readonly>
@@ -42,6 +45,11 @@
                   @endforeach
                 </select>
               </div>
+              <div class="form-row">
+        <div class="form-group col-md-6">
+          <label><b>Description</b></label>
+          <input type="text" class="form-control" name="description">
+        </div>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label><b>Case_Start_Date</b></label>

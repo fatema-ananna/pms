@@ -44,12 +44,56 @@
                 </div>
                 <h1>View Case</h1>
                 <!-- <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"></button></div> -->
+                <div class="container mt-5">
+
+                    <table class="table">
+                        <thead class="bg-secondary">
+                            <tr>
+                                <th scope="col">No</th>
+                                <!-- <th scope="col">Inmate_Id</th> -->
+
+                                <th scope="col">Court_of_Comittal</th>
+                                <th scope="col">Crime_Type</th>
+                                <th scope="col">Description</th>
+
+                                <th scope="col">police_station</th>
+                                <th scope="col">Action</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach($cases as $data)
+                            <tr>
+                                <th scope="row">{{$key=1}}</th>
 
 
-                
+                                <td>{{$data->court}}</td>
+                                <td>{{$data->crime->name}}</td>
+                                <td>{{$data->description}}</td>
+                                
+                                <td>{{$data->station->name}}</td>
+                                <td>
+                                    <a href="{{route('case_view',$data->id)}}" class="btn btn-primary">Details</a>
+                                </td>
+
+                            </tr>
+                            @endforeach
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+
+
+
+</div>
+</div>
+</div>
 
 </div>
 </div>

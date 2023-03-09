@@ -32,17 +32,17 @@
                 <td>{{$data->last_name}}</td>
               
                 <td>{{$data->court}}</td>
-                <td>{{$data->crime_id}}</td>
+                <td>{{$data->crime->name}}</td>
                 <td>{{$data->case_start}}</td>
             
                 
                 <td>{{$data->date}}</td> 
                 <td>{{$data->station->name}}</td>
                <td>
-                    <a href="" class="btn btn-primary">View</a>
+                    <a href="{{route('case_view',$data->id)}}" class="btn btn-primary">View</a>
                     <a href="" class="btn btn-danger">Delete</a>
                     <a href="" class="btn btn-primary">Edit</a>
-
+                  
                 </td>
             </tr>
             @endforeach

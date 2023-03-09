@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string("last_name",20);
             $table->string("court",20);
             $table->foreignId("crime_id")->constrained("crimes");
+            $table->text("description");
             $table->string("case_start");
             $table->date("date");
             $table->foreignId("station_id",)->constrained("stations");

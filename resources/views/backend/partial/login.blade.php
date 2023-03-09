@@ -33,7 +33,7 @@
 </style>
 <body>
 <div class="limiter">
- <div class="container-login100" style="background-image:url('backend/uploads/login/bg.jpg')">
+ <div class="container-login100" style="background-image:url('backend/image/login.jpg')">
 <div class="wrap-login100 p-t-190 p-b-30">
 
 @if(session()->has('message'))
