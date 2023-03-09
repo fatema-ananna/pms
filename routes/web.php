@@ -14,7 +14,9 @@ use App\Http\Controllers\WardController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get("/",function(){return to_route("Dashboard");});
+Route::get("/", function () {
+    return to_route("Dashboard");
+});
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('do-login', [UserController::class, 'doLogin'])->name('do.login');
 // --loging korte hobe 
@@ -34,51 +36,48 @@ Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
     Route::put('/inmate/update/{inmate_id}', [InmateController::class, 'update_inmate'])->name('inmate.update');
 
 
-//  for staff
-Route::get('/staff', [StaffController::class, 'staff'])->name("staff");
-Route::get('/staff/add', [StaffController::class, 'list'])->name("staff_add");
-Route::post('/staff/store', [StaffController::class, 'store'])->name("staff_store");
-Route::get('/staff/delete/{staff_id}', [StaffController::class, 'delete_staff'])->name('delete.staff');
-Route::get('/staff/view/{staff_id}', [StaffController::class, 'view_staff'])->name("staff.view");
-Route::get('/staff/edit/{staff_id}', [StaffController::class, 'edit_staff'])->name("staff.edit");
-Route::put('/staff/update/{staff_id}', [StaffController::class, 'update_staff'])->name('update.staff');
+    //  for staff
+    Route::get('/staff', [StaffController::class, 'staff'])->name("staff");
+    Route::get('/staff/add', [StaffController::class, 'list'])->name("staff_add");
+    Route::post('/staff/store', [StaffController::class, 'store'])->name("staff_store");
+    Route::get('/staff/delete/{staff_id}', [StaffController::class, 'delete_staff'])->name('delete.staff');
+    Route::get('/staff/view/{staff_id}', [StaffController::class, 'view_staff'])->name("staff.view");
+    Route::get('/staff/edit/{staff_id}', [StaffController::class, 'edit_staff'])->name("staff.edit");
+    Route::put('/staff/update/{staff_id}', [StaffController::class, 'update_staff'])->name('update.staff');
 
-// for visitor
-Route::get('/visitor', [VisitorController::class, 'visitor'])->name("visitor");
-Route::get('/visitor/add', [VisitorController::class, 'list'])->name("visitor.add");
+    // for visitor
+    Route::get('/visitor', [VisitorController::class, 'visitor'])->name("visitor");
+    Route::get('/visitor/add', [VisitorController::class, 'list'])->name("visitor.add");
 
-// for police station
-Route::get('/station', [StationController::class, 'station'])->name("station");
-Route::get('/station/list', [StationController::class, 'list'])->name("list");
-Route::post('/station/list/store', [StationController::class, 'station_store'])->name("store");
-Route::get('/station/edit/{station_id}', [StationController::class, 'edit_station'])->name("station.edit");
-Route::put('/station/update/{station_id}', [StationController::class, 'update_station'])->name('update.station');
-Route::get('/station/view/{station_id}', [StationController::class, 'view_station'])->name("station.view");
-// for crime...
-Route::get('/crime', [CrimeController::class,'crime'])->name("crime");
-Route::get('/crime/list', [CrimeController::class,'list'])->name("crime_list");
-Route::post('/crime/list/store', [CrimeController::class,'store'])->name("crime_store");
+    // for police station
+    Route::get('/station', [StationController::class, 'station'])->name("station");
+    Route::get('/station/list', [StationController::class, 'list'])->name("list");
+    Route::post('/station/list/store', [StationController::class, 'station_store'])->name("store");
+    Route::get('/station/edit/{station_id}', [StationController::class, 'edit_station'])->name("station.edit");
+    Route::put('/station/update/{station_id}', [StationController::class, 'update_station'])->name('update.station');
+    Route::get('/station/view/{station_id}', [StationController::class, 'view_station'])->name("station.view");
+    // for crime...
+    Route::get('/crime', [CrimeController::class, 'crime'])->name("crime");
+    Route::get('/crime/list', [CrimeController::class, 'list'])->name("crime_list");
+    Route::post('/crime/list/store', [CrimeController::class, 'store'])->name("crime_store");
 
-// for case
-Route::get('/case', [Police_CaseController::class,'case'])->name("case");
+    // for case
+    Route::get('/case', [Police_CaseController::class, 'case'])->name("case");
 
-Route::get('/case/add/{id}', [Police_CaseController::class,'list'])->name("case_list");
-Route::post('/case/add/store', [Police_CaseController::class,'store'])->name("case_store");
-// for ward
-Route::get('/ward', [WardController::class,'ward'])->name("ward");
-Route::get('/ward/add', [WardController::class,'list'])->name("ward_list");
-Route::post('/ward/store', [WardController::class,'store'])->name("ward_store");
-Route::get('/ward/edit/{ward_id}', [WardController::class,'edit'])->name("ward_edit");
-Route::put('/ward/update/{ward_id}', [WardController::class,'update'])->name("ward_update");
+    Route::get('/case/add/{id}', [Police_CaseController::class, 'list'])->name("case_list");
+    Route::post('/case/add/store', [Police_CaseController::class, 'store'])->name("case_store");
+    
+    // for ward
+    Route::get('/ward', [WardController::class, 'ward'])->name("ward");
+    Route::get('/ward/add', [WardController::class, 'list'])->name("ward_list");
+    Route::post('/ward/store', [WardController::class, 'store'])->name("ward_store");
+    Route::get('/ward/edit/{ward_id}', [WardController::class, 'edit'])->name("ward_edit");
+    Route::put('/ward/update/{ward_id}', [WardController::class, 'update'])->name("ward_update");
 
-// // for activity
- Route::get('/activity', [ActivityController::class,'activity'])->name("activity");
- Route::get('/activity/add', [ActivityController::class,'list'])->name("activity_list");
- Route::post('/activity/store', [ActivityController::class,'store'])->name("activity_store");
+    // // for activity
+    Route::get('/activity', [ActivityController::class, 'activity'])->name("activity");
+    Route::get('/activity/add', [ActivityController::class, 'list'])->name("activity_list");
+    Route::post('/activity/store', [ActivityController::class, 'store'])->name("activity_store");
 
- Route::get('/punishment', [PunishmentController::class,'punishment'])->name("punishment");
-
-
-
-
+    Route::get('/punishment', [PunishmentController::class, 'punishment'])->name("punishment");
 });

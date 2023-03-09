@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string("relatives_name");
             $table->string("relatives_number");
             $table->string("relation");
-            $table->string("activity");
+            $table->string("activity_id");
             $table->string("punishment");
             $table->timestamps();
         });

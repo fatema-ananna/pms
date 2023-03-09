@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\Activity;
 use App\Models\Inmate;
 use App\Models\Ward;
 use Illuminate\Http\Request;
@@ -19,7 +19,8 @@ class InmateController extends Controller
     }
     public function list(){
         $wards = Ward::all();
-        return view('backend.partial.inmate.inmate_add',compact("wards"));
+        $activities= Activity::all();
+        return view('backend.partial.inmate.inmate_add',compact('wards','activities'));
     }
 
     public function store(Request $req)
@@ -52,11 +53,10 @@ class InmateController extends Controller
             "phone" => $req->phone,
             "gender" => $req->gender,
             "ward_id" => $req->ward_id,
-     
             "relatives_name" => $req->relatives_name,
             "relatives_number" => $req->relatives_number,
             "relation" => $req->relation,
-            "activity" => $req->activity,
+            "activity_id" => $req->activity_id,
             "punishment" => $req->punishment,
            
         ]);
@@ -74,8 +74,8 @@ class InmateController extends Controller
     public function viewinmate($id)
     {
         $inma = Inmate::find($id);
-
-        return view('backend.partial.inmate.inmate_view', compact('inma'));
+        $activities= Activity::all();
+        return view('backend.partial.inmate.inmate_view', compact('inma',' $activities'));
     }
 
 
@@ -121,7 +121,7 @@ class InmateController extends Controller
         $inma->relatives_number = $req->relatives_number;
         $inma->relation = $req->relation;
         $inma->punishment = $req->punishment;
-        $inma->activity = $req->activity;
+        $inma->activity_id = $req->activity_id;
         
         $inma->update();
         return redirect()->route('inmate')->with('message', 'Update success');

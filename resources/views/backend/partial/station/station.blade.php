@@ -25,7 +25,7 @@
       <td>{{$data->name}}</td>
       <td>{{$data->phone}}</td>
       <td>{{$data->postal_code}}</td>
-     <td><img src="{{url('/backend/uploads/station/ramganj-police-station_1.jpg',$data->image)}}" alt="image" height="100px" width="auto"></td>
+     <!-- <td><img src="{{url('/backend/uploads/station/ramganj-police-station_1.jpg',$data->image)}}" alt="image" height="100px" width="auto"></td> -->
 
       <td>{{$data->zilla}},{{$data->thana}}</td>
       

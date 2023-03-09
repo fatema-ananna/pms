@@ -75,7 +75,7 @@
     <select name="ward_id" id="" class="form-control">
 
     @foreach($wards as $ward)
-        <option value="{{$ward->id}}">{{$ward->id}}</option>
+        <option value="{{$ward->id}}">{{$ward->name}}</option>
         
     @endforeach
     </select>
@@ -101,10 +101,17 @@
   <label > <b>Punishment</b></label>
   <input type="text" class="form-control" name="punishment">
 </div>
-<div class="form-row">
-<div class="form-group col-md-2">
-  <label ><b>Activity</b></label>
-  <input type="text" class="form-control" name="activity" >
+
+
+<div class="form-group col-md-6">
+    <label ><b>Activity</b></label>
+    <select name="activity_id" id="" class="form-control">
+
+    @foreach($activities as $activity)
+        <option value="{{$activity->id}}">{{$activity->name}}</option>
+        
+    @endforeach
+    </select>
 </div>
 
 <input type="submit" name="submit" class="mt-3 btn btn-info" value="submit">

@@ -19,7 +19,7 @@
        <!-- <th scope="col">Country</th> -->
       <!-- <th scope="col">Religon</th> -->
      
-      <!-- <th scope="col">Activity</th> -->
+      <th scope="col">Activity</th> 
        <th scope="col">Gender</th> 
 
       <!-- <th scope="col">Relatives Name</th>
@@ -44,14 +44,14 @@
       <td>{{$data->phone}}</td>
       <!-- <td>{{$data->religon}}</td> -->
        
+      <td>{{$data->activity->name}}</td>
          <!-- <td>{{$data->ward->name}}</td>  -->
          <td>{{$data->gender}}</td> 
-       
       
       <!-- <td>{{$data->relative_name}}</td>  -->
       <!-- <td>{{$data->relative_number}}</td>
       <td>{{$data->relation}}</td>
-      <td>{{$data->activity}}</td>
+       
      <td>{{$data->country}}</td> -->
       <!-- <td>{{$data->punishment}}</td> -->
       <td> 
@@ -59,6 +59,7 @@
         <a href="{{route('inmate.delete',$data->id)}}" class="btn btn-danger">Delete</a>
         <a href="{{route('inmate.edit',$data->id)}}" class="btn btn-warning">Edit</a>
         <a href="{{route('case_list',$data->id)}}" class="btn btn-danger">Add Case</a>
+       
       </td>
     </tr>
     @endforeach
