@@ -19,7 +19,7 @@
   <input type="text" class="form-control" name="name">
 </div>
 <div class="form-group col-md-6">
-            <label ><b>Status</b></label>
+            <label ><b>Punishment_Type</b></label>
             <select name="type" id="" class="form-control" autocomplete="off">
                 <option value="Rigorous imprisonment">Rigorous imprisonment</option>
                 <option value="simple imprisonment">simple imprisonment</option>

@@ -21,11 +21,11 @@
      
       <th scope="col">Activity</th> 
        <th scope="col">Gender</th> 
-
-      <!-- <th scope="col">Relatives Name</th>
+       <th scope="col">Punishment</th> 
+       <!-- <th scope="col">Relatives Name</th>
        <th scope="col">Relatives Number</th>
-        <th scope="col">Relation</th>
-      <th scope="col">Punishment</th> -->
+        <th scope="col">Relation</th> -->
+
 
       <th scope="col">Action</th>
 
@@ -47,13 +47,13 @@
       <td>{{$data->activity->name}}</td>
          <!-- <td>{{$data->ward->name}}</td>  -->
          <td>{{$data->gender}}</td> 
-      
+         <td>{{$data->punishment->name}}</td> 
       <!-- <td>{{$data->relative_name}}</td>  -->
       <!-- <td>{{$data->relative_number}}</td>
       <td>{{$data->relation}}</td>
        
      <td>{{$data->country}}</td> -->
-      <!-- <td>{{$data->punishment}}</td> -->
+
       <td> 
         <a href="{{route('inmate.view',$data->id)}}" class="btn btn-primary">View</a>
         <a href="{{route('inmate.delete',$data->id)}}" class="btn btn-danger">Delete</a>

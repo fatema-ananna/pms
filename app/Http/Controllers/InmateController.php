@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Activity;
 use App\Models\Inmate;
 use App\Models\PoliceCase;
+use App\Models\Punishment;
 use App\Models\Ward;
 use Illuminate\Http\Request;
 
@@ -20,9 +21,10 @@ class InmateController extends Controller
     }
     public function list(){
         $wards = Ward::all();
-        // $activities= Activity::all();
+       $activities= Activity::all();
         // dd( $activities);
-        return view('backend.partial.inmate.inmate_add',compact('wards'));
+        $punishments= Punishment::all();
+        return view('backend.partial.inmate.inmate_add',compact('wards','punishments','activities'));
     }
 
     public function store(Request $req)
@@ -59,7 +61,7 @@ class InmateController extends Controller
             "relatives_number" => $req->relatives_number,
             "relation" => $req->relation,
             "activity_id" => $req->activity_id,
-            "punishment" => $req->punishment,
+            "punishment_id" => $req->punishment_id,
            
         ]);
 
@@ -78,7 +80,8 @@ class InmateController extends Controller
         $inma = Inmate::find($id);
         $activities= Activity::find($id);
         $cases=PoliceCase::where('inmate_id',$id)->get();
-        return view('backend.partial.inmate.inmate_view', compact('inma','activities','cases'));
+        $punishments=Punishment::find($id);
+        return view('backend.partial.inmate.inmate_view', compact('inma','activities','cases','punishments'));
     }
 
 
@@ -123,7 +126,7 @@ class InmateController extends Controller
         $inma->relatives_name = $req->relatives_name;
         $inma->relatives_number = $req->relatives_number;
         $inma->relation = $req->relation;
-        $inma->punishment = $req->punishment;
+        $inma->punishment_id = $req->punishment_id;
         $inma->activity_id = $req->activity_id;
         
         $inma->update();

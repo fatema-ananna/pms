@@ -96,10 +96,15 @@
   <label ><b>Relation</b></label>
   <input type="text" class="form-control" name="relation" >
 </div>
-<div class="form-row">
-<div class="form-group col-md-4">
-  <label > <b>Punishment</b></label>
-  <input type="text" class="form-control" name="punishment">
+<div class="form-group col-md-6">
+    <label ><b>Punishment</b></label>
+    <select name="punishment_id" id="" class="form-control">
+
+    @foreach($punishments as $punishment)
+        <option value="{{$punishment->id}}">{{$punishment->name}}</option>
+        
+    @endforeach
+    </select>
 </div>
 
 
