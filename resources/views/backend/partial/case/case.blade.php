@@ -18,9 +18,11 @@
            
                 <th scope="col">Date_of_Crime</th> 
                 <th scope="col">police_station</th>
-                <th scope="col">Punishment</th>
+                <!-- <th scope="col">Punishment</th>
                 <th scope="col">Punishment_Type</th>
-                <th scope="col">Activity</th>
+                <th scope="col">Punishment_Duration</th>
+                <th scope="col">Punishment_Start_From</th>
+                <th scope="col">Activity</th> -->
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -32,17 +34,16 @@
                 <th scope="row">{{$pcase->firstItem()+$key}}</th>
                 <td>{{$data->first_name}}</td>
                 <td>{{$data->last_name}}</td>
-              
                 <td>{{$data->court}}</td>
                 <td>{{$data->crime->name}}</td>
                 <td>{{$data->case_start}}</td>
-            
-                
                 <td>{{$data->date}}</td> 
-                <td>{{$data->station->name}}</td>
-                <td>{{$data->punishment->name}}</td>
+               <td>{{$data->station->name}}</td>
+                <!-- <td>{{$data->punishment->name}}</td>
                 <td>{{$data->type}}</td>
-                <td>{{$data->activity->name}}</td>
+                <td>{{$data->duration}} month</td>
+                <td>{{$data->punishment_start}}</td>
+                <td>{{$data->activity->name}}</td>  -->
                <td>
                     <a href="{{route('case_view',$data->id)}}" class="btn btn-primary">View</a>
                     <a href="" class="btn btn-danger">Delete</a>

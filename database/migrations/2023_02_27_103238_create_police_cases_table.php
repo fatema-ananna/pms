@@ -27,6 +27,8 @@ return new class extends Migration
             $table->foreignId("station_id")->constrained("stations");
             $table->foreignId("punishment_id")->constrained("punishments");
             $table->string("type");
+            $table->string("duration");
+            $table->string("punishment_start");
             $table->foreignId("activity_id")->constrained("activities");
             $table->timestamps();
         });

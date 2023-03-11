@@ -47,6 +47,7 @@
               </div>
               <div class="form-row">
         <div class="form-group col-md-6">
+         
           <label><b>Description</b></label>
           <input type="text" class="form-control" name="description">
         </div>
@@ -78,7 +79,7 @@
                   <option value="{{$data->id}}"> {{$data->name}}</option>
                   @endforeach
                 </select>
-              </div>
+              </div> 
 
               <div class="form-row" name="type">
          <div class="form-group col-md-6">
@@ -88,6 +89,17 @@
                 <option value="simple imprisonment">Simple Imprisonment</option>
              </select>
        </div>
+       <div class="form-row">
+        <div class="form-group col-md-6">
+          <label><b>Punishment_Duration</b></label>
+          <input type="number"month class="form-control" name="duration">
+        </div>
+        <div class="form-row">
+        <div class="form-group col-md-6">
+          <label><b>Punishment_Start_From</b></label>
+          <input type="date" class="form-control" name="punishment_start">
+        </div>
+
        <div class="form-group col-md-6">
                 <label><b>Activity</b></label>
                 <select name="activity_id" id="" class="form-control">

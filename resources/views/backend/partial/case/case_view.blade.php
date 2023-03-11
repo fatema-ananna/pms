@@ -25,7 +25,10 @@
 
                                 <th scope="col">Date_of_Crime</th>
                                 <th scope="col">police_station</th>
-                                <th scope="col">punishment</th>
+                              <th scope="col">punishment</th> 
+                              <th scope="col">punishment_Type</th> 
+                              <th scope="col">punishment_Duration</th> 
+                              <th scope="col">punishment_Start_From</th> 
                                 <th scope="col">activity</th>
                             </tr>
                         </thead>
@@ -43,8 +46,11 @@
                                 <td>{{$cases->case_start}}</td>
                                    <td>{{$cases->date}}</td>
                                 <td>{{$cases->station->name}}</td>
-                                <td>{{$cases->punishment_id->name}}</td>
-                                <td>{{$cases->activity_id->name}}</td>
+                                 <td>{{$cases->punishment->name}}</td> 
+                                 <td>{{$cases->type}}</td>
+                                 <td>{{$cases->duration}}</td>
+                                 <td>{{$cases->punishment_start}}</td>
+                                <td>{{$cases->activity->name}}</td>
                                 </td>
                             </tr>
 

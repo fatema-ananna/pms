@@ -54,6 +54,8 @@ public function store(Request $req)
             "station_id" => $req->police_station_id,
             "punishment_id"=>$req->punishment_id,
             "type"=>$req->type,
+            "duration"=>$req->duration,
+            "punishment_start"=>$req->punishment_start,
             "activity_id"=>$req->activity_id,
          
          
