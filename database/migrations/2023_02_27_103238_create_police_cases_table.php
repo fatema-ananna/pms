@@ -24,7 +24,10 @@ return new class extends Migration
             $table->text("description");
             $table->string("case_start");
             $table->date("date");
-            $table->foreignId("station_id",)->constrained("stations");
+            $table->foreignId("station_id")->constrained("stations");
+            $table->foreignId("punishment_id")->constrained("punishments");
+            $table->string("type");
+            $table->foreignId("activity_id")->constrained("activities");
             $table->timestamps();
         });
     }

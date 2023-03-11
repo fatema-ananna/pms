@@ -21,7 +21,7 @@
 <div class="form-group col-md-6">
             <label ><b>Punishment_Type</b></label>
             <select name="type" id="" class="form-control" autocomplete="off">
-                <option value="Rigorous imprisonment">Rigorous imprisonment</option>
+                <option value="rigorous imprisonment">Rigorous imprisonment</option>
                 <option value="simple imprisonment">simple imprisonment</option>
             </select>
 </div>

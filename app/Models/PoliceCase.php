@@ -19,4 +19,10 @@ class PoliceCase extends Model
     public function crime (){
         return $this->belongsTo(Crime::class);
     }
+    public function punishment(){
+        return $this->belongsTo(Punishment::class);
+    }
+    public function activity (){
+        return$this->belongsTo(Activity::class);
+    }
 }

@@ -26,10 +26,6 @@
 
                     <div class="col-md-12"><label class="labels">Country</label><input type="text" class="form-control" value="{{$inma->country}}"></div>
 
-
-
-                    <div class="col-md-12"><label class="labels">Punishment</label><input type="text" class="form-control" value="{{$inma->punishment}}"></div>
-                </div>
                 <div class="row mt-3">
                     <div class="col-md-6"><label class="labels">Country</label><input type="text" class="form-control" placeholder="country" value="{{$inma->country}}"></div>
 
@@ -40,8 +36,6 @@
 
                     <div class="col-md-12"><label class="labels">Relation</label><input type="text" class="form-control" placeholder="enter email id" value="{{$inma->relation}}"></div>
 
-                    <div class="col-md-6"><label class="labels">Activity</label><input type="text" class="form-control" value="{{$activities->name}}"></div>
-                </div>
                 <h1>View Case</h1>
                 <!-- <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button"></button></div> -->
                 <div class="container mt-5">
@@ -57,6 +51,7 @@
                                 <th scope="col">Description</th>
 
                                 <th scope="col">police_station</th>
+                                <th scope="col">punishment</th>
                                 <th scope="col">Action</th>
 
                             </tr>
@@ -73,6 +68,7 @@
                                 <td>{{$data->description}}</td>
                                 
                                 <td>{{$data->station->name}}</td>
+                                <td>{{$data->punishment->name}}</td>
                                 <td>
                                     <a href="{{route('case_view',$data->id)}}" class="btn btn-primary">Details</a>
                                 </td>

@@ -19,9 +19,9 @@
        <!-- <th scope="col">Country</th> -->
       <!-- <th scope="col">Religon</th> -->
      
-      <th scope="col">Activity</th> 
+    
        <th scope="col">Gender</th> 
-       <th scope="col">Punishment</th> 
+       <!-- <th scope="col">Punishment</th>  -->
        <!-- <th scope="col">Relatives Name</th>
        <th scope="col">Relatives Number</th>
         <th scope="col">Relation</th> -->
@@ -44,10 +44,10 @@
       <td>{{$data->phone}}</td>
       <!-- <td>{{$data->religon}}</td> -->
        
-      <td>{{$data->activity->name}}</td>
+     
          <!-- <td>{{$data->ward->name}}</td>  -->
          <td>{{$data->gender}}</td> 
-         <td>{{$data->punishment->name}}</td> 
+     
       <!-- <td>{{$data->relative_name}}</td>  -->
       <!-- <td>{{$data->relative_number}}</td>
       <td>{{$data->relation}}</td>

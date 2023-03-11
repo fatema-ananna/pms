@@ -29,8 +29,8 @@ return new class extends Migration
             $table->string("relatives_name");
             $table->string("relatives_number");
             $table->string("relation");
-            $table->string("activity_id");
-            $table->foreignId("punishment_id");
+            // $table->string("activity_id");
+            // $table->foreignId("punishment_id");
             $table->timestamps();
         });
     }

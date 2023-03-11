@@ -11,20 +11,22 @@ use Illuminate\Http\Request;
 
 class InmateController extends Controller
 {
-    public function inmate(){
-        
-
-        $inma=Inmate::paginate(5);
+    public function inmate()
+    {
 
 
-        return view("backend.partial.inmate.inmate",compact('inma'));
+        $inma = Inmate::paginate(5);
+
+
+        return view("backend.partial.inmate.inmate", compact('inma'));
     }
-    public function list(){
+    public function list()
+    {
         $wards = Ward::all();
-       $activities= Activity::all();
+        //    $activities= Activity::all();
         // dd( $activities);
-        $punishments= Punishment::all();
-        return view('backend.partial.inmate.inmate_add',compact('wards','punishments','activities'));
+        // $punishments= Punishment::all();
+        return view('backend.partial.inmate.inmate_add', compact('wards'));
     }
 
     public function store(Request $req)
@@ -32,26 +34,26 @@ class InmateController extends Controller
         $req->validate(
             [
                 "image" => "required|unique:inmates,image",
-                "phone"=> "required|unique:inmates,phone",
-                "relatives_number"=> "required|unique:inmates,relatives_number"
+                "phone" => "required|unique:inmates,phone",
+                "relatives_number" => "required|unique:inmates,relatives_number"
             ]
         );
-   
+
         //dd($req->all());
-        
+
         $fileName = null;
         if ($req->hasFile('image')) {
             // generate name
             $fileName = date('Ymdhmi') . '.' . $req->file('image')->getClientOriginalExtension();
             $req->file('image')->storeAs('/backend/uploads/', $fileName);
         }
-      
-        Inmate ::create([
+
+        Inmate::create([
             "first_name" => $req->first_name,
             "last_name" => $req->last_name,
             "image" => $fileName,
-            "dob"=>$req->dob,
-            "address" =>$req->address,
+            "dob" => $req->dob,
+            "address" => $req->address,
             "country" => $req->country,
             "religon" => $req->religon,
             "phone" => $req->phone,
@@ -60,14 +62,13 @@ class InmateController extends Controller
             "relatives_name" => $req->relatives_name,
             "relatives_number" => $req->relatives_number,
             "relation" => $req->relation,
-            "activity_id" => $req->activity_id,
-            "punishment_id" => $req->punishment_id,
-           
+
+
         ]);
 
         return redirect()->route('inmate')->with('message', 'Created successfully');
     }
-    
+
     public function deleteinmate($id)
     {
 
@@ -78,10 +79,10 @@ class InmateController extends Controller
     public function viewinmate($id)
     {
         $inma = Inmate::find($id);
-        $activities= Activity::find($id);
-        $cases=PoliceCase::where('inmate_id',$id)->get();
-        $punishments=Punishment::find($id);
-        return view('backend.partial.inmate.inmate_view', compact('inma','activities','cases','punishments'));
+        // $activities= Activity::find($id);
+        $cases = PoliceCase::where('inmate_id', $id)->get();
+        // $punishments=Punishment::find($id);
+        return view('backend.partial.inmate.inmate_view', compact('inma', 'cases'));
     }
 
 
@@ -94,8 +95,7 @@ class InmateController extends Controller
     public function update_inmate(Request $req, $id)
     {
 
-
-        $req->validate(
+          $req->validate(
             [
                 "image" => "required|unique:inmates,image",
                 "case" => "required"
@@ -121,16 +121,14 @@ class InmateController extends Controller
         $inma->country = $req->country;
         $inma->gender = $req->gender;
         $inma->religon = $req->religon;
-      
+
         $inma->ward_id = $req->ward_id;
         $inma->relatives_name = $req->relatives_name;
         $inma->relatives_number = $req->relatives_number;
         $inma->relation = $req->relation;
-        $inma->punishment_id = $req->punishment_id;
-        $inma->activity_id = $req->activity_id;
-        
-        $inma->update();
-        return redirect()->route('inmate')->with('message', 'Update success');
-    }
 
+
+        $inma->update();
+        return redirect()->route('inmate')->with('message', 'Updated successfully');
+    }
 }

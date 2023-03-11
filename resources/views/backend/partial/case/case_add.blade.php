@@ -70,11 +70,36 @@
                 </select>
               </div>
 
+              <div class="form-group col-md-6">
+                <label><b>punishment</b></label>
+                <select name="punishment_id" id="" class="form-control">
+
+                  @foreach($punishments as $data)
+                  <option value="{{$data->id}}"> {{$data->name}}</option>
+                  @endforeach
+                </select>
+              </div>
+
+              <div class="form-row" name="type">
+         <div class="form-group col-md-6">
+            <label ><b>Punishment_Type</b></label >
+            <select name="type" id="" class="form-control">
+                <option value="rigorous imprisonment">Rigorous Imprisonment</option>
+                <option value="simple imprisonment">Simple Imprisonment</option>
+             </select>
+       </div>
+       <div class="form-group col-md-6">
+                <label><b>Activity</b></label>
+                <select name="activity_id" id="" class="form-control">
+
+                  @foreach($activities as $data)
+                  <option value="{{$data->id}}"> {{$data->name}}</option>
+                  @endforeach
+                </select>
+              </div>
+
             </div>
-
-
-
-            <input type="submit" name="submit" class="mt-3 btn btn-info" value="submit">
+     <input type="submit" name="submit" class="mt-3 btn btn-info" value="submit">
 
 
   </form>

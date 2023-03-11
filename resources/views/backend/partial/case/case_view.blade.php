@@ -25,8 +25,8 @@
 
                                 <th scope="col">Date_of_Crime</th>
                                 <th scope="col">police_station</th>
-
-
+                                <th scope="col">punishment</th>
+                                <th scope="col">activity</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,7 +43,8 @@
                                 <td>{{$cases->case_start}}</td>
                                    <td>{{$cases->date}}</td>
                                 <td>{{$cases->station->name}}</td>
-
+                                <td>{{$cases->punishment_id->name}}</td>
+                                <td>{{$cases->activity_id->name}}</td>
                                 </td>
                             </tr>
 

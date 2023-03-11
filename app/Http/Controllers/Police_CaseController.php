@@ -6,6 +6,7 @@ use App\Models\Activity;
 use App\Models\Crime;
 use App\Models\Inmate;
 use App\Models\PoliceCase;
+use App\Models\Punishment;
 use App\Models\Station;
 use Illuminate\Http\Request;
 
@@ -24,8 +25,10 @@ class Police_CaseController extends Controller
       $inmate=Inmate::find($id);
       $police_stations=Station::all();
       $crimes=Crime::all();
-
-      return view('backend.partial.case.case_add',compact('inmate','police_stations','crimes'));}
+      $punishments=Punishment::all();
+      $activities=Activity::all();
+      return view('backend.partial.case.case_add',compact('inmate','police_stations','crimes','punishments','activities'
+    ));}
 
 
       
@@ -37,7 +40,7 @@ public function store(Request $req)
     //       // generate name
     //       $fileName = date('Ymdhmi') . '.' . $req->file('image')->getClientOriginalExtension();
     //       $req->file('image')->storeAs('/backend/uploads/', $fileName);
-      
+      // dd();
         PoliceCase ::create([
           "inmate_id"=>$req->inmate_id,
             "first_name" => $req->first_name,
@@ -49,6 +52,9 @@ public function store(Request $req)
             "case_start" =>$req->case_start,
             "date" => $req->date,
             "station_id" => $req->police_station_id,
+            "punishment_id"=>$req->punishment_id,
+            "type"=>$req->type,
+            "activity_id"=>$req->activity_id,
          
          
            

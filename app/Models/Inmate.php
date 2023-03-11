@@ -16,10 +16,5 @@ class Inmate extends Model
     public function ward (){
         return $this->belongsTo(Ward::class);
     }
-    public function activity(){
-        return $this->belongsTo(Activity::class);
-    }
-    public function punishment(){
-        return $this->belongsTo(Punishment::class);
-    }
+   
 }

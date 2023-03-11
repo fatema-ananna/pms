@@ -18,7 +18,9 @@
            
                 <th scope="col">Date_of_Crime</th> 
                 <th scope="col">police_station</th>
-
+                <th scope="col">Punishment</th>
+                <th scope="col">Punishment_Type</th>
+                <th scope="col">Activity</th>
                 <th scope="col">Action</th>
             </tr>
         </thead>
@@ -38,6 +40,9 @@
                 
                 <td>{{$data->date}}</td> 
                 <td>{{$data->station->name}}</td>
+                <td>{{$data->punishment->name}}</td>
+                <td>{{$data->type}}</td>
+                <td>{{$data->activity->name}}</td>
                <td>
                     <a href="{{route('case_view',$data->id)}}" class="btn btn-primary">View</a>
                     <a href="" class="btn btn-danger">Delete</a>
