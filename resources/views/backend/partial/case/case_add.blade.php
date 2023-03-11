@@ -49,7 +49,8 @@
         <div class="form-group col-md-6">
          
           <label><b>Description</b></label>
-          <input type="text" class="form-control" name="description">
+          <textarea name="description" class="form-control" cols='10' rows='5'></textarea>
+         
         </div>
           <div class="form-row">
             <div class="form-group col-md-6">

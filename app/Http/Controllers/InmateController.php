@@ -89,8 +89,8 @@ class InmateController extends Controller
     public function edit_inmate($id)
     {
         $inma = inmate::find($id);
-
-        return view('backend.partial.inmate.inmate_edit', compact('inma'));
+        $wards = Ward::all();
+        return view('backend.partial.inmate.inmate_edit', compact('inma','wards'));
     }
     public function update_inmate(Request $req, $id)
     {
