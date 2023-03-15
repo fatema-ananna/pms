@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string("type");
             $table->string("duration");
             $table->string("punishment_start");
-            $table->foreignId("activity_id")->constrained("activities");
+            $table->foreignId("activity_id")->constrained("activities")->nullable();
             $table->timestamps();
         });
     }

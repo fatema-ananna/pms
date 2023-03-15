@@ -49,7 +49,7 @@
         <div class="form-group col-md-6">
          
           <label><b>Description</b></label>
-          <textarea name="description" class="form-control" cols='10' rows='5'></textarea>
+          <textarea name="description" required description="description" class="form-control" cols='10' rows='5'></textarea>
          
         </div>
           <div class="form-row">
@@ -91,10 +91,10 @@
              </select>
        </div>
        <div class="form-row">
-        <div class="form-group col-md-6">
-          <label><b>Punishment_Duration</b></label>
-          <input type="number"month class="form-control" name="duration">
-        </div>
+              <div class="form-group col-md-6">
+                <label><b>Punishment_Duration</b></label>
+                <input type="number" class="form-control" name="duration">
+              </div>
         <div class="form-row">
         <div class="form-group col-md-6">
           <label><b>Punishment_Start_From</b></label>

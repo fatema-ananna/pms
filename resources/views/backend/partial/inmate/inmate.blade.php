@@ -14,8 +14,9 @@
       <!-- <th scope="col">Date of Birth</th> -->
       
       <!-- <th scope="col">Address</th> -->
-      <th scope="col">Phone</th>
+      <th scope="col">Nid</th>
      <!-- <th scope="col">ward </th>  -->
+     <th scope="col">ward_type </th>
        <!-- <th scope="col">Country</th> -->
       <!-- <th scope="col">Religon</th> -->
      
@@ -41,10 +42,10 @@
       <td><img  src="{{url('/backend/uploads/'.$data->image)}}" alt="image" height="80px" width="auto"></td>
       <!-- <td>{{$data->dob}}</td> -->
       <!-- <td>{{$data->address}}</td> -->
-      <td>{{$data->phone}}</td>
+      <td>{{$data->nid}}</td>
       <!-- <td>{{$data->religon}}</td> -->
        
-     
+      <td>{{$data->ward->ward_type}}</td>
          <!-- <td>{{$data->ward->name}}</td>  -->
          <td>{{$data->gender}}</td> 
      

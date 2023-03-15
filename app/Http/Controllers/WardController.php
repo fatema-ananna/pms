@@ -22,6 +22,7 @@ class WardController extends Controller
        
         Ward ::create([
             "name" => $req->name,
+            "ward_type"=>$req->ward_type,
             "cell_no"=>$req->cell_no,
           "status"=>$req->status
            
@@ -41,6 +42,7 @@ public function update(Request $req,$id)
   $ward = Ward::find($id);
   
       $ward->name = $req->name;
+      $ward->ward_type=$req->ward_type;
       $ward->cell_no=$req->cell_no;
       $ward->status=$req->status;
       $ward->update();

@@ -10,7 +10,7 @@
       <th scope="col">No</th>
       <th scope="col">Punishment_Name</th>
     <th scope="col">Punishment_Type</th>
-    <th scope="col">Punishment_Duration</th>
+    <!-- <th scope="col">Punishment_Duration</th> -->
     <th scope="col">Action</th>
 
     </tr>
@@ -21,11 +21,11 @@
     <th scope="row">{{$punish->firstItem()+$key}}</th>
       <td>{{$data->name}}</td>
       <td>{{$data->type}}</td>
-      <td>{{$data->month}}</td>
+      
      
       
       <td> 
-        <a href="" class="btn btn-primary">View</a>
+        <!-- <a href="" class="btn btn-primary">View</a> -->
         <a href="" class="btn btn-warning">Edit</a>
      </td>
     </tr>

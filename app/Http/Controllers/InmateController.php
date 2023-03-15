@@ -32,10 +32,10 @@ class InmateController extends Controller
     public function store(Request $req)
     {
         $req->validate(
-            [
+            [   "dob" => 'required|date|before:2002-04-15',
                 "image" => "required|unique:inmates,image",
-                "phone" => "required|unique:inmates,phone",
-                "relatives_number" => "required|unique:inmates,relatives_number"
+                "nid" => 'digits:17|required|numeric|unique:inmates,nid',
+                "relatives_number" => "digits:11|required|unique:inmates,relatives_number"
             ]
         );
 
@@ -56,8 +56,9 @@ class InmateController extends Controller
             "address" => $req->address,
             "country" => $req->country,
             "religon" => $req->religon,
-            "phone" => $req->phone,
+            "nid" => $req->nid,
             "gender" => $req->gender,
+            "ward_type" => $req->ward_id,
             "ward_id" => $req->ward_id,
             "relatives_name" => $req->relatives_name,
             "relatives_number" => $req->relatives_number,
@@ -90,15 +91,17 @@ class InmateController extends Controller
     {
         $inma = inmate::find($id);
         $wards = Ward::all();
-        return view('backend.partial.inmate.inmate_edit', compact('inma','wards'));
+        return view('backend.partial.inmate.inmate_edit', compact('inma', 'wards'));
     }
     public function update_inmate(Request $req, $id)
     {
 
-          $req->validate(
+        $req->validate(
             [
                 "image" => "required|unique:inmates,image",
-                "case" => "required"
+                "case" => "required",
+                "nid" => 'digits:17|required|numeric|unique:inmate,nid',
+                "relatives_number" => 'digits:11|required|numeric|unique:inmate,relatives_number',
             ]
         );
 
@@ -117,11 +120,12 @@ class InmateController extends Controller
         $inma->image = $fileName;
         $inma->dob = $req->dob;
         $inma->address = $req->address;
-        $inma->phone = $req->phone;
+        $inma->nid = $req->nid;
         $inma->country = $req->country;
         $inma->gender = $req->gender;
         $inma->religon = $req->religon;
 
+        $inma->ward_type = $req->ward_type;
         $inma->ward_id = $req->ward_id;
         $inma->relatives_name = $req->relatives_name;
         $inma->relatives_number = $req->relatives_number;

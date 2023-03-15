@@ -10,7 +10,7 @@ class PoliceCase extends Model
     use HasFactory;
     protected $guarded = [];
     public function inmate (){
-        return $this->belongsTo(Inmate::class,'inmate','id');
+        return $this->belongsTo(Inmate::class);
     }
     public function station (){
         return $this->belongsTo(Station::class);

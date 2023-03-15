@@ -16,7 +16,7 @@
 <div class="form-row">
 <div class="form-group col-md-6">
   <label ><b>Crime_Name</b> </label>
-  <input type="text" class="form-control" name="name">
+  <input type="text" required name="name" class="form-control" name="name">
 </div>
 <div class="form-group col-md-6">
             <label ><b>Status</b></label>

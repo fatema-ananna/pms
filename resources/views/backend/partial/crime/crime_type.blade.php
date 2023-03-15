@@ -24,7 +24,7 @@
      
       
       <td> 
-        <a href="" class="btn btn-primary">View</a>
+        <a href="" class="btn btn-danger">Delete</a>
      
         <a href="" class="btn btn-warning">Edit</a>
      </td>

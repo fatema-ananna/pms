@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('wards', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->string("ward_type");
             $table->string("cell_no");
             $table->string("status");
             $table->timestamps();

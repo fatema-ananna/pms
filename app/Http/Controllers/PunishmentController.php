@@ -22,7 +22,7 @@ class PunishmentController extends Controller
         Punishment ::create([
             "name" => $req->name,
             "type" => $req->type,
-            "month" => $req->month,
+           
           
            
         ]);

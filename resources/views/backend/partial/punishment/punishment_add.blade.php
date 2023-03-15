@@ -25,11 +25,7 @@
                 <option value="simple imprisonment">simple imprisonment</option>
             </select>
 </div>
-<div class="form-row">
-<div class="form-group col-md-6">
-  <label ><b>Punishment_Duration</b> </label>
-  <input type="number" class="form-control" name="month">
-</div>
+
 
 
 <input type="submit" name="submit" class="mt-3 btn btn-info" value="submit">

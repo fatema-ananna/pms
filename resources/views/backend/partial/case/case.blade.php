@@ -41,7 +41,7 @@
                <td>{{$data->station->name}}</td>
                 <!-- <td>{{$data->punishment->name}}</td>
                 <td>{{$data->type}}</td>
-                <td>{{$data->duration}} month</td>
+                <td>{{$data->punishment->month}} month</td>
                 <td>{{$data->punishment_start}}</td>
                 <td>{{$data->activity->name}}</td>  -->
                <td>

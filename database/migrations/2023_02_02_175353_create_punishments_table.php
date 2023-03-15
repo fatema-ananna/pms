@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("name",20);
             $table->string("type");
-            $table->string("month");
+          
             $table->timestamps();
         });
     }

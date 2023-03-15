@@ -16,7 +16,7 @@
 <div class="form-row">
 <div class="form-group col-md-6">
   <label ><b>First_Name</b> </label>
-  <input type="text" class="form-control" name="first_name">
+  <input type="text" required name="first_name" class="form-control" name="first_name">
 </div>
 <div class="form-row">
 <div class="form-group col-md-6">
@@ -26,7 +26,7 @@
 <div class="form-row">
 <div class="form-group col-md-6">
         <label for="image"><b>Image</b></label>
-        <input type="file" class="form-control" name="image">
+        <input type="file" required image="image" class="form-control" name="image">
     </div>
 <div class="form-row">
 <div class="form-group col-md-6">
@@ -40,8 +40,8 @@
 </div>
 <div class="form-row">
 <div class="form-group col-md-6">
-  <label ><b>Phone</b></label>
-  <input type="tel" class="form-control" name="phone">
+  <label ><b>Nid</b></label>
+  <input type="tel" required nid="nid" class="form-control" name="nid">
 </div>
 <div class="form-row">
 <div class="form-group col-md-6">
@@ -69,6 +69,17 @@
             </select>
 </div>
 
+
+<div class="form-group col-md-6">
+    <label ><b>Ward_Type</b></label>
+    <select name="ward_id" id="" class="form-control">
+
+    @foreach($wards as $ward)
+        <option value="{{$ward->id}}">{{$ward->ward_type}}</option>
+        
+    @endforeach
+    </select>
+</div>
 
 <div class="form-group col-md-6">
     <label ><b>Ward</b></label>
