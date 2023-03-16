@@ -18,11 +18,7 @@
   <label ><b>Activity_Name</b> </label>
   <input type="text" class="form-control" name="name">
 </div>
-<div class="form-row">
-<div class="form-group col-md-6">
-  <label ><b>Inmate_no</b> </label>
-  <input type="number" class="form-control" name="inmate_no">
-</div>
+
 <div class="form-group col-md-6">
             <label ><b>Status</b></label>
             <select name="status" id="" class="form-control">

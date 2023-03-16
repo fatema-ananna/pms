@@ -11,6 +11,12 @@ class HomeController extends Controller
        
         return view("backend.partial.dashboard");
    
+    }
+
+    public function changeLanguage($lang)
+    {
+        session()->put('loc',$lang);
+        return redirect()->back();
 
     }
 }

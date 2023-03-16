@@ -20,10 +20,11 @@ Route::get("/", function () {
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('do-login', [UserController::class, 'doLogin'])->name('do.login');
 // --loging korte hobe 
-Route::group(['middleware' => 'auth', 'prefix' => 'admin'], function () {
+Route::group(['middleware' => ['localization','auth'], 'prefix' => 'admin'], function () {
 
 
     Route::get('/', [HomeController::class, 'home'])->name("Dashboard");
+    Route::get('/switch-lang/{lang}', [HomeController::class, 'changeLanguage'])->name('switch.lang');
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
     // for inmate
