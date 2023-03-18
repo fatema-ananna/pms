@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Activity;
+use toastr;
+use App\Models\Ward;
 use App\Models\Inmate;
+use App\Models\Activity;
 use App\Models\PoliceCase;
 use App\Models\Punishment;
-use App\Models\Ward;
 use Illuminate\Http\Request;
 
 class InmateController extends Controller
@@ -66,7 +67,7 @@ class InmateController extends Controller
 
 
         ]);
-
+    toastr()->success('fatema');
         return redirect()->route('inmate')->with('message', 'Created successfully');
     }
 

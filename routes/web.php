@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\CrimeController;
+use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InmateController;
 use App\Http\Controllers\Police_CaseController;
@@ -83,3 +84,7 @@ Route::group(['middleware' => ['localization','auth'], 'prefix' => 'admin'], fun
     Route::get('/punishment/add', [PunishmentController::class, 'list'])->name("punishment_list");
     Route::post('/punishment/store', [PunishmentController::class, 'store'])->name("punishment_store");
 });
+// frontend
+
+
+ Route::get('/',[FrontendHomeController::class,'home'])->name("home");
