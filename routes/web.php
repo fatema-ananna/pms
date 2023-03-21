@@ -88,3 +88,7 @@ Route::group(['middleware' => ['localization','auth'], 'prefix' => 'admin'], fun
 
 
  Route::get('/',[FrontendHomeController::class,'home'])->name("home");
+ Route::get('/registration',[FrontendHomeController::class,'list'])->name("user.registration");
+ Route::post('/registration/store',[FrontendHomeController::class,'store'])->name("user.registration.store");
+ Route::get('/login/auth', [FrontendHomeController::class, 'login'])->name('frontend.login');
+Route::post('/do-login/auth', [FrontendHomeController::class, 'doLogin'])->name('frontend.do.login');

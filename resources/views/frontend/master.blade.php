@@ -19,7 +19,7 @@
     <meta name="twitter:card" content="summary_large_image"> <!-- to have large image post format in Twitter -->
 
     <!-- Webpage Title -->
-    <title>Mark Webpage Title</title>
+    <title>Prison Management System</title>
 
     <!-- Styles -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -27,7 +27,7 @@
     <link href="{{url('frontend/css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{url('frontend/css/fontawesome-all.css')}}" rel="stylesheet">
     <link href="{{url('frontend/css/styles.css')}}" rel="stylesheet">
-
+    @notifyCss
     <!-- Favicon  -->
     <link rel="icon" href="images/favicon.png">
 </head>
@@ -35,83 +35,22 @@
 <body data-spy="scroll" data-target=".fixed-top">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
-        <div class="container">
-
-            <!-- Image Logo -->
-            <a class="navbar-brand logo-image" href="index.html"><img src="{{url('frontend/images/logo.svg')}}" alt="alternative"></a>
-
-            <!-- Text Logo - Use this if you don't have a graphic logo -->
-            <!-- <a class="navbar-brand logo-text page-scroll" href="index.html">Mark</a> -->
-
-            <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#header">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#about">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Drop</a>
-                        <div class="dropdown-menu" aria-labelledby="dropdown01">
-                            <a class="dropdown-item page-scroll" href="project.html">Project Details</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item page-scroll" href="terms.html">Terms Conditions</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item page-scroll" href="privacy.html">Privacy Policy</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#contact">Contact</a>
-                    </li>
-                </ul>
-                <span class="nav-item social-icons">
-                    <span class="fa-stack">
-                        <a href="#your-link">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-facebook-f fa-stack-1x"></i>
-                        </a>
-                    </span>
-                    <span class="fa-stack">
-                        <a href="#your-link">
-                            <i class="fas fa-circle fa-stack-2x"></i>
-                            <i class="fab fa-twitter fa-stack-1x"></i>
-                        </a>
-                    </span>
-                </span>
-            </div> <!-- end of navbar-collapse -->
-        </div> <!-- end of container -->
-    </nav> <!-- end of navbar -->
+   
+ @include("frontend.fixed.header") 
+   
+   
+ @include('notify::components.notify')
+    <!-- end of navbar -->
     <!-- end of navigation -->
 
 
     <!-- Header -->
-    <header id="header" class="header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="text-container">
-                        <h1 class="h1-large">I love to create beautiful and efficient websites</h1>
-                        <a class="btn-solid-lg page-scroll" href="#about">Discover</a>
-                        <a class="btn-outline-lg page-scroll" href="#contact"><i class="fas fa-user"></i>Contact Me</a>
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </header> <!-- end of header -->
+    <!-- end of header -->
     <!-- end of header -->
 
 
     <!-- About-->
-    <div id="about" class="basic-1 bg-gray">
+     <div id="about" class="basic-1 bg-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
@@ -152,7 +91,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2 class="h2-heading">Offered services</h2>
-                    <p class="p-heading">Web design and development have been my bread and butter for more than 5 years. During that time I've discovered that I can help startups and companies with the following services</p>
+                    <p class="p-heading">Web design and development have been my bread and butter for more than 5 years.this is mark so that you can hire me so easily so that we are doing the same thing in the another way</p>
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
@@ -205,7 +144,7 @@
                         </div> <!-- end of text-container -->
                         <!-- end of text container -->
 
-                    </div> <!-- end of col -->
+                    </div> <!-- end kof col -->
                 </div> <!-- end of row -->
             </div> <!-- end of container -->
         </div> <!-- end of area-2 -->
@@ -409,7 +348,7 @@
             </div> <!-- end of row -->
         </div> <!-- end of container -->
     </div> <!-- end of accordion-1 -->
-    <!-- end of questions -->
+    <!-- 
 
 
     <!-- Contact -->
@@ -440,7 +379,7 @@
                         </div>
                         <div class="form-group">
                             <button type="submit" class="form-control-submit-button">Submit</button>
-                        </div>
+                        </div>k
                     </form>
                     <!-- end of contact form -->
 
@@ -452,68 +391,16 @@
 
 
     <!-- Footer -->
-    <div class="footer bg-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="social-container">
-                        <span class="fa-stack">
-                            <a href="#your-link">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-facebook-f fa-stack-1x"></i>
-                            </a>
-                        </span>
-                        <span class="fa-stack">
-                            <a href="#your-link">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-twitter fa-stack-1x"></i>
-                            </a>
-                        </span>
-                        <span class="fa-stack">
-                            <a href="#your-link">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-pinterest-p fa-stack-1x"></i>
-                            </a>
-                        </span>
-                        <span class="fa-stack">
-                            <a href="#your-link">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-instagram fa-stack-1x"></i>
-                            </a>
-                        </span>
-                        <span class="fa-stack">
-                            <a href="#your-link">
-                                <i class="fas fa-circle fa-stack-2x"></i>
-                                <i class="fab fa-youtube fa-stack-1x"></i>
-                            </a>
-                        </span>
-                    </div> <!-- end of social-container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of footer -->
+  
+  
+  
+  @include('frontend.fixed.footer')
+    <!-- end of footer -->
     <!-- end of footer -->
 
 
     <!-- Copyright -->
-    <div class="copyright bg-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="p-small">Copyright © <a class="no-line" href="#your-link">Your name</a></p>
-                </div> <!-- end of col -->
-            </div> <!-- enf of row -->
-        </div> <!-- end of container -->
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <p class="p-small">Distributed By <a class="no-line" href="https://themewagon.com/">Themewagon</a></p>
-                </div> <!-- end of col -->
-            </div> <!-- enf of row -->
-        </div> <!-- end of container -->
-
-    </div> <!-- end of copyright -->
+   <!-- end of copyright -->
     <!-- end of copyright -->
 
 
@@ -522,6 +409,7 @@
     <script src="{{url('frontend/js/bootstrap.min.js')}}"></script> <!-- Bootstrap framework -->
     <script src="{{url('frontend/js/jquery.easing.min.js')}}"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
     <script src="{{url('frontend/js/scripts.js')}}"></script> <!-- Custom scripts -->
+    @notifyJs
 </body>
 
 </html>

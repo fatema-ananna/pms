@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('visitors', function (Blueprint $table) {
             $table->id();
-            
+          
             $table->string("first_name",20);
             $table->string("last_name",20);
             $table->string("inmate_name",50);

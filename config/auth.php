@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'frontendAuth' => [
+            'driver' => 'session',
+            'provider' => 'frontendAuth',
+        ],
     ],
 
     /*
@@ -65,10 +69,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'frontendAuth' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\FrontendAuth::class,
+        ],
     ],
 
     /*
