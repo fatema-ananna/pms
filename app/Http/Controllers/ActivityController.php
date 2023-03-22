@@ -21,7 +21,7 @@ class ActivityController extends Controller
        
         Activity ::create([
             "name" => $req->name,
-            "inmate_no"=>$req->inmate_no,
+   
           "status"=>$req->status
            
         ]);

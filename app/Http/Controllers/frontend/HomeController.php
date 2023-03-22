@@ -53,4 +53,16 @@ class HomeController extends Controller
         }
         return redirect()->back()->with('message', 'invalid credentials');
     }
+
+
+    public function logout()
+    {
+        Auth::guard("frontendAuth")->logout();
+        auth("frontendAuth")->logout();
+
+
+
+        notify()->success("logout successfully done");
+        return redirect()->route('home');
+    }
 }

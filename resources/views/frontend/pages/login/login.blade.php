@@ -93,16 +93,18 @@
     .container-login100::before {
         background: -webkit-linear-gradient(bottom, #0f1010, #656b6d) !important;
     }
-    .wrap-login100{
-width: 580px!important;
+
+    .wrap-login100 {
+        width: 580px !important;
     }
-    .login100-form-btn{
-        width: 36%!important;
+
+    .login100-form-btn {
+        width: 36% !important;
     }
 </style>
 
 <body>
-   
+
     <div class="limiter">
         <div class="container-login100" style="background-image:url('frontend/slider/newjail.avif')">
             <div class="wrap-login100 p-t-190 p-b-30">
@@ -112,69 +114,68 @@ width: 580px!important;
                 @endif
                 <form class="login100-form validate-form" action="{{route('frontend.do.login')}}" method="post">
                     @csrf
-                                
+
                     <div class="row">
-                        <div class="col-md-6 wrap-input100 validate-input m-b-10" data-validate="name is required">
+                        <!-- <div class="col-md-6 wrap-input100 validate-input m-b-10" data-validate="name is required">
                             <input class="input100" type="text" name="first_name" placeholder="Your First Name">
                             <span class="focus-input100"></span>
 
                             <i class="fa fa-lock"></i>
                             </span>
-                        </div>
+                        </div> -->
                         <br>
-                        <div class="col-md-6 wrap-input100 validate-input m-b-10" data-validate="name is required">
+                        <!-- <div class="col-md-6 wrap-input100 validate-input m-b-10" data-validate="name is required">
                             <input class="input100" type="last_name" name="last_name" placeholder="Your Last Name">
                             <span class="focus-input100"></span>
 
                             <i class="fa fa-lock"></i>
                             </span>
-                        </div>
-                        <div class="col-md-6  wrap-input100 validate-input m-b-10">
+                        </div> -->
+                        <!-- <div class="col-md-6  wrap-input100 validate-input m-b-10">
                             <input class="input100" type="text" name="address" placeholder="Your Address">
                             <span class="focus-input100"></span>
 
                             <i class="fa fa-lock"></i>
                             </span>
-                        </div>
-                        <div class="col-md-6  wrap-input100 validate-input m-b-10">
+                        </div> -->
+                        <!-- <div class="col-md-6  wrap-input100 validate-input m-b-10">
                             <input class="input100" type="text" name="number" placeholder="Your Phone Number">
                             <span class="focus-input100"></span>
 
                             <i class="fa fa-lock"></i>
                             </span>
-                        </div>
-                        <div class="col-md-6 wrap-input100 validate-input m-b-10">
+                        </div> -->
+                        <!-- <div class="wrap-input100 validate-input m-b-10">
                             <input class="input100" type="text" name="inmate_id" placeholder="Inmate Id">
                             <span class="focus-input100"></span>
 
                             <i class="fa fa-lock"></i>
                             </span>
-                        </div>
-                        <div class="col-md-6  wrap-input100 validate-input m-b-10">
-                            <input class="input100" type="email" name="email" autocomplete="off" placeholder="enter your email address" 
-							>
+                        </div> -->
+                        <div class=" wrap-input100 validate-input m-b-10">
+                            <input class="input100" type="email" name="email" autocomplete="off" placeholder="enter your email address">
                             <span class="focus-input100"></span>
 
                             <i class="fa fa-lock"></i>
                             </span>
                         </div>
-						<div class="col-md-6  wrap-input100 validate-input m-b-10">
-                            <input class="input100" type="password" name="password" autocomplete="off" placeholder="Enter your password" >
+                        <div class=" wrap-input100 validate-input m-b-10">
+                            <input class="input100" type="password" name="password" autocomplete="off" placeholder="Enter your password">
                             <span class="focus-input100"></span>
 
                             <i class="fa fa-lock"></i>
                             </span>
                         </div>
-						<div class="col-md-6  wrap-input100 validate-input m-b-10">
+                        <!-- <div class="col-md-6  wrap-input100 validate-input m-b-10">
                             <input class="input100" type="text" name="relation" placeholder="Relation With Inmate">
                             <span class="focus-input100"></span>
 
                             <i class="fa fa-lock"></i>
                             </span>
-                        </div>
+                        </div> -->
                         <div class="container-login100-form-btn p-t-10">
                             <button class="login100-form-btn">
-                               Login
+                                Login
                             </button>
                         </div>
                         <div class="text-center w-full p-t-25 p-b-230">

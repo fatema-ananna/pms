@@ -3,6 +3,7 @@
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\CrimeController;
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
+use App\Http\Controllers\frontend\VisitorController as FrontendVisitorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InmateController;
 use App\Http\Controllers\Police_CaseController;
@@ -92,3 +93,6 @@ Route::group(['middleware' => ['localization','auth'], 'prefix' => 'admin'], fun
  Route::post('/registration/store',[FrontendHomeController::class,'store'])->name("user.registration.store");
  Route::get('/login/auth', [FrontendHomeController::class, 'login'])->name('frontend.login');
 Route::post('/do-login/auth', [FrontendHomeController::class, 'doLogin'])->name('frontend.do.login');
+Route::get('/logout/auth', [FrontendHomeController::class, 'logout'])->name('frontend.logout');
+Route::get('/visitor/dashboard',[FrontendVisitorController::class,'visitor'])->name('frontend.visitor');
+

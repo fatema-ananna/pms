@@ -40,9 +40,9 @@
                         {{auth("frontendAuth")->user()->first_name}} {{auth("frontendAuth")->user()->last_name}}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="{{route('frontend.visitor')}}">Profile</a></li>
                         <hr />
-                        <li><a class="dropdown-item" href="{{route('logout')}}">Logout</a></li>
+                        <li><a class="dropdown-item" href="{{route('frontend.logout')}}">Logout</a></li>
                     </ul>
                 </li>
                 @endif

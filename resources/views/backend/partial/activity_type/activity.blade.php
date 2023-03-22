@@ -9,7 +9,7 @@
     <tr>
       <th scope="col">No</th>
       <th scope="col">Activity_Name</th>
-      <th scope="col">Inmate_no</th>
+     
     <th scope="col">Status</th>
     <th scope="col">Action</th>
 
@@ -20,7 +20,7 @@
     <tr>
     <th scope="row">{{$act->firstItem()+$key}}</th>
       <td>{{$data->name}}</td>
-      <td>{{$data->inmate_no}}</td>
+
       <td>{{$data->status}}</td>
      
      

@@ -93,16 +93,18 @@
     .container-login100::before {
         background: -webkit-linear-gradient(bottom, #0f1010, #656b6d) !important;
     }
-    .wrap-login100{
-width: 580px!important;
+
+    .wrap-login100 {
+        width: 580px !important;
     }
-    .login100-form-btn{
-        width: 36%!important;
+
+    .login100-form-btn {
+        width: 36% !important;
     }
 </style>
 
 <body>
-   
+
     <div class="limiter">
         <div class="container-login100" style="background-image:url('frontend/slider/newjail.avif')">
             <div class="wrap-login100 p-t-190 p-b-30">
@@ -112,7 +114,7 @@ width: 580px!important;
                 @endif
                 <form class="login100-form validate-form" action="{{route('user.registration.store')}}" method="post">
                     @csrf
-                    
+
                     <div class="row">
                         <div class="col-md-6 wrap-input100 validate-input m-b-10" data-validate="name is required">
                             <input class="input100" type="text" name="first_name" placeholder="Your First Name">
