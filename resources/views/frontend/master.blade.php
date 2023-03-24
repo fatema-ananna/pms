@@ -48,8 +48,9 @@
     <!-- end of header -->
     <!-- end of header -->
 
-
+    
     <!-- About-->
+    @if(request()->route()->getName() == "home")
      <div id="about" class="basic-1 bg-gray">
         <div class="container">
             <div class="row">
@@ -348,7 +349,7 @@
             </div> <!-- end of row -->
         </div> <!-- end of container -->
     </div> <!-- end of accordion-1 -->
-    <!-- 
+   
 
 
     <!-- Contact -->
@@ -391,6 +392,10 @@
 
 
     <!-- Footer -->
+
+    @else
+    @yield("content")
+    @endif
   
   
   

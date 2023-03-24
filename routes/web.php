@@ -22,7 +22,7 @@ Route::get("/", function () {
 Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('do-login', [UserController::class, 'doLogin'])->name('do.login');
 // --loging korte hobe 
-Route::group(['middleware' => ['localization','auth'], 'prefix' => 'admin'], function () {
+Route::group(['middleware' => ['localization', 'auth'], 'prefix' => 'admin'], function () {
 
 
     Route::get('/', [HomeController::class, 'home'])->name("Dashboard");
@@ -51,6 +51,7 @@ Route::group(['middleware' => ['localization','auth'], 'prefix' => 'admin'], fun
     // for visitor
     Route::get('/visitor', [VisitorController::class, 'visitor'])->name("visitor");
     Route::get('/visitor/add', [VisitorController::class, 'list'])->name("visitor.add");
+
 
     // for police station
     Route::get('/station', [StationController::class, 'station'])->name("station");
@@ -88,11 +89,16 @@ Route::group(['middleware' => ['localization','auth'], 'prefix' => 'admin'], fun
 // frontend
 
 
- Route::get('/',[FrontendHomeController::class,'home'])->name("home");
- Route::get('/registration',[FrontendHomeController::class,'list'])->name("user.registration");
- Route::post('/registration/store',[FrontendHomeController::class,'store'])->name("user.registration.store");
- Route::get('/login/auth', [FrontendHomeController::class, 'login'])->name('frontend.login');
+Route::get('/', [FrontendHomeController::class, 'home'])->name("home");
+Route::get('/registration', [FrontendHomeController::class, 'list'])->name("user.registration");
+Route::post('/registration/store', [FrontendHomeController::class, 'store'])->name("user.registration.store");
+Route::get('/login/auth', [FrontendHomeController::class, 'login'])->name('frontend.login');
 Route::post('/do-login/auth', [FrontendHomeController::class, 'doLogin'])->name('frontend.do.login');
 Route::get('/logout/auth', [FrontendHomeController::class, 'logout'])->name('frontend.logout');
-Route::get('/visitor/dashboard',[FrontendVisitorController::class,'visitor'])->name('frontend.visitor');
+Route::get('/visitor/dashboard', [FrontendVisitorController::class, 'visitor'])->name('frontend.visitor');
 
+Route::get('/visitor/edit', [FrontendVisitorController::class, 'edit'])->name('frontend.visitor.edit');
+Route::post('/visitor/store', [FrontendVisitorController::class, 'store'])->name('frontend.visitor.store');
+Route::get('/visitor/appointment', [FrontendVisitorController::class, 'appointment'])->name('frontend.visitor.appointment');
+Route::get('/visitor/list', [FrontendVisitorController::class, 'form'])->name("visitor.list");
+Route::post('/visitor/list/store', [FrontendVisitorController::class, 'visitor_store'])->name("visitor_list_store");

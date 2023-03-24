@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
     <div class="container">
 
         <!-- Image Logo -->
@@ -58,6 +58,8 @@
         </div> <!-- end of navbar-collapse -->
     </div> <!-- end of container -->
 </nav>
+
+@if(request()->route()->getName() == "home")
 <header id="header" class="header">
     <div class="container">
         <div class="row">
@@ -71,3 +73,5 @@
         </div> <!-- end of row -->
     </div> <!-- end of container -->
 </header>
+
+@endif

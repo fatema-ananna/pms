@@ -18,18 +18,20 @@ return new class extends Migration
           
             $table->string("first_name",20);
             $table->string("last_name",20);
-            $table->string("inmate_name",50);
+          
             $table->string("image");
             $table->string("dob");
             $table->string("address");
-            $table->string("phone");
-            $table->string("gender",20);
-            $table->string("last_visiting_date");
-            $table->string("in_time");
-            $table->string("out_time");
-            $table->string("nic",17);
-            $table->string("relation",50);
-            $table->string("issuing_authority");
+            $table->string("number");
+            $table->string("country");
+            $table->string("religon");
+            $table->string("nid",17);
+            $table->string("gender");
+           
+       
+       
+            $table->string("relation");
+
             $table->timestamps();
         });
     }
