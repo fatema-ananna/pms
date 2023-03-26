@@ -25,7 +25,7 @@
                     ward
                 </a>
                 <a class="nav-link" href="{{route('activity')}}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="fa fa-address-book"><i class="fas fa-tachometer-alt"></i></div>
                     Activity
                 </a>
                 <a class="nav-link" href="{{route('visitor')}}">
@@ -49,11 +49,11 @@
                     Crime Type
                 </a>
                 <a class="nav-link" href="">
-                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="fa fa-credit-card"><i class="fas fa-tachometer-alt"></i></div>
                     Payment
                 </a>
                 <a class="nav-link" href="{{route('reports')}}">
-                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="fa fa-address-book"><i class="fas fa-tachometer-alt"></i></div>
                     Report
                 </a>
             </div>
