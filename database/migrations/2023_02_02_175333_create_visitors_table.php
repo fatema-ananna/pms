@@ -18,7 +18,7 @@ return new class extends Migration
           
             $table->string("first_name",20);
             $table->string("last_name",20);
-          
+            $table->string("inmate_id");
             $table->string("image");
             $table->string("dob");
             $table->string("address");

@@ -147,7 +147,7 @@
                             </span>
                         </div>
                         <div class="col-md-6 wrap-input100 validate-input m-b-10">
-                            <input class="input100" type="text" name="inmate_id" placeholder="Inmate Id">
+                            <input class="input100" type="number" name="inmate_id" placeholder="Inmate Id">
                             <span class="focus-input100"></span>
 
                             <i class="fa fa-lock"></i>

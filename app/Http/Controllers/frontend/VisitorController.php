@@ -43,20 +43,24 @@ class VisitorController extends Controller
     }
       public function visitor_store(Request $req )
     {
-        
-
+        $req->validate(
+            [ 
+        "dob" => 'required|date|before:2002-04-15',
+        "number" => "digits:11|required|unique:visitors,number"
+            ]);
         //dd($req->all());
 
         $fileName = null;
         if ($req->hasFile('image')) {
             // generate name
             $fileName = date('Ymdhmi') . '.' . $req->file('image')->getClientOriginalExtension();
-            $req->file('image')->storeAs('/backend/uploads/', $fileName);
+            $req->file('image')->storeAs('/frontend/slider/', $fileName);
         }
 
         Visitor::create([
             "first_name" => $req->first_name,
             "last_name" => $req->last_name,
+            "inmate_id"=>$req->inmate_id,
             "image" => $fileName,
             "dob" => $req->dob,
             "address" => $req->address,

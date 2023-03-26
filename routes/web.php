@@ -100,5 +100,5 @@ Route::get('/visitor/dashboard', [FrontendVisitorController::class, 'visitor'])-
 Route::get('/visitor/edit', [FrontendVisitorController::class, 'edit'])->name('frontend.visitor.edit');
 Route::post('/visitor/store', [FrontendVisitorController::class, 'store'])->name('frontend.visitor.store');
 Route::get('/visitor/appointment', [FrontendVisitorController::class, 'appointment'])->name('frontend.visitor.appointment');
-Route::get('/visitor/list', [FrontendVisitorController::class, 'form'])->name("visitor.list");
+Route::get('/visitor/appointment/form', [FrontendVisitorController::class, 'form'])->name("appointment.form");
 Route::post('/visitor/list/store', [FrontendVisitorController::class, 'visitor_store'])->name("visitor_list_store");

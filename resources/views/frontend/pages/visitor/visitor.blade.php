@@ -76,12 +76,12 @@
               <img src="{{auth('frontendAuth')->user()->image ? url('frontend/slider',auth('frontendAuth')->user()->image) : 'https://bootdey.com/img/Content/avatar/avatar7.png' }}" alt="Admin" class="rounded-circle" width="150">
               <div class="mt-3">
                 <h4>{{auth("frontendAuth")->user()->first_name}} {{auth("frontendAuth")->user()->last_name}}</h4>
-                
+
               </div>
               <div class="d-flex">
-              <a href="{{route('visitor.list')}}" class="mr-3 btn btn-primary">Appointment</a>
-              <a href="" class="btn btn-secondary">Deposit Amount</a>
-              </div> 
+                <a href="{{route('appointment.form')}}" class="mr-3 btn btn-primary">Appointment</a>
+                <a href="" class="btn btn-secondary">Deposit Amount</a>
+              </div>
             </div>
           </div>
         </div>

@@ -47,7 +47,8 @@ class Police_CaseController extends Controller
       [
         "description" => "required|:police_cases,description",
         // "punishment" => "required|:police_cases,punishment",
-        
+        "case_start"=>" required|date|after:date",
+            "punishment_start"=>'after:tomorrow'
 
   ]
     );

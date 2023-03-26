@@ -15,7 +15,7 @@
 @if(session()->has('message'))
                 <p class="alert alert-danger">{{session()->get('message')}}</p>
                 @endif
-
+<h1>Update Here</h1>
 <form action="{{route('frontend.visitor.store')}}" method="post" enctype="multipart/form-data">
 @csrf
 <div class="form-group">
@@ -45,7 +45,7 @@
   </div>
   <div class="form-group">
     <label for=""><b>Inmate_Id</b></label>
-    <input type="text" class="form-control" id="" name="inmate_id" placeholder="Enter inmate id" value="{{auth('frontendAuth')->user()->inmate_id}}">
+    <input type="number" class="form-control" id="" name="inmate_id" placeholder="Enter inmate id" readonly value="{{auth('frontendAuth')->user()->inmate_id}}">
 
   </div>
   <div class="form-group">
@@ -55,11 +55,11 @@
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1"><b>Email</b></label>
-    <input type="email" class="form-control" name="email" id="exampleInputPassword1" placeholder="Enter Your Email" value="{{auth('frontendAuth')->user()->email}}">
+    <input type="email" class="form-control" name="email" id="exampleInputPassword1" placeholder="Enter Your Email" readonly value="{{auth('frontendAuth')->user()->email}}">
   </div>
   <div class="form-group" class="col-md-4 ">
     <label for="exampleInputPassword1"><b>Password</b></label>
-    <input type="password" class="form-control" name="password" placeholder="Enter Your password">
+    <input type="password" class="form-control" name="password"  placeholder="Enter Your password">
   </div>
   
   <button type="submit" name="submit" value="update" class="btn btn-primary">Update</button>
