@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InmateController;
 use App\Http\Controllers\Police_CaseController;
 use App\Http\Controllers\PunishmentController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\UserController;
@@ -85,6 +86,8 @@ Route::group(['middleware' => ['localization', 'auth'], 'prefix' => 'admin'], fu
     Route::get('/punishment', [PunishmentController::class, 'punishment'])->name("punishment");
     Route::get('/punishment/add', [PunishmentController::class, 'list'])->name("punishment_list");
     Route::post('/punishment/store', [PunishmentController::class, 'store'])->name("punishment_store");
+    //for reports
+     Route::get('/reports',[ReportController::class,'reports'])->name("reports");
 });
 // frontend
 
