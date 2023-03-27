@@ -106,10 +106,6 @@
                 {{auth("frontendAuth")->user()->email}}
               </div>
             </div>
-
-
-
-
             <hr>
             <div class="row">
               <div class="col-sm-3">
@@ -134,6 +130,35 @@
                 <a class="btn btn-info " target="__blank" href="{{route('frontend.visitor.edit')}}">Edit</a>
               </div>
             </div>
+
+          </div>
+        </div>
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Inmate_Id</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach($visitors as $key=>$data)
+                  <tr>
+                    <th scope="row">{{$visitors->firstItem()+$key}}</th>
+                    <td>{{$data->first_name}} {{$data->last_name}}</td>
+                    <td>{{$data->inmate_id}}</td>
+                    <td>{{$data->address}}</td>
+                 
+                  </tr>
+                  @endforeach
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -141,4 +166,6 @@
 
   </div>
 </div>
+
+{{$visitors->links()}}
 @endsection

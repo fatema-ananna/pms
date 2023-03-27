@@ -10,20 +10,22 @@ use App\Http\Controllers\Controller;
 class VisitorController extends Controller
 {
     public function visitor(){
-        return view('frontend.pages.visitor.visitor');
+        $visitors=Visitor::where('frontend_auth_id',auth('frontendAuth')->user()->id)->paginate(2);
+        return view('frontend.pages.visitor.visitor',compact('visitors'));
     }
     public function edit(){
         return view('frontend.pages.visitor.edit');
     }
     public function store(Request $req ){
-
         $fileName = null;
         if ($req->hasFile('image')) {
             // generate name
             $fileName = date('Ymdhmi') . '.' . $req->file('image')->getClientOriginalExtension();
             $req->file('image')->storeAs('/frontend/slider/', $fileName);
         }
+        
         FrontendAuth::create([
+            
             "first_name" => $req->first_name,
             "last_name" => $req->last_name,
             "image" => $fileName,
@@ -58,6 +60,7 @@ class VisitorController extends Controller
         }
 
         Visitor::create([
+            "frontend_auth_id"=>auth('frontendAuth')->user()->id,
             "first_name" => $req->first_name,
             "last_name" => $req->last_name,
             "inmate_id"=>$req->inmate_id,
