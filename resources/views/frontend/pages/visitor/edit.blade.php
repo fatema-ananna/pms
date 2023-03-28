@@ -16,7 +16,7 @@
                 <p class="alert alert-danger">{{session()->get('message')}}</p>
                 @endif
 <h1>Update Here</h1>
-<form action="{{route('frontend.visitor.store')}}" method="post" enctype="multipart/form-data">
+<form action="{{route('frontend.visitor.update',auth('frontendAuth')->user()->id)}}" method="post" enctype="multipart/form-data">
 @csrf
 <div class="form-group">
     <label for="exampleInputEmail1"><b>First Name</b></label>
@@ -53,14 +53,7 @@
     <input type="text" class="form-control" id="" name="relation" placeholder="Enter relationthip with inmate">
 
   </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1"><b>Email</b></label>
-    <input type="email" class="form-control" name="email" id="exampleInputPassword1" placeholder="Enter Your Email" readonly value="{{auth('frontendAuth')->user()->email}}">
-  </div>
-  <div class="form-group" class="col-md-4 ">
-    <label for="exampleInputPassword1"><b>Password</b></label>
-    <input type="password" class="form-control" name="password"  placeholder="Enter Your password">
-  </div>
+
   
   <button type="submit" name="submit" value="update" class="btn btn-primary">Update</button>
 </form>

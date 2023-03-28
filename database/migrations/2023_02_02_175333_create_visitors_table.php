@@ -27,10 +27,8 @@ return new class extends Migration
             $table->string("religon");
             $table->string("nid",17);
             $table->string("gender");
-           
-       
-       
             $table->string("relation");
+            $table->string("status")->nullable();
 
             $table->timestamps();
         });

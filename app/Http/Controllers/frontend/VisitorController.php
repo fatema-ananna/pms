@@ -13,29 +13,30 @@ class VisitorController extends Controller
         $visitors=Visitor::where('frontend_auth_id',auth('frontendAuth')->user()->id)->paginate(2);
         return view('frontend.pages.visitor.visitor',compact('visitors'));
     }
-    public function edit(){
+    public function edit($id){
         return view('frontend.pages.visitor.edit');
     }
-    public function store(Request $req ){
-        $fileName = null;
+    public function update(Request $req,$id){
+        $profile = FrontendAuth::find($id);
+        $fileName = $profile->image;
         if ($req->hasFile('image')) {
             // generate name
             $fileName = date('Ymdhmi') . '.' . $req->file('image')->getClientOriginalExtension();
             $req->file('image')->storeAs('/frontend/slider/', $fileName);
         }
         
-        FrontendAuth::create([
-            
-            "first_name" => $req->first_name,
-            "last_name" => $req->last_name,
-            "image" => $fileName,
-            "address" => $req->address,
-            "number" => $req->number,
-            "inmate_id" => $req->inmate_id,
-            "relation" => $req->relation,
-            "email" => $req->email,
-            "password" => bcrypt($req->password)
-        ]);
+    
+        
+           $profile->first_name =$req->first_name;
+           $profile-> last_name = $req->last_name;
+           $profile->image = $fileName;
+           $profile->address = $req->address;
+             $profile->number = $req->number;
+             $profile->inmate_id = $req->inmate_id;
+             $profile->relation = $req->relation;
+     
+             $profile->update();
+     
         notify()->success('updated successfully done');
         return redirect()->route('frontend.visitor');
 
@@ -72,13 +73,18 @@ class VisitorController extends Controller
             "religon" => $req->religon,
             "nid" => $req->nid,
             "gender" => $req->gender,
-            "relation" => $req->relation
-          
+            "relation" => $req->relation,
+            "status"=>"pending"
 
 
         ]);
-    toastr()->success('fatema');
+    toastr()->success('successfully Done');
         return redirect()->route('frontend.visitor')->with('message', 'Appointment successfully created');
     }
-
+        public function visitor_status(Request $req,$id){
+         
+            $visitor = Visitor::find($id);
+            $visitor->update(["status"=>$req->status]);
+            return redirect()->back();
+        }
 }

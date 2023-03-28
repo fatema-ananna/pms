@@ -127,14 +127,16 @@
             <hr>
             <div class="row">
               <div class="col-sm-12">
-                <a class="btn btn-info " target="__blank" href="{{route('frontend.visitor.edit')}}">Edit</a>
+                <a class="btn btn-info " target="__blank" href="{{route('frontend.visitor.edit',auth('frontendAuth')->user()->id)}}">Edit</a>
               </div>
             </div>
 
           </div>
         </div>
+        
         <div class="card mb-3">
           <div class="card-body">
+          <h4>Appointment Records</h4>
             <div class="row">
               <table class="table">
                 <thead>
@@ -153,7 +155,7 @@
                     <td>{{$data->first_name}} {{$data->last_name}}</td>
                     <td>{{$data->inmate_id}}</td>
                     <td>{{$data->address}}</td>
-                 
+                    <td>{{$data->status}}</td>
                   </tr>
                   @endforeach
                 </tbody>

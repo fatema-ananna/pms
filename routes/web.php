@@ -51,7 +51,7 @@ Route::group(['middleware' => ['localization', 'auth'], 'prefix' => 'admin'], fu
 
     // for visitor
     Route::get('/visitor', [VisitorController::class, 'visitor'])->name("visitor");
-    Route::get('/visitor/add', [VisitorController::class, 'list'])->name("visitor.add");
+  
 
 
     // for police station
@@ -100,8 +100,9 @@ Route::post('/do-login/auth', [FrontendHomeController::class, 'doLogin'])->name(
 Route::get('/logout/auth', [FrontendHomeController::class, 'logout'])->name('frontend.logout');
 Route::get('/visitor/dashboard', [FrontendVisitorController::class, 'visitor'])->name('frontend.visitor');
 
-Route::get('/visitor/edit', [FrontendVisitorController::class, 'edit'])->name('frontend.visitor.edit');
-Route::post('/visitor/store', [FrontendVisitorController::class, 'store'])->name('frontend.visitor.store');
+Route::get('/visitor/edit/{id}', [FrontendVisitorController::class, 'edit'])->name('frontend.visitor.edit');
+Route::post('/visitor/update/{id}', [FrontendVisitorController::class, 'update'])->name('frontend.visitor.update');
 Route::get('/visitor/appointment', [FrontendVisitorController::class, 'appointment'])->name('frontend.visitor.appointment');
 Route::get('/visitor/appointment/form', [FrontendVisitorController::class, 'form'])->name("appointment.form");
 Route::post('/visitor/list/store', [FrontendVisitorController::class, 'visitor_store'])->name("visitor_list_store");
+Route::post('/visitor/status/{id}', [FrontendVisitorController::class, 'visitor_status'])->name("visitor.status");
