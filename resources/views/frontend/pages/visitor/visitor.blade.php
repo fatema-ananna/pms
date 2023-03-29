@@ -64,7 +64,6 @@
   }
 </style>
 
-
 <div class="container">
   <div class="main-body my-5 pt-5">
 
@@ -79,7 +78,8 @@
 
               </div>
               <div class="d-flex">
-                <a href="{{route('appointment.form')}}" class="mr-3 btn btn-primary">Appointment</a>
+                              
+                <a href="{{route('appointment.form')}}" class="mr-3 btn btn-primary @if($monthsCount >= 2) disabled @endif"  >Appointment</a>
                 <a href="" class="btn btn-secondary">Deposit Amount</a>
               </div>
             </div>

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('inmates', function (Blueprint $table) {
             $table->id();
+            $table->string("inmate_id");
             $table->string("first_name");
             $table->string("last_name");
             $table->string("image");

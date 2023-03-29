@@ -50,6 +50,7 @@ class InmateController extends Controller
         }
 
         Inmate::create([
+            "inmate_id"=>date('Ymdhmi'),
             "first_name" => $req->first_name,
             "last_name" => $req->last_name,
             "image" => $fileName,
@@ -67,7 +68,7 @@ class InmateController extends Controller
 
 
         ]);
-    toastr()->success('fatema');
+    toastr()->success('successfully done');
         return redirect()->route('inmate')->with('message', 'Created successfully');
     }
 
@@ -97,14 +98,6 @@ class InmateController extends Controller
     public function update_inmate(Request $req, $id)
     {
 
-        $req->validate(
-            [
-                "image" => "required|unique:inmates,image",
-                "case" => "required",
-                "nid" => 'digits:17|required|numeric|unique:inmate,nid',
-                "relatives_number" => 'digits:11|required|numeric|unique:inmate,relatives_number',
-            ]
-        );
 
         $inma = Inmate::find($id);
         $fileName = $inma->image;

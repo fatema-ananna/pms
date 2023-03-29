@@ -6,17 +6,46 @@ use App\Models\Visitor;
 use App\Models\FrontendAuth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class VisitorController extends Controller
 {
-    public function visitor(){
-        $visitors=Visitor::where('frontend_auth_id',auth('frontendAuth')->user()->id)->paginate(2);
-        return view('frontend.pages.visitor.visitor',compact('visitors'));
+    public function visitor()
+    {
+        // dd(now()->format("M"));
+        $visitors = Visitor::where('frontend_auth_id', auth('frontendAuth')->user()->id)->paginate(2);
+        $date = $visitors->pluck("created_at");
+        $monthsCount = 0;
+        foreach($date as $data){
+            if($data->format("M") === now()->format("M")){
+                $monthsCount = $monthsCount + 1;
+            }
+        }
+
+
+        $date=$visitors->pluck("created_at");
+        $months=0;
+        foreach($date as $data){
+            if($data->format("m")==now()->format("m")){
+                $months=$monts=1;
+            }
+        }
+        // dd($monthsCount);
+        return view('frontend.pages.visitor.visitor', compact('visitors',"monthsCount"));
     }
-    public function edit($id){
+    public function edit($id)
+    {
         return view('frontend.pages.visitor.edit');
     }
-    public function update(Request $req,$id){
+    public function update(Request $req, $id)
+    {
+        $req->validate(
+            [   
+                "number" => "digits:11|required|unique:visitor,number"
+            ]
+        );
+
+
         $profile = FrontendAuth::find($id);
         $fileName = $profile->image;
         if ($req->hasFile('image')) {
@@ -24,33 +53,34 @@ class VisitorController extends Controller
             $fileName = date('Ymdhmi') . '.' . $req->file('image')->getClientOriginalExtension();
             $req->file('image')->storeAs('/frontend/slider/', $fileName);
         }
-        
-    
-        
-           $profile->first_name =$req->first_name;
-           $profile-> last_name = $req->last_name;
-           $profile->image = $fileName;
-           $profile->address = $req->address;
-             $profile->number = $req->number;
-             $profile->inmate_id = $req->inmate_id;
-             $profile->relation = $req->relation;
-     
-             $profile->update();
-     
+
+
+
+        $profile->first_name = $req->first_name;
+        $profile->last_name = $req->last_name;
+        $profile->image = $fileName;
+        $profile->address = $req->address;
+        $profile->number = $req->number;
+        $profile->inmate_id = $req->inmate_id;
+        $profile->relation = $req->relation;
+
+        $profile->update();
+
         notify()->success('updated successfully done');
         return redirect()->route('frontend.visitor');
-
     }
-    public function form(){
+    public function form()
+    {
         return view('frontend.pages.visitor.form');
     }
-      public function visitor_store(Request $req )
+    public function visitor_store(Request $req)
     {
         $req->validate(
-            [ 
-        "dob" => 'required|date|before:2002-04-15',
-        "number" => "digits:11|required|unique:visitors,number"
-            ]);
+            [
+                "dob" => 'required|date|before:2002-04-15',
+                "number" => "digits:11|required|unique:visitors,number"
+            ]
+        );
         //dd($req->all());
 
         $fileName = null;
@@ -60,11 +90,12 @@ class VisitorController extends Controller
             $req->file('image')->storeAs('/frontend/slider/', $fileName);
         }
 
+        
         Visitor::create([
-            "frontend_auth_id"=>auth('frontendAuth')->user()->id,
+            "frontend_auth_id" => auth('frontendAuth')->user()->id,
             "first_name" => $req->first_name,
             "last_name" => $req->last_name,
-            "inmate_id"=>$req->inmate_id,
+            "inmate_id" => $req->inmate_id,
             "image" => $fileName,
             "dob" => $req->dob,
             "address" => $req->address,
@@ -74,17 +105,18 @@ class VisitorController extends Controller
             "nid" => $req->nid,
             "gender" => $req->gender,
             "relation" => $req->relation,
-            "status"=>"pending"
+            "status" => "pending"
 
 
         ]);
-    toastr()->success('successfully Done');
+        toastr()->success('successfully Done');
         return redirect()->route('frontend.visitor')->with('message', 'Appointment successfully created');
     }
-        public function visitor_status(Request $req,$id){
-         
-            $visitor = Visitor::find($id);
-            $visitor->update(["status"=>$req->status]);
-            return redirect()->back();
-        }
+       public function visitor_status(Request $req, $id)
+      {
+
+        $visitor = Visitor::find($id);
+        $visitor->update(["status" => $req->status]);
+        return redirect()->back();
+      }
 }
