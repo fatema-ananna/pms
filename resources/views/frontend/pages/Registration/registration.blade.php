@@ -25,6 +25,8 @@
     <link rel="stylesheet" type="text/css" href="https://colorlib.com/etc/lf/Login_v12/css/main.css">
 
     <meta name="robots" content="noindex, follow">
+    
+
     <script nonce="bfe8852f-bc73-474a-bb19-e1ad4850e23c">
         (function(w, d) {
             ! function(f, g, h, i) {
@@ -88,6 +90,7 @@
             }(w, d, "zarazData", "script");
         })(window, document);
     </script>
+    @notifyCss
 </head>
 
 <style>
@@ -105,11 +108,11 @@
 </style>
 
 <body>
-
     <div class="limiter">
+        
         <div class="container-login100" style="background-image:url('frontend/slider/newjail.avif')">
             <div class="wrap-login100 p-t-190 p-b-30">
-
+            @include('notify::components.notify')
                 @if(session()->has('message'))
                 <p class="alert alert-danger">{{session()->get('message')}}</p>
                 @endif
@@ -212,6 +215,7 @@
         gtag('config', 'UA-23581568-13');
     </script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vaafb692b2aea4879b33c060e79fe94621666317369993" integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA==" data-cf-beacon='{"rayId":"79d6ef71aef8bc27","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2023.2.0","si":100}' crossorigin="anonymous"></script>
+    @notifyJs
 </body>
 
 </html>

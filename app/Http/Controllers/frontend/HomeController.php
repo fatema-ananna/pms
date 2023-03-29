@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\frontend;
 use App\Models\FrontendAuth;
+use App\Models\Inmate;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,8 +23,12 @@ class HomeController extends Controller
     }
 
     public function store(Request $req)
-    {
-
+    { $inmate=Inmate::where('inmate_id',$req->inmate_id)->first();
+        if(!$inmate){
+         
+            notify()->error('inmate id not match');
+            return redirect()->back();
+        }
         FrontendAuth::create([
             "first_name" => $req->first_name,
             "last_name" => $req->last_name,
