@@ -35,11 +35,11 @@
 <body data-spy="scroll" data-target=".fixed-top">
 
     <!-- Navigation -->
-   
- @include("frontend.fixed.header") 
-   
-   
- @include('notify::components.notify')
+
+    @include("frontend.fixed.header")
+
+
+    @include('notify::components.notify')
     <!-- end of navbar -->
     <!-- end of navigation -->
 
@@ -48,36 +48,34 @@
     <!-- end of header -->
     <!-- end of header -->
 
-    
+
     <!-- About-->
     @if(request()->route()->getName() == "home")
-     <div id="about" class="basic-1 bg-gray">
+    <div id="about" class="basic-1 bg-gray">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
                     <div class="text-container first">
-                        <h2>Hi there I'm Mark,</h2>
-                        <p>And I love to create beautiful and efficient websites for my customers. I love going through the entire process with the customer from concept, to design and then development and launch</p>
+                        <h1>
+                            Bangladesh prison department at a glance</h1>
+                        <p>Prisons in modern civilization are institutions for reforming and educating prisoners to become members of civilized society. People can get involved in crime for a variety of reasons. Apart from punishing according to the law, it is the responsibility of the Bangladesh Prisons Department to correct and develop him. To help the misguided people in the jails of the country to understand and correct their mistakes by providing them with the right messages under the motto “Rakhib Sahbar Padhab Alo Path”</p>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-4">
                     <div class="text-container second">
-                        <div class="time">2019 - PRESENT</div>
-                        <h6>Freelance Web Developer</h6>
-                        <p>Working happily on my own web projects</p>
-                        <div class="time">2018 - 2019</div>
-                        <h6>Lead Web Developer</h6>
-                        <p>Beautiful project for a major digital agency</p>
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
+                        <h1>Vision</h1>
+                        <p>"Keep safe, show the way to light"</p>
+                        <br>
+                        <h1>Mission</h1>
+                        <p>
+                            To ensure safe custody of prisoners, to maintain strict security and order among prisoners, to treat prisoners humanely, to ensure their proper accommodation, food, medical care and access to relatives, friends and lawyers and to rehabilitate them into the society as a good citizen. Providing necessary referrals and training to the target.</p>
+                    </div> 
+                </div>
                 <div class="col-lg-4">
                     <div class="text-container third">
-                        <div class="time">2017 - 2018</div>
-                        <h6>Senior Web Designer</h6>
-                        <p>Inhouse web designer for ecommerce firm</p>
-                        <div class="time">2016 - 2017</div>
-                        <h6>Junior Web Designer</h6>
-                        <p>Junior web designer for small web agency</p>
+                        <h1>
+                            Administrative infrastructure<h1>
+                                <p>The Prison Department is one of the most important parts of the criminal justice system of the Ministry of Home Affairs. The prison department of Bangladesh consists of prison headquarters, 7 divisional prisons and 68 prisons. All the activities of the prison department are controlled and managed from the prison headquarters. The administrative activities of the prison department are conducted under the leadership of the Inspector General of Prisons with 01 Additional Inspector General of Prisons and 08 Deputy Inspector General of Prisons. Served as Jail Superintendent / Senior Jail Superintendent at Jail level.</p>
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -87,39 +85,42 @@
 
 
     <!-- Services -->
-    <div id="services" class="basic-2">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="h2-heading">Offered services</h2>
-                    <p class="p-heading">Web design and development have been my bread and butter for more than 5 years.this is mark so that you can hire me so easily so that we are doing the same thing in the another way</p>
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="text-box">
-                        <i class="far fa-gem"></i>
-                        <h4>DESIGN</h4>
-                        <p>Successful online projects start with good design. It establishes a solid foundation for future development and allows for long term growth</p>
-                    </div> <!-- end of text-box -->
-                </div> <!-- end of col -->
-                <div class="col-lg-4">
-                    <div class="text-box">
-                        <i class="fas fa-code"></i>
-                        <h4>DEVELOPMENT</h4>
-                        <p>I can code my own designs or even use the customer's design as base. My focus is to generate clean code that's well structured for reliability</p>
-                    </div> <!-- end of text-box -->
-                </div> <!-- end of col -->
-                <div class="col-lg-4">
-                    <div class="text-box">
-                        <i class="fas fa-tv"></i>
-                        <h4>BASIC SEO</h4>
-                        <p>i can setup your project to use basic SEO principles which will push your project to the first page on search engines and save you ads money</p>
-                    </div> <!-- end of text-box -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of basic-2 -->
+  
+                    <h1 class="h5-heading">Photo Gallery</h1>
+                    <br>
+                  <div class="container">
+                    <!-- On tables -->
+                    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Handle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td colspan="2">Larry the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+   <!-- end of basic-2 -->
     <!-- end of services -->
 
 
@@ -158,35 +159,35 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                
-                    
+
+
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="text-container">
                         <div class="image-container">
-                            
+
                         </div> <!-- end of image-container -->
-                    
+
                     </div> <!-- end of text-container -->
                     <div class="text-container">
                         <div class="image-container">
-                            
+
                         </div> <!-- end of image-container -->
-                     
+
                     </div> <!-- end of text-container -->
                     <div class="text-container">
                         <div class="image-container">
-                          
+
                         </div> <!-- end of image-container -->
-                      
+
                     </div> <!-- end of text-container -->
                     <div class="text-container">
                         <div class="image-container">
-                           
+
                         </div> <!-- end of image-container -->
-            
+
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -202,25 +203,25 @@
                 <div class="col-lg-4">
                     <div class="text-container">
                         <div class="image-container">
-                           
+
                         </div> <!-- end of image-container -->
-                       
+
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-4">
                     <div class="text-container">
                         <div class="image-container">
-                            
+
                         </div> <!-- end of image-container -->
-                        
+
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-4">
                     <div class="text-container">
                         <div class="image-container">
-                          
+
                         </div> <!-- end of image-container -->
-                        
+
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -228,25 +229,25 @@
                 <div class="col-lg-4">
                     <div class="text-container">
                         <div class="image-container">
-                          
+
                         </div> <!-- end of image-container -->
-                        
+
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-4">
                     <div class="text-container">
                         <div class="image-container">
-                          
+
                         </div> <!-- end of image-container -->
-                   
+
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
                 <div class="col-lg-4">
                     <div class="text-container">
                         <div class="image-container">
-                         
+
                         </div> <!-- end of image-container -->
-                     
+
                     </div> <!-- end of text-container -->
                 </div> <!-- end of col -->
             </div> <!-- end of row -->
@@ -349,7 +350,7 @@
             </div> <!-- end of row -->
         </div> <!-- end of container -->
     </div> <!-- end of accordion-1 -->
-   
+
 
 
     <!-- Contact -->
@@ -396,16 +397,16 @@
     @else
     @yield("content")
     @endif
-  
-  
-  
-  @include('frontend.fixed.footer')
+
+
+
+    @include('frontend.fixed.footer')
     <!-- end of footer -->
     <!-- end of footer -->
 
 
     <!-- Copyright -->
-   <!-- end of copyright -->
+    <!-- end of copyright -->
     <!-- end of copyright -->
 
 
