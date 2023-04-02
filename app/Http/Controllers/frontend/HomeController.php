@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\frontend;
 use App\Models\FrontendAuth;
+use App\Models\gallery;
 use App\Models\Inmate;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,7 +15,10 @@ class HomeController extends Controller
 {
     public function home()
     {
-        return view('frontend.master');
+        $gallery=gallery::all();
+      
+    //   dd();
+        return view('frontend.master',compact('gallery'));
     }
 
     public function list()

@@ -69,7 +69,7 @@
                         <h1>Mission</h1>
                         <p>
                             To ensure safe custody of prisoners, to maintain strict security and order among prisoners, to treat prisoners humanely, to ensure their proper accommodation, food, medical care and access to relatives, friends and lawyers and to rehabilitate them into the society as a good citizen. Providing necessary referrals and training to the target.</p>
-                    </div> 
+                    </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="text-container third">
@@ -85,42 +85,31 @@
 
 
     <!-- Services -->
+
+    <h1 class=" text-center display-4">Photo Gallery</h1>
+    <br>
+    <!-- Gallery -->
+    <div class="div">
   
-                    <h1 class="h5-heading">Photo Gallery</h1>
-                    <br>
-                  <div class="container">
-                    <!-- On tables -->
-                    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-   <!-- end of basic-2 -->
+ 
+    <div class="row">
+
+        <div class="col-lg-4 col-md-12 mb-4 ">
+        @foreach($gallery as $data)
+            <img src="{{url('/frontend/gallery.picture/'.$data->image)}}" class="w-50 shadow-1-strong rounded mb-4" alt="Boat on Calm Water" />
+
+            
+        </div>
+       
+
+        </div>
+        @endforeach
+        </div>
+        
+        
+
+    <!-- Gallery -->
+    <!-- end of basic-2 -->
     <!-- end of services -->
 
 

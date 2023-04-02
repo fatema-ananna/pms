@@ -88,6 +88,12 @@ Route::group(['middleware' => ['localization', 'auth'], 'prefix' => 'admin'], fu
     Route::post('/punishment/store', [PunishmentController::class, 'store'])->name("punishment_store");
     //for reports
      Route::get('/reports',[ReportController::class,'reports'])->name("reports");
+     //for gallery
+     Route::get('/gallery',[HomeController::class,'gallery'])->name("gallery");
+     Route::get('/gallery/add',[HomeController::class,'form'])->name("gallery.form");
+     Route::post('/gallery/store',[HomeController::class,'picture_store'])->name("picture.store");
+     Route::get('/gallery/edit/{id}',[HomeController::class,'edit'])->name("pic.edit");
+     Route::post('/gallery/update/{id}',[HomeController::class,'update'])->name("gallery.update");
 });
 // frontend
 

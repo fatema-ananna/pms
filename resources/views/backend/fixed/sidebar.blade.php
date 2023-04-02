@@ -56,6 +56,10 @@
                     <div class="fa fa-address-book"><i class="fas fa-tachometer-alt"></i></div>
                     Report
                 </a>
+                <a class="nav-link" href="{{route('gallery')}}">
+                    <div class="fa fa-address-book"><i class="fas fa-tachometer-alt"></i></div>
+                Gallery
+                </a>
             </div>
         </div>
 
