@@ -61,4 +61,12 @@ class NoticeController extends Controller
         $not->update();
         return redirect()->route('notice')->with('message', 'successfully updated');
     }
+
+
+    public function delete($id){
+$not=Notice::find($id);
+$not->delete();
+return redirect()->back();
+
+    }
 }
