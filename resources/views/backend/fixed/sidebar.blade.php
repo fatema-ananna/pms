@@ -60,6 +60,10 @@
                     <div class="fa fa-address-book"><i class="fas fa-tachometer-alt"></i></div>
                 Gallery
                 </a>
+                <a class="nav-link" href="{{route('notice')}}">
+                    <div class="fa fa-address-book"><i class="fas fa-tachometer-alt"></i></div>
+              Notice
+                </a>
             </div>
         </div>
 

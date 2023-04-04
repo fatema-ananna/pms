@@ -6,6 +6,7 @@ use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\frontend\VisitorController as FrontendVisitorController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InmateController;
+use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\Police_CaseController;
 use App\Http\Controllers\PunishmentController;
 use App\Http\Controllers\ReportController;
@@ -94,6 +95,10 @@ Route::group(['middleware' => ['localization', 'auth'], 'prefix' => 'admin'], fu
      Route::post('/gallery/store',[HomeController::class,'picture_store'])->name("picture.store");
      Route::get('/gallery/edit/{id}',[HomeController::class,'edit'])->name("pic.edit");
      Route::post('/gallery/update/{id}',[HomeController::class,'update'])->name("gallery.update");
+     //for notice
+     Route::get('/notice',[NoticeController::class,'notice'])->name("notice");
+     Route::get('/notice/form',[NoticeController::class,'form'])->name("notice.form");
+     Route::post('/notice/form/store',[NoticeController::class,'store'])->name("notice.store");
 });
 // frontend
 

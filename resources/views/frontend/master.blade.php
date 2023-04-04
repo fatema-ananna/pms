@@ -88,59 +88,37 @@
 
     <h1 class=" text-center display-4">Photo Gallery</h1>
     <br>
-    <!-- Gallery -->
-    <div class="div">
   
- 
+
+
     <div class="row">
-
-        <div class="col-lg-4 col-md-12 mb-4 ">
         @foreach($gallery as $data)
-            <img src="{{url('/frontend/gallery.picture/'.$data->image)}}" class="w-50 shadow-1-strong rounded mb-4" alt="Boat on Calm Water" />
+        <div class="col-lg-3 col-md-12 ">
 
-            
-        </div>
-       
+            <img src="{{url('/frontend/gallery.picture/'.$data->image)}}" class="w-70 shadow-1-strong rounded " alt="Boat on Calm Water" />
 
         </div>
+
         @endforeach
-        </div>
-        
-        
 
-    <!-- Gallery -->
-    <!-- end of basic-2 -->
-    <!-- end of services -->
+
+
+    </div>
+
+
+
+   
 
 
     <!-- Details -->
-    <div class="split">
-        <div class="area-1">
-        </div><!-- end of area-1 on same line and no space between comments to eliminate margin white space -->
-        <div class="area-2 bg-gray">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
 
-                        <!-- Text Container -->
-                        <div class="text-container">
-                            <h2>Why Work With Me</h2>
-                            <p>I am a great communicator and love to invest the necessary time to understand the customer's problem very well</p>
-                            <h5>DESIGN TOOLS</h5>
-                            <p>My favorite design tools are Photoshop and Illustrator but I can create designs in Figma, Sketch and Adobe XD too</p>
-                            <h5>DEVELOPMENT SKILLS</h5>
-                            <p>I am familiar and work on a daily basis with HTML, CSS, JavaScript, Bootstrap and other modern frameworks</p>
+    <div class="container mt-5">
+        <h1>Notice</h1>
 
-                            <!-- end of icons-container -->
-                        </div> <!-- end of text-container -->
-                        <!-- end of text container -->
+        <p><a href="{{url('/backend/pdf/'.$data->pdf)}}" alt="pdf">Regarding the observance of national programs by the Directorate of Prisons on the occasion of 25th March Genocide Day and 26th March Great Independence and National Day, 2023; Letter No-374, dated 22.03.2023.</p>
 
-                    </div> <!-- end kof col -->
-                </div> <!-- end of row -->
-            </div> <!-- end of container -->
-        </div> <!-- end of area-2 -->
-    </div> <!-- end of split -->
-    <!-- end of details -->
+    </div>
+
 
 
     <!-- Projects -->

@@ -7,6 +7,7 @@ use App\Models\frontend;
 use App\Models\FrontendAuth;
 use App\Models\gallery;
 use App\Models\Inmate;
+use App\Models\Notice;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,9 +17,9 @@ class HomeController extends Controller
     public function home()
     {
         $gallery=gallery::all();
-      
+      $not=Notice::all();
     //   dd();
-        return view('frontend.master',compact('gallery'));
+        return view('frontend.master',compact('gallery','not'));
     }
 
     public function list()
