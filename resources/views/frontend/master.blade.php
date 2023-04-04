@@ -88,7 +88,7 @@
 
     <h1 class=" text-center display-4">Photo Gallery</h1>
     <br>
-  
+
 
 
     <div class="row">
@@ -107,22 +107,19 @@
 
 
 
-   
 
-<div class="text-center">
-   
-    <h1>Notice</h1>
-    <div class="row">
-   
-@foreach($not as $data)
-    <div class="container mt-5">
-    
 
-        <p><a href="{{url('/backend/pdf/'.$data->pdf)}}" alt="pdf">{{$data->name}}</p>
+    <div class="text-center">
 
-    </div>
-@endforeach
-    </div>
+        <h1>Notice</h1>
+        <div class="row">
+
+            @foreach($not as $data)
+            <div class="container mt-5">
+                <p><a href="{{url('/backend/pdf/'.$data->pdf)}}" alt="pdf">{{$data->name}}</p>
+            </div>
+            @endforeach
+        </div>
     </div>
 
 
