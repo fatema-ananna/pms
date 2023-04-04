@@ -22,7 +22,7 @@
       <td><a href="{{url('/backend/pdf/'.$data->pdf)}}" alt="pdf" >view pdf</a>
       <td> 
    
-   <a href="" class="btn btn-warning">Edit</a>
+   <a href="{{route('notice.edit',$data->id)}}" class="btn btn-warning">Edit</a>
    <a href="" class="btn btn-warning">Delete</a>
    </td>
     </tr>

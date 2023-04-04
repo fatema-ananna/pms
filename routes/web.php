@@ -99,6 +99,12 @@ Route::group(['middleware' => ['localization', 'auth'], 'prefix' => 'admin'], fu
      Route::get('/notice',[NoticeController::class,'notice'])->name("notice");
      Route::get('/notice/form',[NoticeController::class,'form'])->name("notice.form");
      Route::post('/notice/form/store',[NoticeController::class,'store'])->name("notice.store");
+     Route::get('/notice/edit/{id}',[NoticeController::class,'edit'])->name("notice.edit");
+     Route::put('/notice/update/{id}',[NoticeController::class,'update'])->name("notice.update");
+
+
+
+
 });
 // frontend
 

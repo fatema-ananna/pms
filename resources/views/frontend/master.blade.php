@@ -109,16 +109,21 @@
 
    
 
-
-    <!-- Details -->
-
+<div class="text-center">
+   
+    <h1>Notice</h1>
+    <div class="row">
+   
+@foreach($not as $data)
     <div class="container mt-5">
-        <h1>Notice</h1>
+    
 
-        <p><a href="{{url('/backend/pdf/'.$data->pdf)}}" alt="pdf">Regarding the observance of national programs by the Directorate of Prisons on the occasion of 25th March Genocide Day and 26th March Great Independence and National Day, 2023; Letter No-374, dated 22.03.2023.</p>
+        <p><a href="{{url('/backend/pdf/'.$data->pdf)}}" alt="pdf">{{$data->name}}</p>
 
     </div>
-
+@endforeach
+    </div>
+    </div>
 
 
     <!-- Projects -->
