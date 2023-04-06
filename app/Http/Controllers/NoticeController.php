@@ -39,7 +39,7 @@ class NoticeController extends Controller
     public function edit($id)
     {
         $not = Notice::find($id);
-        return view('backend.partial.notice.edit',compact('not'));
+        return view('backend.partial.notice.edit', compact('not'));
     }
 
     public function update(Request $req, $id)
@@ -63,10 +63,10 @@ class NoticeController extends Controller
     }
 
 
-    public function delete($id){
-$not=Notice::find($id);
-$not->delete();
-return redirect()->back();
-
+    public function delete($id)
+    {
+        $not = Notice::find($id);
+        $not->delete();
+        return redirect()->back();
     }
 }

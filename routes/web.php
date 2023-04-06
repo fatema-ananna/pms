@@ -7,9 +7,12 @@ use App\Http\Controllers\frontend\VisitorController as FrontendVisitorController
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InmateController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\Police_CaseController;
 use App\Http\Controllers\PunishmentController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\RoleController;
+
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\UserController;
@@ -25,11 +28,14 @@ Route::get('/login', [UserController::class, 'login'])->name('login');
 Route::post('do-login', [UserController::class, 'doLogin'])->name('do.login');
 // --loging korte hobe 
 Route::group(['middleware' => ['localization', 'auth'], 'prefix' => 'admin'], function () {
-
+    Route::group(['middleware' => 'checkAdmin'], function () {
 
     Route::get('/', [HomeController::class, 'home'])->name("Dashboard");
     Route::get('/switch-lang/{lang}', [HomeController::class, 'changeLanguage'])->name('switch.lang');
     Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+    Route::get('/users', [UserController::class, 'list'])->name('admin.users');
+        Route::get('/create/user', [UserController::class, 'create'])->name('user.create');
+        Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
 
     // for inmate
     Route::get('/inmate', [InmateController::class, 'inmate'])->name("inmate");
@@ -52,7 +58,7 @@ Route::group(['middleware' => ['localization', 'auth'], 'prefix' => 'admin'], fu
 
     // for visitor
     Route::get('/visitor', [VisitorController::class, 'visitor'])->name("visitor");
-  
+
 
 
     // for police station
@@ -88,23 +94,26 @@ Route::group(['middleware' => ['localization', 'auth'], 'prefix' => 'admin'], fu
     Route::get('/punishment/add', [PunishmentController::class, 'list'])->name("punishment_list");
     Route::post('/punishment/store', [PunishmentController::class, 'store'])->name("punishment_store");
     //for reports
-     Route::get('/reports',[ReportController::class,'reports'])->name("reports");
-     //for gallery
-     Route::get('/gallery',[HomeController::class,'gallery'])->name("gallery");
-     Route::get('/gallery/add',[HomeController::class,'form'])->name("gallery.form");
-     Route::post('/gallery/store',[HomeController::class,'picture_store'])->name("picture.store");
-     Route::get('/gallery/edit/{id}',[HomeController::class,'edit'])->name("pic.edit");
-     Route::post('/gallery/update/{id}',[HomeController::class,'update'])->name("gallery.update");
-     //for notice
-     Route::get('/notice',[NoticeController::class,'notice'])->name("notice");
-     Route::get('/notice/form',[NoticeController::class,'form'])->name("notice.form");
-     Route::post('/notice/form/store',[NoticeController::class,'store'])->name("notice.store");
-     Route::get('/notice/edit/{id}',[NoticeController::class,'edit'])->name("notice.edit");
-     Route::put('/notice/update/{id}',[NoticeController::class,'update'])->name("notice.update");
-     Route::get('/notice/delete/{id}',[NoticeController::class,'delete'])->name('notice.delete');
+    Route::get('/reports', [ReportController::class, 'reports'])->name("reports");
+    //for gallery
+    Route::get('/gallery', [HomeController::class, 'gallery'])->name("gallery");
+    Route::get('/gallery/add', [HomeController::class, 'form'])->name("gallery.form");
+    Route::post('/gallery/store', [HomeController::class, 'picture_store'])->name("picture.store");
+    Route::get('/gallery/edit/{id}', [HomeController::class, 'edit'])->name("pic.edit");
+    Route::post('/gallery/update/{id}', [HomeController::class, 'update'])->name("gallery.update");
+    //for notice
+    Route::get('/notice', [NoticeController::class, 'notice'])->name("notice");
+    Route::get('/notice/form', [NoticeController::class, 'form'])->name("notice.form");
+    Route::post('/notice/form/store', [NoticeController::class, 'store'])->name("notice.store");
+    Route::get('/notice/edit/{id}', [NoticeController::class, 'edit'])->name("notice.edit");
+    Route::put('/notice/update/{id}', [NoticeController::class, 'update'])->name("notice.update");
+    Route::get('/notice/delete/{id}', [NoticeController::class, 'delete'])->name('notice.delete');
+    Route::resource('/roles', RoleController::class);
 
-
-
+    Route::get('/role/assign/{id}', [RoleController::class, 'showPermissions'])->name('role.assign');
+    Route::get('/permissions', [PermissionController::class, 'list'])->name('permission.list');
+    Route::post('/permissions-assign/{role_id}', [RoleController::class, 'assignPermissions'])->name('permissions.assign');
+});
 });
 // frontend
 
@@ -123,3 +132,17 @@ Route::get('/visitor/appointment', [FrontendVisitorController::class, 'appointme
 Route::get('/visitor/appointment/form', [FrontendVisitorController::class, 'form'])->name("appointment.form");
 Route::post('/visitor/list/store', [FrontendVisitorController::class, 'visitor_store'])->name("visitor_list_store");
 Route::post('/visitor/status/{id}', [FrontendVisitorController::class, 'visitor_status'])->name("visitor.status");
+//payment
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
+Route::get('/payment',[FrontendVisitorController::class,'paymentForm'])->name('payment.form');

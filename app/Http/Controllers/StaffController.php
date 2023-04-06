@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\Staff;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -10,21 +11,24 @@ class StaffController extends Controller
 {
     public function staff()
     {
+
         $sta = Staff::paginate(5);
         return view("backend.partial.staff.staff", compact('sta'));
     }
     public function list()
     {
+        $roles=Role::all();
 
-        return view("backend.partial.staff.staff_create");
+        return view("backend.partial.staff.staff_create",compact('roles'));
     }
     public function store(Request $req)
     {
+        // dd($req->all());
         $req->validate(
             [
                 "image" => "required|unique:staff,image",
                 'dob'   => 'required|date|before:2005-04-15',
-                'phone' => 'digits:11|required|numeric|unique:staff,phone',
+                // 'phone' => 'digits:11|required|numeric|unique:staff,phone',
                 'nic' => 'digits:17|required|numeric|unique:staff,nic'
             ]
         );
@@ -42,8 +46,16 @@ class StaffController extends Controller
         //     "name" => "some_thing",
         //     "email" => "some@gmail.com"
         // ]);
+        $user=User::create([
+            'first_name'=>$req->first_name,
+            'last_name'=>$req->last_name,
+            'password'=>bcrypt($req->password) ,
+            'role_id'=>$req->role_id ,
+            'email'=>$req->email ,
+            'mobile'=>$req->phone
+        ]);
         Staff::create([
-            // "user_id" => $user->id,
+            "user_id" => $user->id,
             "first_name" => $req->first_name,
             "last_name" => $req->last_name,
             "image" => $fileName,

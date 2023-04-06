@@ -2,7 +2,7 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
-
+          
                 <a class="nav-link" href="{{route('Dashboard')}}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
@@ -48,10 +48,32 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Crime Type
                 </a>
+       
+                <li class="nav-item">
+                <a class="nav-link" href="{{route('roles.index')}}">
+                    <span data-feather="file" class="align-text-bottom"></span>
+                    Roles
+                </a>
+            </li>
+   
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('permission.list')}}">
+                    <span data-feather="file" class="align-text-bottom"></span>
+                   Permissions
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('admin.users')}}">
+                    <span data-feather="file" class="align-text-bottom"></span>
+                    Users
+                </a>
+            </li>
+             
                 <a class="nav-link" href="">
                     <div class="fa fa-credit-card"><i class="fas fa-tachometer-alt"></i></div>
                     Payment
                 </a>
+             
                 <a class="nav-link" href="{{route('reports')}}">
                     <div class="fa fa-address-book"><i class="fas fa-tachometer-alt"></i></div>
                     Report
@@ -64,6 +86,7 @@
                     <div class="fa fa-address-book"><i class="fas fa-tachometer-alt"></i></div>
               Notice
                 </a>
+                
             </div>
         </div>
 

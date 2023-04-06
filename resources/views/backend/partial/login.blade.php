@@ -43,7 +43,7 @@
 @csrf
 
 <span class="login100-form-title p-t-20 p-b-45">
-Hello Admin
+Hello 
 </span>
 <div class="wrap-input100 validate-input m-b-10" data-validate="email is required">
 <input class="input100" id="login" type="email" name="email" placeholder="email">
@@ -60,6 +60,9 @@ Hello Admin
 <i class="fa fa-lock"></i>
 </span>
 </div>
+<br>
+
+<br>
 <div class="container-login100-form-btn p-t-10">
 <button class="login100-form-btn">
 Login

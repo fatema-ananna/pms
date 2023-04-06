@@ -12,4 +12,6 @@ class VisitorController extends Controller
         $vis = Visitor::paginate(5);
         return view("backend.partial.visitor.visitor", compact('vis'));
     }
+
+   
 }

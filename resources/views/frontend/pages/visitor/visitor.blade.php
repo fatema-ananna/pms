@@ -80,7 +80,7 @@
               <div class="d-flex">
                               
                 <a href="{{route('appointment.form')}}" class="mr-3 btn btn-primary @if($monthsCount >= 2) disabled @endif"  >Appointment</a>
-                <a href="" class="btn btn-secondary">Deposit Amount</a>
+                <a href="{{route('payment.form')}}" class="btn btn-secondary">Deposit Amount</a>
               </div>
             </div>
           </div>

@@ -6,6 +6,8 @@ use App\Models\Visitor;
 use App\Models\FrontendAuth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Inmate;
+use App\Models\InmateDeposit;
 use Carbon\Carbon;
 
 class VisitorController extends Controller
@@ -14,24 +16,26 @@ class VisitorController extends Controller
     {
         // dd(now()->format("M"));
         $visitors = Visitor::where('frontend_auth_id', auth('frontendAuth')->user()->id)->paginate(2);
+
+        if (!$visitors) $visitors = collect([]);
         $date = $visitors->pluck("created_at");
         $monthsCount = 0;
-        foreach($date as $data){
-            if($data->format("M") === now()->format("M")){
+        foreach ($date as $data) {
+            if ($data->format("M") === now()->format("M")) {
                 $monthsCount = $monthsCount + 1;
             }
         }
 
 
-        $date=$visitors->pluck("created_at");
-        $months=0;
-        foreach($date as $data){
-            if($data->format("m")==now()->format("m")){
-                $months=$monts=1;
+        $date = $visitors->pluck("created_at");
+        $months = 0;
+        foreach ($date as $data) {
+            if ($data->format("m") == now()->format("m")) {
+                $months = $monts = 1;
             }
         }
         // dd($monthsCount);
-        return view('frontend.pages.visitor.visitor', compact('visitors',"monthsCount"));
+        return view('frontend.pages.visitor.visitor', compact('visitors', "monthsCount"));
     }
     public function edit($id)
     {
@@ -40,7 +44,7 @@ class VisitorController extends Controller
     public function update(Request $req, $id)
     {
         $req->validate(
-            [   
+            [
                 "number" => "digits:11|required|unique:visitor,number"
             ]
         );
@@ -90,7 +94,7 @@ class VisitorController extends Controller
             $req->file('image')->storeAs('/frontend/slider/', $fileName);
         }
 
-        
+
         Visitor::create([
             "frontend_auth_id" => auth('frontendAuth')->user()->id,
             "first_name" => $req->first_name,
@@ -112,11 +116,21 @@ class VisitorController extends Controller
         toastr()->success('successfully Done');
         return redirect()->route('frontend.visitor')->with('message', 'Appointment successfully created');
     }
-       public function visitor_status(Request $req, $id)
-      {
+    public function visitor_status(Request $req, $id)
+    {
 
         $visitor = Visitor::find($id);
         $visitor->update(["status" => $req->status]);
         return redirect()->back();
-      }
+    }
+    public function paymentForm()
+    {
+        // 20230405040402
+        $inma = Inmate::where('inmate_id', auth('frontendAuth')->user()->inmate_id)->first();
+        $depo = InmateDeposit::where('inmate_id', auth('frontendAuth')->user()->inmate_id)->first();
+        // dd($depo);
+        // where("inmate_id",auth()->user()->inmate_id);
+        // dd($inma);
+        return view('frontend.pages.visitor.payment_form', compact('inma', 'depo'));
+    }
 }

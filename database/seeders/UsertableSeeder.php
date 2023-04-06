@@ -16,12 +16,16 @@ class UsertableSeeder extends Seeder
      */
     public function run()
     {
+       
         User::create([
-            'name'=> 'Admin',
-            'email' => 'admin@gmail.com',
+           'first_name' => 'super',
+            'last_name' => 'admin',
+            'role_id' => 1,
+            'mobile' => fake()->phoneNumber(),
+           'email' => 'admin@gmail.com',
             'email_verified_at' => now(),
-            'password' => bcrypt('12345'), 
-         
-        ]);
+           'password' => bcrypt('12345'), // password
+           'remember_token' => Str::random(10),
+       ]);
     }
 }

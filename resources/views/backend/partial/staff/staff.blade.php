@@ -12,8 +12,11 @@
       <th scope="col">First_Name</th>
       <th scope="col">Last_Name</th>
       <th scope="col">Image</th>
-      <th scope="col">Date Of Birth</th>
-      <th scope="col">Address</th>
+      <th scope="col">Email</th>
+      
+      <th scope="col">Role</th>
+      <!-- <th scope="col">Date Of Birth</th>
+      <th scope="col">Address</th> -->
       <!-- <th scope="col">Phone</th>
       <th scope="col">Nic</th>
       <th scope="col">Religon</th>
@@ -30,8 +33,15 @@
       <td>{{$data->first_name}}</td>
       <td>{{$data->last_name}}</td>
       <td><img src="{{url('/backend/uploads/staff/'.$data->image)}}" alt="image" height="80px" width="auto"></td>
-      <td>{{$data->dob}}</td> 
-      <td>{{$data->address}}</td> 
+      <td>{{$data->user->email}}</td>
+      <td>{{$data->user->role_id}}</td>
+      <!-- <td>{{$data->dob}}</td>  -->
+      <!-- <td>{{$data->address}}</td>  -->
+      <td>{{$data->phone}}</td>
+     
+      
+     
+ 
       <!-- <td>{{$data->phone}}</td>
       <td>{{$data->religon}}</td>
       <td>{{$data->gender}}</td>

@@ -8,7 +8,10 @@ use App\Models\FrontendAuth;
 use App\Models\gallery;
 use App\Models\Inmate;
 use App\Models\Notice;
+use App\Models\Role;
 use App\Models\User;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,7 +52,8 @@ class HomeController extends Controller
     }
     public function login()
     {
-        return view('frontend.pages.login.login');
+        $roles=Role::all();
+        return view('frontend.pages.login.login',compact('roles'));
     }
     public function doLogin(Request $request)
     {

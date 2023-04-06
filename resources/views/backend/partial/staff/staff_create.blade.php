@@ -28,6 +28,24 @@
         <label for="image"><b>Image</b></label>
         <input type="file" class="form-control" name="image">
     </div>
+    <div class="form-group col-md-6">
+        <label for="image"><b>Email</b></label>
+        <input type="email" class="form-control" name="email">
+    </div>
+    <div class="form-group col-md-6">
+        <label for="image"><b>Phone</b></label>
+        <input type="number" class="form-control" name="phone">
+    </div>
+    
+    <div>
+            <label for="">Select User Role: </label>
+            <select class="form-control" name="role_id" id="">
+                @foreach($roles as $role)
+                <option value="{{$role->id}}">{{$role->name}}</option>
+                    @endforeach
+            </select>
+        </div>
+
 <div class="form-row">
 <div class="form-group col-md-6">
   <label ><b>Date Of Birth</b></label>
@@ -38,11 +56,7 @@
   <label ><b>Address</b></label>
   <input type="text" class="form-control" name="address">
 </div>
-<div class="form-row">
-<div class="form-group col-md-6">
-  <label ><b>Phone</b></label>
-  <input type="telephone" class="form-control" name="phone">
-</div>
+
 <div class="form-row">
 <div class="form-group col-md-6">
   <label ><b>Nic</b></label>
