@@ -69,7 +69,7 @@
                 </a>
             </li>
              
-                <a class="nav-link" href="">
+                <a class="nav-link" href="{{route('backend.payment')}}">
                     <div class="fa fa-credit-card"><i class="fas fa-tachometer-alt"></i></div>
                     Payment
                 </a>

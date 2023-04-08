@@ -7,6 +7,7 @@ use App\Http\Controllers\frontend\VisitorController as FrontendVisitorController
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InmateController;
 use App\Http\Controllers\NoticeController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\Police_CaseController;
 use App\Http\Controllers\PunishmentController;
@@ -113,6 +114,9 @@ Route::group(['middleware' => ['localization', 'auth'], 'prefix' => 'admin'], fu
     Route::get('/role/assign/{id}', [RoleController::class, 'showPermissions'])->name('role.assign');
     Route::get('/permissions', [PermissionController::class, 'list'])->name('permission.list');
     Route::post('/permissions-assign/{role_id}', [RoleController::class, 'assignPermissions'])->name('permissions.assign');
+    //payment
+    
+    Route::get('/payment', [PaymentController::class, 'payment'])->name('backend.payment');
 });
 });
 // frontend
