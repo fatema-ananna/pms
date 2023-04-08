@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class InmateDeposit extends Model
 {
     use HasFactory;
+    protected $guarded=[];
     protected $table ='inmate_deposit';
 }

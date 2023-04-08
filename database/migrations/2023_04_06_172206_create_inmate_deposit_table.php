@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string("inmate_id");
             $table->double("available_amount");
+            $table->string("transaction_id");
+            $table->string("status");
+
 
             $table->timestamps();
         });

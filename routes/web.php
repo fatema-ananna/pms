@@ -12,7 +12,7 @@ use App\Http\Controllers\Police_CaseController;
 use App\Http\Controllers\PunishmentController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RoleController;
-
+use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StationController;
 use App\Http\Controllers\UserController;
@@ -136,7 +136,7 @@ Route::post('/visitor/status/{id}', [FrontendVisitorController::class, 'visitor_
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
 Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
 
-Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay', [SslCommerzPaymentController::class, 'index'])->name('pay.now');
 Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
 
 Route::post('/success', [SslCommerzPaymentController::class, 'success']);

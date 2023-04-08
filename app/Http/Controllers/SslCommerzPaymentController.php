@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use DB;
 use Illuminate\Http\Request;
 use App\Library\SslCommerz\SslCommerzNotification;
+use App\Models\InmateDeposit;
+use Illuminate\Support\Facades\Validator;
 
 class SslCommerzPaymentController extends Controller
 {
@@ -21,12 +23,39 @@ class SslCommerzPaymentController extends Controller
 
     public function index(Request $request)
     {
-        # Here you have to receive all the order data to initate the payment.
+
+       
+        $depo=InmateDeposit::where('inmate_id',auth('frontendAuth')->user()->inmate_id)->first();
+        $validation = null;
+        if($depo){
+            $availAmount = 5000-$depo->available_amount;
+            $validation = Validator::make($request->all(),[
+                "money" => "required|lte:$availAmount|gte:100"
+            ]);
+        }else{
+            $validation = Validator::make($request->all(),[
+                "money" => "required|lte:5000|gte:100"
+            ]);
+        }
+        if($validation->fails()){
+            foreach ($validation->getMessageBag()->messages() as $key => $err) {
+                
+                foreach($err as $ana){
+                notify()->error($ana);
+                }
+            }
+            return redirect()->back();
+        }
+
+
+
+
+       # Here you have to receive all the order data to initate the payment.
         # Let's say, your oder transaction informations are saving in a table called "orders"
         # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
 
         $post_data = array();
-        $post_data['total_amount'] = '10'; # You cant not pay less than 10
+        $post_data['total_amount'] = $request->money; # You cant not pay less than 10
         $post_data['currency'] = "BDT";
         $post_data['tran_id'] = uniqid(); // tran_id must be unique
 
@@ -64,19 +93,25 @@ class SslCommerzPaymentController extends Controller
         $post_data['value_d'] = "ref004";
 
         #Before  going to initiate the payment order status need to insert or update as Pending.
-        $update_product = DB::table('orders')
-            ->where('transaction_id', $post_data['tran_id'])
-            ->updateOrInsert([
-                'name' => $post_data['cus_name'],
-                'email' => $post_data['cus_email'],
-                'phone' => $post_data['cus_phone'],
-                'amount' => $post_data['total_amount'],
-                'status' => 'Pending',
-                'address' => $post_data['cus_add1'],
-                'transaction_id' => $post_data['tran_id'],
-                'currency' => $post_data['currency']
-            ]);
+        $update_product = null;
+        if($depo){
+           
+            $update_product = InmateDeposit::where('inmate_id',auth('frontendAuth')->user()->inmate_id)->first()
+                ->update([
+                    "inmate_id" =>auth('frontendAuth')->user()->inmate_id,
+                    'available_amount' =>$depo->available_amount + $post_data['total_amount'],
+                    'status' => 'Pending',
+                    'transaction_id' => $post_data['tran_id'],
+                ]);
+        }else{
 
+            $update_product = InmateDeposit::create([
+                    "inmate_id" =>auth('frontendAuth')->user()->inmate_id,
+                    'available_amount' =>$post_data['total_amount'],
+                    'status' => 'Pending',
+                    'transaction_id' => $post_data['tran_id'],
+                ]);
+        }
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
         $payment_options = $sslc->makePayment($post_data, 'hosted');
@@ -165,17 +200,13 @@ class SslCommerzPaymentController extends Controller
 
         $tran_id = $request->input('tran_id');
         $amount = $request->input('amount');
-        $currency = $request->input('currency');
-
         $sslc = new SslCommerzNotification();
 
         #Check order status in order tabel against the transaction id or order id.
-        $order_details = DB::table('orders')
-            ->where('transaction_id', $tran_id)
-            ->select('transaction_id', 'status', 'currency', 'amount')->first();
-
+        $order_details = InmateDeposit::where('transaction_id', $tran_id)
+            ->select('transaction_id', 'status', 'available_amount')->first();
         if ($order_details->status == 'Pending') {
-            $validation = $sslc->orderValidate($request->all(), $tran_id, $amount, $currency);
+            $validation = $sslc->orderValidate($request->all(), $tran_id, $amount);
 
             if ($validation) {
                 /*
@@ -183,10 +214,8 @@ class SslCommerzPaymentController extends Controller
                 in order table as Processing or Complete.
                 Here you can also sent sms or email for successfull transaction to customer
                 */
-                $update_product = DB::table('orders')
-                    ->where('transaction_id', $tran_id)
-                    ->update(['status' => 'Processing']);
-
+                $update_product = InmateDeposit::where('transaction_id', $tran_id)
+                  ->update(['status' => 'Processing']);
                 echo "<br >Transaction is successfully Completed";
             }
         } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
@@ -198,8 +227,8 @@ class SslCommerzPaymentController extends Controller
             #That means something wrong happened. You can redirect customer to your product page.
             echo "Invalid Transaction";
         }
-
-
+        notify()->success('payment successfull');
+        return redirect()->route('payment.form');
     }
 
     public function fail(Request $request)
