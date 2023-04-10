@@ -10,6 +10,8 @@
         <th scope="col">No</th>
         <th scope="col">First_Name</th>
         <th scope="col">Last_Name</th>
+           
+       
         <th scope="col">Image</th>
         <th scope="col">Date of Birth</th>
 

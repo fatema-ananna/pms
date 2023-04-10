@@ -25,13 +25,21 @@
 </div>
 <div class="form-row">
 <div class="form-group col-md-6">
+  <label > <b>Email</b></label>
+  <input type="email" class="form-control" name="email">
+</div>
+<div class="form-row">
+<div class="form-group col-md-6">
+  <label > <b>password</b></label>
+  <input type="password" class="form-control" name="password">
+</div>
+
+<div class="form-row">
+<div class="form-group col-md-6">
         <label for="image"><b>Image</b></label>
         <input type="file" class="form-control" name="image">
     </div>
-    <div class="form-group col-md-6">
-        <label for="image"><b>Email</b></label>
-        <input type="email" class="form-control" name="email">
-    </div>
+  
     <div class="form-group col-md-6">
         <label for="image"><b>Phone</b></label>
         <input type="number" class="form-control" name="phone">

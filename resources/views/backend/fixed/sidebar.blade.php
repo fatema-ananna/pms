@@ -7,15 +7,15 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Dashboard
                 </a>
-
+              
                 <a class="nav-link" href="{{route('inmate')}}">
                     <div class="fa fa-user"><i class="fas fa-tachometer-alt"></i></div>
                     Inmates
                 </a>
-
+             
                 <a class="nav-link" href="{{route('case')}}">
                     <div class="fa fa-bars"><i class="fas fa-tachometer-alt"></i></div>
-                    Case
+                    Case 
                 </a>
 
                 
@@ -23,6 +23,11 @@
                 <a class="nav-link" href="{{route('ward')}}">
                     <div class="fa fa-bars"><i class="fas fa-tachometer-alt"></i></div>
                     ward
+                </a>
+                
+                <a class="nav-link" href="{{route('cell')}}">
+                    <div class="fa fa-bars"><i class="fas fa-tachometer-alt"></i></div>
+                    cell
                 </a>
                 <a class="nav-link" href="{{route('activity')}}">
                     <div class="fa fa-address-book"><i class="fas fa-tachometer-alt"></i></div>
@@ -32,10 +37,13 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Visitor
                 </a>
+                
+                @if(checkHasPermission(auth()->user()->role_id,'staff'))
                 <a class="nav-link" href="{{route('staff')}}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Staff
                 </a>
+                @endif
                 <a class="nav-link" href="{{route('punishment')}}">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     Punishment

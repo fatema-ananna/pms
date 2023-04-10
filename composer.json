@@ -22,16 +22,16 @@
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.0"
     },
-    "files": [
-        "app/helpers.php"
-    ],
+    
     "autoload": {
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
-        
+        },
+        "files": [
+            "app/helper.php"
+        ]
         
     },
     "autoload-dev": {

@@ -6,6 +6,7 @@ use toastr;
 use App\Models\Ward;
 use App\Models\Inmate;
 use App\Models\Activity;
+use App\Models\Cell;
 use App\Models\PoliceCase;
 use App\Models\Punishment;
 use Illuminate\Http\Request;
@@ -14,26 +15,28 @@ class InmateController extends Controller
 {
     public function inmate()
     {
-
+        $cells = Cell::all();
 
         $inma = Inmate::paginate(5);
 
 
-        return view("backend.partial.inmate.inmate", compact('inma'));
+        return view("backend.partial.inmate.inmate", compact('inma', 'cells'));
     }
     public function list()
     {
+        $cells = Cell::all();
         $wards = Ward::all();
         //    $activities= Activity::all();
         // dd( $activities);
         // $punishments= Punishment::all();
-        return view('backend.partial.inmate.inmate_add', compact('wards'));
+        return view('backend.partial.inmate.inmate_add', compact('wards', 'cells'));
     }
 
     public function store(Request $req)
     {
         $req->validate(
-            [   "dob" => 'required|date|before:2002-04-15',
+            [
+                "dob" => 'required|date|before:2002-04-15',
                 "image" => "required|unique:inmates,image",
                 "nid" => 'digits:17|required|numeric|unique:inmates,nid',
                 "relatives_number" => "digits:11|required|unique:inmates,relatives_number"
@@ -50,7 +53,7 @@ class InmateController extends Controller
         }
 
         Inmate::create([
-            "inmate_id"=>date('Ymdhmi'),
+            "inmate_id" => date('Ymdhmi'),
             "first_name" => $req->first_name,
             "last_name" => $req->last_name,
             "image" => $fileName,
@@ -62,13 +65,14 @@ class InmateController extends Controller
             "gender" => $req->gender,
             "ward_type" => $req->ward_id,
             "ward_id" => $req->ward_id,
+            "cell_id" => $req->cell_id,
             "relatives_name" => $req->relatives_name,
             "relatives_number" => $req->relatives_number,
             "relation" => $req->relation,
 
 
         ]);
-    toastr()->success('successfully done');
+        toastr()->success('successfully done');
         return redirect()->route('inmate')->with('message', 'Created successfully');
     }
 

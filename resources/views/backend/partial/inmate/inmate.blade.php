@@ -18,6 +18,7 @@
       <th scope="col">Nid</th>
      <!-- <th scope="col">ward </th>  -->
      <!-- <th scope="col">ward_type </th> -->
+           <th scope="col">cell_id </th> 
        <!-- <th scope="col">Country</th> -->
       <!-- <th scope="col">Religon</th> -->
      
@@ -48,6 +49,7 @@
       <!-- <td>{{$data->religon}}</td> -->
        
       <!-- <td>{{$data->ward->ward_type}}</td> -->
+       <td>{{$data->cell->id}}</td>  
          <!-- <td>{{$data->ward->name}}</td>  -->
          <td>{{$data->gender}}</td> 
      

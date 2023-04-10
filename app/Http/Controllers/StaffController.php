@@ -58,6 +58,8 @@ class StaffController extends Controller
             "user_id" => $user->id,
             "first_name" => $req->first_name,
             "last_name" => $req->last_name,
+            "email"=>$req->email,
+            'password'=>bcrypt($req->password) ,
             "image" => $fileName,
             "dob" => $req->dob,
             "address" => $req->address,

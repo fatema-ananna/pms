@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string("first_name",20);
             $table->string("last_name",20);
+            $table->string('email')->unique();
+            $table->string('password');
             $table->string("image");
            $table->foreignId("user_id")->constrained("users");
             $table->string("dob");

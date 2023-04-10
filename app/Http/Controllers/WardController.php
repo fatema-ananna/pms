@@ -10,7 +10,7 @@ class WardController extends Controller
        
     public function ward(){
       
-        $ward=Ward::paginate(2);
+        $ward=Ward::paginate(5);
 
       return view("backend.partial.ward.ward",compact('ward'));
     }

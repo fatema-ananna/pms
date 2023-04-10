@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\CellController;
 use App\Http\Controllers\CrimeController;
 use App\Http\Controllers\frontend\HomeController as FrontendHomeController;
 use App\Http\Controllers\frontend\VisitorController as FrontendVisitorController;
@@ -85,6 +86,11 @@ Route::group(['middleware' => ['localization', 'auth'], 'prefix' => 'admin'], fu
     Route::post('/ward/store', [WardController::class, 'store'])->name("ward_store");
     Route::get('/ward/edit/{ward_id}', [WardController::class, 'edit'])->name("ward_edit");
     Route::put('/ward/update/{ward_id}', [WardController::class, 'update'])->name("ward_update");
+    // for cell
+    Route::get('/cell', [CellController::class, 'cell'])->name("cell");
+    Route::get('/cell/add', [CellController::class, 'list'])->name("cell_list");
+    Route::post('/cell/store', [CellController::class, 'store'])->name("cell_store");
+    
 
     // // for activity
     Route::get('/activity', [ActivityController::class, 'activity'])->name("activity");
@@ -150,3 +156,4 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
 Route::get('/payment',[FrontendVisitorController::class,'paymentForm'])->name('payment.form');
+Route::post("/get-activities", [ActivityController::class, "getActivities"])->name("get.activites");

@@ -92,6 +92,17 @@
     </select>
 </div>
 
+<div class="form-group col-md-6">
+    <label ><b>cell_id</b></label>
+    <select name="cell_id" id="" class="form-control">
+
+    @foreach($cells as $cell)
+        <option value="{{$cell->id}}">{{$cell->id}}</option>
+        
+    @endforeach
+    </select>
+</div>
+
 <div class="form-row">
 <div class="form-group col-md-6">
   <label ><b>Relatives Name</b></label>
