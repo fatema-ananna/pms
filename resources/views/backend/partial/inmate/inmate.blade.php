@@ -18,7 +18,7 @@
       <th scope="col">Nid</th>
      <!-- <th scope="col">ward </th>  -->
      <!-- <th scope="col">ward_type </th> -->
-           <th scope="col">cell_id </th> 
+           <th scope="col">cell_No </th> 
        <!-- <th scope="col">Country</th> -->
       <!-- <th scope="col">Religon</th> -->
      

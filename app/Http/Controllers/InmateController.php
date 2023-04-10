@@ -52,7 +52,7 @@ class InmateController extends Controller
             $req->file('image')->storeAs('/backend/uploads/', $fileName);
         }
 
-        Inmate::create([
+        $inamte =  Inmate::create([
             "inmate_id" => date('Ymdhmi'),
             "first_name" => $req->first_name,
             "last_name" => $req->last_name,
@@ -69,9 +69,14 @@ class InmateController extends Controller
             "relatives_name" => $req->relatives_name,
             "relatives_number" => $req->relatives_number,
             "relation" => $req->relation,
-
-
         ]);
+        if ($inamte) {
+            $cell =  Cell::find($req->cell_id);
+            $cell->update([
+                "isBooked" => 1
+            ]);
+        }
+
         toastr()->success('successfully done');
         return redirect()->route('inmate')->with('message', 'Created successfully');
     }

@@ -90,7 +90,7 @@ Route::group(['middleware' => ['localization', 'auth'], 'prefix' => 'admin'], fu
     Route::get('/cell', [CellController::class, 'cell'])->name("cell");
     Route::get('/cell/add', [CellController::class, 'list'])->name("cell_list");
     Route::post('/cell/store', [CellController::class, 'store'])->name("cell_store");
-    
+    Route::post("/get-cells", [CellController::class, 'getCells'])->name("get.cells");
 
     // // for activity
     Route::get('/activity', [ActivityController::class, 'activity'])->name("activity");

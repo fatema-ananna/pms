@@ -18,12 +18,12 @@
   </thead>
   <tbody>
   @foreach($cells as $key=>$data)
-
+ 
     <tr>
     <th scope="row">{{$cells->firstItem()+$key}}</th>
       <td>{{$data->cell_no}}</td>
       <td>{{$data->ward->name}}</td>
-      <td>{{$data->isbooked? 'yes': 'no'}}</td>
+      <td>{{$data->isBooked == 1? 'Yes': 'No'}}</td>
   
      
      

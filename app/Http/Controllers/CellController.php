@@ -34,4 +34,8 @@ class CellController extends Controller
 
         return redirect()->route('cell')->with('message', 'Created successfully');
     }
+    public function getCells(Request $req){
+        $cells = Cell::where("ward_id",$req->wardId)->where("isBooked",0)->get();
+        return $cells;
+    }
 }
