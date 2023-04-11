@@ -20,11 +20,11 @@
                     <a class="nav-link page-scroll" href="#about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#services">Gallery</a>
+                    <a class="nav-link page-scroll" href="#gallary">Gallery</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="">Contact</a>
+                    <a class="nav-link page-scroll" href="#notice">Notice</a>
                 </li>
                 @if(!auth("frontendAuth")->user())
                 <li class="nav-item">
@@ -60,6 +60,8 @@
 </nav>
 
 @if(request()->route()->getName() == "home")
+
+{{--
 <header id="header" class="header">
     <div class="container">
         <div class="row">
@@ -73,5 +75,38 @@
         </div> <!-- end of row -->
     </div> <!-- end of container -->
 </header>
+--}}
 
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="height:80vh; margin-top:70px">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner ">
+
+        @for($i = 5; $i > 0; $i-- )
+        <div class="carousel-item @if($i == 5) active @endif" style="height:80vh;">
+            <div class="position-relative">
+                <img class="d-block w-100 img-fluid" src='{{url("frontend/slider_image/$i.jpg")}}' alt="First slide" style="height:100%;">
+                <div class="carousel-caption position-absolute" style="top:0; left:0; width:100%; height:100%; background-color:rgba(0, 0, 0, .6)">
+                </div>
+            </div>
+
+        </div>
+        @endfor
+        <div class="carousel-caption">
+            <h1 class="text-white text-left display-4">রাখিব নিরাপদ, দেখাব আলোর পথ</h1>
+        </div>
+
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev" style="z-index:999">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a style="z-index:999" class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
 @endif

@@ -22,14 +22,68 @@
     <title>Prison Management System</title>
 
     <!-- Styles -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link href="{{url('frontend/css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{url('frontend/css/fontawesome-all.css')}}" rel="stylesheet">
     <link href="{{url('frontend/css/styles.css')}}" rel="stylesheet">
+
     @notifyCss
     <!-- Favicon  -->
     <link rel="icon" href="images/favicon.png">
+
+    <style>
+        .wrapper {
+            width: 100%;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .slick-slide {
+            margin: 10px;
+        }
+
+        .slick-slide img {
+            width: 100%;
+            margin-right: 4px;
+            border: 2px solid #fff;
+        }
+
+        .wrapper .slick-dots li button:before {
+            font-size: 20px;
+            color: white;
+        }
+
+        .carousel {
+            width: 90%;
+            margin: 0px auto;
+            display: flex;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 
 <body data-spy="scroll" data-target=".fixed-top">
@@ -84,282 +138,100 @@
     <!-- end of about -->
 
 
-    <!-- Services -->
-
-    <h1 class=" text-center display-4">Photo Gallery</h1>
-    <br>
-
-
-
-    <div class="row">
-        @foreach($gallery as $data)
-        <div class="col-lg-3 col-md-12 ">
-
-            <img src="{{url('/frontend/gallery.picture/'.$data->image)}}" class="w-70 shadow-1-strong rounded " alt="Boat on Calm Water" />
-
-        </div>
-
-        @endforeach
-
-
-
-    </div>
-
-
-
-
-
-    <div class="text-center">
-
-        <h1>Notice</h1>
-        <div class="row">
-
-            @foreach($not as $data)
-            <div class="container mt-5">
-                <p><a href="{{url('/backend/pdf/'.$data->pdf)}}" alt="pdf">{{$data->name}}</p>
-            </div>
-            @endforeach
-        </div>
-    </div>
-
-
-    <!-- Projects -->
-    <div id="projects" class="basic-3">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-
-
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="text-container">
-                        <div class="image-container">
-
-                        </div> <!-- end of image-container -->
-
-                    </div> <!-- end of text-container -->
-                    <div class="text-container">
-                        <div class="image-container">
-
-                        </div> <!-- end of image-container -->
-
-                    </div> <!-- end of text-container -->
-                    <div class="text-container">
-                        <div class="image-container">
-
-                        </div> <!-- end of image-container -->
-
-                    </div> <!-- end of text-container -->
-                    <div class="text-container">
-                        <div class="image-container">
-
-                        </div> <!-- end of image-container -->
-
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of basic-3 -->
-    <!-- end of projects -->
-
-
-    <!-- Works -->
-    <div class="basic-4">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="text-container">
-                        <div class="image-container">
-
-                        </div> <!-- end of image-container -->
-
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-                <div class="col-lg-4">
-                    <div class="text-container">
-                        <div class="image-container">
-
-                        </div> <!-- end of image-container -->
-
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-                <div class="col-lg-4">
-                    <div class="text-container">
-                        <div class="image-container">
-
-                        </div> <!-- end of image-container -->
-
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="text-container">
-                        <div class="image-container">
-
-                        </div> <!-- end of image-container -->
-
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-                <div class="col-lg-4">
-                    <div class="text-container">
-                        <div class="image-container">
-
-                        </div> <!-- end of image-container -->
-
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-                <div class="col-lg-4">
-                    <div class="text-container">
-                        <div class="image-container">
-
-                        </div> <!-- end of image-container -->
-
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of basic-4 -->
-    <!-- end of works -->
-
-
-    <!-- Testimonials -->
-    <!-- end of cards-1 -->
-    <!-- end of testimonials -->
-
-
-    <!-- Section Divider -->
+    <!-- Gallery -->
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <hr class="section-divider">
-            </div> <!-- end of col -->
-        </div> <!-- end of row -->
-    </div> <!-- end of container -->
-    <!-- end of section divider -->
+            <div class="col-md-10">
+                <div id="gallary">
+                    <h1 class=" text-center mb-4 pt-5" style="font-size:2.5rem">Photo Gallery</h1>
 
+                    {{--
+                    <div class="row">
+                        @foreach($gallery as $data)
+                        <div class="col-lg-3 col-md-12 ">
+                            <img src="{{url('/frontend/gallery.picture/'.$data->image)}}" class="w-70 shadow-1-strong rounded " alt="Boat on Calm Water" />
+                </div>
+                @endforeach
+            </div>
+            --}}
+            <div class="wrapper">
+                <div class="carousel">
+                    @foreach($gallery as $data)
+                    <div class="">
+                        <img src="{{url('/frontend/gallery.picture/'.$data->image)}}" class="w-70 shadow-1-strong rounded " alt="Boat on Calm Water" />
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
 
-    <!-- Questions -->
-    <div class="accordion-1">
-        <div class="container">
+        <div id="notice" class="text-center">
+
             <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="h2-heading">Frequent questions</h2>
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-            <div class="row">
-                <div class="col-lg-12">
 
-                    <div class="accordion" id="accordionExample">
+
+                <div class="col-md-12 mt-5">
+                    <div class="d-flex justify-content-center">
                         <div class="card">
-                            <div class="card-header" id="headingOne">
-                                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    How can I contact you and quickly get a quote for my online project?
-                                </button>
-                            </div>
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    The best way to reach me is through the contact form of by messaging me on my social media accounts. For a fast quote make sure your provide many project details
+                            <div class="card-body " style="background:#E4FFE4">
+                                <div class="w-75">
+                                    <h1 class="text-left" style="font-size:large">Notice Board</h1>
+                                    <blockquote class="blockquote mb-0">
+                                        @foreach($not as $data)
+                                        <div class="container ">
+                                            <p><a href="{{url('/backend/pdf/'.$data->pdf)}}" alt="pdf"><i class="fa fa-arrow-right" aria-hidden="true"></i> {{$data->name}}</a></p>
+                                        </div>
+                                        @endforeach
+                                    </blockquote>
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-header" id="headingTwo">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Do you create designs from the ground up or you are using themes?
-                                </button>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    The best way to reach me is through the contact form of by messaging me on my social media accounts. For a fast quote make sure your provide many project details
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingThree">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Will I receive any included maintenance or warranty after project delivery?
-                                </button>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    The best way to reach me is through the contact form of by messaging me on my social media accounts. For a fast quote make sure your provide many project details
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingFour">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    If something goes wrong with the project can I have my money back?
-                                </button>
-                            </div>
-                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    The best way to reach me is through the contact form of by messaging me on my social media accounts. For a fast quote make sure your provide many project details
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header" id="headingFive">
-                                <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    What's your preferred method of payment and do you need an advance?
-                                </button>
-                            </div>
-                            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                                <div class="card-body">
-                                    The best way to reach me is through the contact form of by messaging me on my social media accounts. For a fast quote make sure your provide many project details
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- end of accordion -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="my-4">
+            <div class="bg-success w-100 text-white text-center pt-1" style="height:30px">স্বরাষ্ট্র মন্ত্রী</div>
+            <div class="d-flex w-100 h-100 justify-content-center align-items-center my-3">
+                <img src="{{url('frontend/slider_image/p.jpg')}}" alt="">
+            </div>
+            <div class="">
+                <p style="font-size:small">জনাব আসাদুজ্জামান খান, এমপি</p>
+                <a href="#" style="font-size:small; text-decoration:underline">বিস্তারিত</a>
+            </div>
+        </div>
+        <div class="my-4">
+            <div class="bg-success w-100 text-white text-center pt-1" style="height:30px">স্বরাষ্ট্র মন্ত্রী</div>
+            <div class="d-flex w-100 h-100 justify-content-center align-items-center my-3">
+                <img src="{{url('frontend/slider_image/p.jpg')}}" alt="">
+            </div>
+            <div class="">
+                <p style="font-size:small">জনাব আসাদুজ্জামান খান, এমপি</p>
+                <a href="#" style="font-size:small; text-decoration:underline">বিস্তারিত</a>
+            </div>
+        </div>
+        <img src="{{url('frontend/gallery.picture/sticker.jpg')}}" alt="">
+    </div>
+    </div>
 
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of accordion-1 -->
-
-
-
-    <!-- Contact -->
-    <div id="contact" class="form-1 bg-gray">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>Contact details</h2>
-                    <p class="p-heading">For any type of online project please don't hesitate to get in touch with me. The fastest way is to send me your message using the following email <a class="blue no-line" href="#your-link">contact@domain.com</a></p>
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-            <div class="row">
-                <div class="col-lg-12">
-
-                    <!-- Contact Form -->
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" class="form-control-input" id="cname" required>
-                            <label class="label-control" for="cname">Name</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" class="form-control-input" id="cemail" required>
-                            <label class="label-control" for="cemail">Email</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea class="form-control-textarea" id="cmessage" required></textarea>
-                            <label class="label-control" for="cmessage">Project details</label>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="form-control-submit-button">Submit</button>
-                        </div>k
-                    </form>
-                    <!-- end of contact form -->
-
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of form-1 -->
-    <!-- end of contact -->
-
+    </div>
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">Slide 4</div>
+            <div class="swiper-slide">Slide 5</div>
+            <div class="swiper-slide">Slide 6</div>
+            <div class="swiper-slide">Slide 7</div>
+            <div class="swiper-slide">Slide 8</div>
+            <div class="swiper-slide">Slide 9</div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
 
     <!-- Footer -->
 
@@ -384,18 +256,50 @@
     <script src="{{url('frontend/js/bootstrap.min.js')}}"></script> <!-- Bootstrap framework -->
     <script src="{{url('frontend/js/jquery.easing.min.js')}}"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
     <script src="{{url('frontend/js/scripts.js')}}"></script> <!-- Custom scripts -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.carousel').slick({
+                slidesToShow: 3,
+                infinite: true,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+                dots: true,
+                centerMode: true,
+            });
+        });
+    </script>
+
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+        });
+    </script>
+
     @notifyJs
     <script>
-    (function (window, document) {
-        var loader = function () {
-            var script = document.createElement("script"), tag = document.getElementsByTagName("script")[0];
-            script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
-            tag.parentNode.insertBefore(script, tag);
-        };
+        (function(window, document) {
+            var loader = function() {
+                var script = document.createElement("script"),
+                    tag = document.getElementsByTagName("script")[0];
+                script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
+                tag.parentNode.insertBefore(script, tag);
+            };
 
-        window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
-    })(window, document);
-</script>
+            window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+        })(window, document);
+    </script>
 </body>
 
 </html>

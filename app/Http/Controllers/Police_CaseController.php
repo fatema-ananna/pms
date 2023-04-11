@@ -29,6 +29,7 @@ class Police_CaseController extends Controller
     $crimes = Crime::all();
     $punishments = Punishment::all();
     $activities = Activity::all();
+    
     return view('backend.partial.case.case_add', compact(
       'inmate',
       'police_stations',
@@ -47,10 +48,10 @@ class Police_CaseController extends Controller
       [
         "description" => "required|:police_cases,description",
         // "punishment" => "required|:police_cases,punishment",
-        "case_start"=>" required|date|after:date",
-            "punishment_start"=>'after:tomorrow'
+        "case_start" => " required|date|after:date",
+        "punishment_start" => 'after:tomorrow'
 
-  ]
+      ]
     );
 
 
@@ -58,7 +59,7 @@ class Police_CaseController extends Controller
       "inmate_id" => $req->inmate_id,
       "first_name" => $req->first_name,
       "last_name" => $req->last_name,
-  
+
       "court" => $req->court,
       "crime_id" => $req->crime_id,
       "description" => $req->description,
@@ -82,38 +83,8 @@ class Police_CaseController extends Controller
   {
     // $cases=PoliceCase::where('inmate_id',$id)->get();
     $cases = PoliceCase::find($id);
-    $inma= Inmate::all();
-    return view('backend.partial.case.case_new', compact('cases','inma'));
+    $inma = Inmate::all();
+    return view('backend.partial.case.case_new', compact('cases', 'inma'));
   }
-  public function edit($id){
-    $cases = PoliceCase::find($id);
-    return view('backend.partial.case.edit',compact('cases'));
-  }
- public function update(Request $req, $id){
-
-  $cases = PoliceCase::find($id);
-
-  $cases->inmate_id = $req->inmate_id;
-  $cases->first_name = $req->first_name;
-  $cases->last_name = $req->last_name;
-  $cases->court = $req->court;
-  $cases->crime_id = $req->crime_id;
-  $cases->description = $req->description;
-  $cases->case_start = $req->case_start;
-  $cases->station_id = $req->police_station_id;
-  $cases->punishment_id = $req->punishment_id;
-  $cases->type = $req->type;
-  $cases->duration = $req->duration;
-  $cases->punishment_start = $req->punishment_start;
-  $cases->activity_id = $req->activity_id;
-
-  $cases->update();
-  return redirect()->route('case')->with('message', 'successfully updated');
-
- }
-
-
-
-
 
 }

@@ -83,8 +83,7 @@ Route::group(['middleware' => ['localization', 'auth'], 'prefix' => 'admin'], fu
         Route::get('/case/add/{id}', [Police_CaseController::class, 'list'])->name("case_list");
         Route::post('/case/add/store', [Police_CaseController::class, 'store'])->name("case_store");
         Route::get('/case/view/{id}', [Police_CaseController::class, 'view'])->name("case_view");
-        Route::get('/case/edit/{id}', [Police_CaseController::class, 'edit'])->name("case.edit");
-        Route::put('/case/update/{id}', [Police_CaseController::class, 'update'])->name("case.update");
+        
         // for ward
         Route::get('/ward', [WardController::class, 'ward'])->name("ward");
         Route::get('/ward/add', [WardController::class, 'list'])->name("ward_list");
