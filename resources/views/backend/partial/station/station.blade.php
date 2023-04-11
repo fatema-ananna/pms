@@ -30,7 +30,7 @@
       <td>{{$data->zilla}},{{$data->thana}}</td>
       
       <td> 
-        <a href="{{route('station.view',$data->id)}}" class="btn btn-primary">View</a>
+        
      
         <a href="{{route('station.edit',$data->id)}}" class="btn btn-warning">Edit</a>
      </td>

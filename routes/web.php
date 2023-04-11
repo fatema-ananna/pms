@@ -32,98 +32,109 @@ Route::post('do-login', [UserController::class, 'doLogin'])->name('do.login');
 Route::group(['middleware' => ['localization', 'auth'], 'prefix' => 'admin'], function () {
     Route::group(['middleware' => 'checkAdmin'], function () {
 
-    Route::get('/', [HomeController::class, 'home'])->name("Dashboard");
-    Route::get('/switch-lang/{lang}', [HomeController::class, 'changeLanguage'])->name('switch.lang');
-    Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-    Route::get('/users', [UserController::class, 'list'])->name('admin.users');
+        Route::get('/', [HomeController::class, 'home'])->name("Dashboard");
+        Route::get('/switch-lang/{lang}', [HomeController::class, 'changeLanguage'])->name('switch.lang');
+        Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+        Route::get('/users', [UserController::class, 'list'])->name('admin.users');
         Route::get('/create/user', [UserController::class, 'create'])->name('user.create');
         Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
 
-    // for inmate
-    Route::get('/inmate', [InmateController::class, 'inmate'])->name("inmate");
-    Route::get('/inmate_add', [InmateController::class, 'list'])->name("inmate_list");
-    Route::post('/inmate_store', [InmateController::class, 'store'])->name("inmate_list_store");
-    Route::get('/inmate/delete/{inmate_id}', [InmateController::class, 'deleteinmate'])->name('inmate.delete');
-    Route::get('/inmate/view/{inmate_id}', [InmateController::class, 'viewinmate'])->name('inmate.view');
-    Route::get('/inmate/edit/{inmate_id}', [InmateController::class, 'edit_inmate'])->name('inmate.edit');
-    Route::put('/inmate/update/{inmate_id}', [InmateController::class, 'update_inmate'])->name('inmate.update');
+        // for inmate
+        Route::get('/inmate', [InmateController::class, 'inmate'])->name("inmate");
+        Route::get('/inmate_add', [InmateController::class, 'list'])->name("inmate_list");
+        Route::post('/inmate_store', [InmateController::class, 'store'])->name("inmate_list_store");
+        Route::get('/inmate/delete/{inmate_id}', [InmateController::class, 'deleteinmate'])->name('inmate.delete');
+        Route::get('/inmate/view/{inmate_id}', [InmateController::class, 'viewinmate'])->name('inmate.view');
+        Route::get('/inmate/edit/{inmate_id}', [InmateController::class, 'edit_inmate'])->name('inmate.edit');
+        Route::put('/inmate/update/{inmate_id}', [InmateController::class, 'update_inmate'])->name('inmate.update');
 
 
-    //  for staff
-    Route::get('/staff', [StaffController::class, 'staff'])->name("staff");
-    Route::get('/staff/add', [StaffController::class, 'list'])->name("staff_add");
-    Route::post('/staff/store', [StaffController::class, 'store'])->name("staff_store");
-    Route::get('/staff/delete/{staff_id}', [StaffController::class, 'delete_staff'])->name('delete.staff');
-    Route::get('/staff/view/{staff_id}', [StaffController::class, 'view_staff'])->name("staff.view");
-    Route::get('/staff/edit/{staff_id}', [StaffController::class, 'edit_staff'])->name("staff.edit");
-    Route::put('/staff/update/{staff_id}', [StaffController::class, 'update_staff'])->name('update.staff');
+        //  for staff
+        Route::get('/staff', [StaffController::class, 'staff'])->name("staff");
+        Route::get('/staff/add', [StaffController::class, 'list'])->name("staff_add");
+        Route::post('/staff/store', [StaffController::class, 'store'])->name("staff_store");
+        Route::get('/staff/delete/{staff_id}', [StaffController::class, 'delete_staff'])->name('delete.staff');
+        Route::get('/staff/view/{staff_id}', [StaffController::class, 'view_staff'])->name("staff.view");
+        Route::get('/staff/edit/{staff_id}', [StaffController::class, 'edit_staff'])->name("staff.edit");
+        Route::put('/staff/update/{staff_id}', [StaffController::class, 'update_staff'])->name('update.staff');
 
-    // for visitor
-    Route::get('/visitor', [VisitorController::class, 'visitor'])->name("visitor");
+        // for visitor
+        Route::get('/visitor', [VisitorController::class, 'visitor'])->name("visitor");
 
 
 
-    // for police station
-    Route::get('/station', [StationController::class, 'station'])->name("station");
-    Route::get('/station/list', [StationController::class, 'list'])->name("list");
-    Route::post('/station/list/store', [StationController::class, 'station_store'])->name("store");
-    Route::get('/station/edit/{station_id}', [StationController::class, 'edit_station'])->name("station.edit");
-    Route::put('/station/update/{station_id}', [StationController::class, 'update_station'])->name('update.station');
-    Route::get('/station/view/{station_id}', [StationController::class, 'view_station'])->name("station.view");
-    // for crime...
-    Route::get('/crime', [CrimeController::class, 'crime'])->name("crime");
-    Route::get('/crime/list', [CrimeController::class, 'list'])->name("crime_list");
-    Route::post('/crime/list/store', [CrimeController::class, 'store'])->name("crime_store");
+        // for police station
+        Route::get('/station', [StationController::class, 'station'])->name("station");
+        Route::get('/station/list', [StationController::class, 'list'])->name("list");
+        Route::post('/station/list/store', [StationController::class, 'station_store'])->name("store");
+        Route::get('/station/edit/{station_id}', [StationController::class, 'edit_station'])->name("station.edit");
+        Route::put('/station/update/{station_id}', [StationController::class, 'update_station'])->name('update.station');
+   
+        // for crime...
+        Route::get('/crime', [CrimeController::class, 'crime'])->name("crime");
+        Route::get('/crime/list', [CrimeController::class, 'list'])->name("crime_list");
+        Route::post('/crime/list/store', [CrimeController::class, 'store'])->name("crime_store");
+        Route::get('/crime/{id}', [CrimeController::class, 'edit'])->name("crime.edit");
 
-    // for case
-    Route::get('/case', [Police_CaseController::class, 'case'])->name("case");
-    Route::get('/case/add/{id}', [Police_CaseController::class, 'list'])->name("case_list");
-    Route::post('/case/add/store', [Police_CaseController::class, 'store'])->name("case_store");
-    Route::get('/case/view/{id}', [Police_CaseController::class, 'view'])->name("case_view");
-    // for ward
-    Route::get('/ward', [WardController::class, 'ward'])->name("ward");
-    Route::get('/ward/add', [WardController::class, 'list'])->name("ward_list");
-    Route::post('/ward/store', [WardController::class, 'store'])->name("ward_store");
-    Route::get('/ward/edit/{ward_id}', [WardController::class, 'edit'])->name("ward_edit");
-    Route::put('/ward/update/{ward_id}', [WardController::class, 'update'])->name("ward_update");
-    // for cell
-    Route::get('/cell', [CellController::class, 'cell'])->name("cell");
-    Route::get('/cell/add', [CellController::class, 'list'])->name("cell_list");
-    Route::post('/cell/store', [CellController::class, 'store'])->name("cell_store");
-    Route::post("/get-cells", [CellController::class, 'getCells'])->name("get.cells");
+        Route::put('/crime/update/{id}', [CrimeController::class, 'update'])->name("crime.update");
 
-    // // for activity
-    Route::get('/activity', [ActivityController::class, 'activity'])->name("activity");
-    Route::get('/activity/add', [ActivityController::class, 'list'])->name("activity_list");
-    Route::post('/activity/store', [ActivityController::class, 'store'])->name("activity_store");
+        // for case
+        Route::get('/case', [Police_CaseController::class, 'case'])->name("case");
+        Route::get('/case/add/{id}', [Police_CaseController::class, 'list'])->name("case_list");
+        Route::post('/case/add/store', [Police_CaseController::class, 'store'])->name("case_store");
+        Route::get('/case/view/{id}', [Police_CaseController::class, 'view'])->name("case_view");
+        Route::get('/case/edit/{id}', [Police_CaseController::class, 'edit'])->name("case.edit");
+        Route::put('/case/update/{id}', [Police_CaseController::class, 'update'])->name("case.update");
+        // for ward
+        Route::get('/ward', [WardController::class, 'ward'])->name("ward");
+        Route::get('/ward/add', [WardController::class, 'list'])->name("ward_list");
+        Route::post('/ward/store', [WardController::class, 'store'])->name("ward_store");
+        Route::get('/ward/edit/{ward_id}', [WardController::class, 'edit'])->name("ward_edit");
+        Route::put('/ward/update/{ward_id}', [WardController::class, 'update'])->name("ward_update");
+        // for cell
+        Route::get('/cell', [CellController::class, 'cell'])->name("cell");
+        Route::get('/cell/add', [CellController::class, 'list'])->name("cell_list");
+        Route::post('/cell/store', [CellController::class, 'store'])->name("cell_store");
+        Route::post("/get-cells", [CellController::class, 'getCells'])->name("get.cells");
+        Route::get('/cell/edit/{id}', [CellController::class, 'edit'])->name("cell.edit");
+        Route::put('/cell/update/{id}', [CellController::class, 'update'])->name("cell.update");
 
-    Route::get('/punishment', [PunishmentController::class, 'punishment'])->name("punishment");
-    Route::get('/punishment/add', [PunishmentController::class, 'list'])->name("punishment_list");
-    Route::post('/punishment/store', [PunishmentController::class, 'store'])->name("punishment_store");
-    //for reports
-    Route::get('/reports', [ReportController::class, 'reports'])->name("reports");
-    //for gallery
-    Route::get('/gallery', [HomeController::class, 'gallery'])->name("gallery");
-    Route::get('/gallery/add', [HomeController::class, 'form'])->name("gallery.form");
-    Route::post('/gallery/store', [HomeController::class, 'picture_store'])->name("picture.store");
-    Route::get('/gallery/edit/{id}', [HomeController::class, 'edit'])->name("pic.edit");
-    Route::post('/gallery/update/{id}', [HomeController::class, 'update'])->name("gallery.update");
-    //for notice
-    Route::get('/notice', [NoticeController::class, 'notice'])->name("notice");
-    Route::get('/notice/form', [NoticeController::class, 'form'])->name("notice.form");
-    Route::post('/notice/form/store', [NoticeController::class, 'store'])->name("notice.store");
-    Route::get('/notice/edit/{id}', [NoticeController::class, 'edit'])->name("notice.edit");
-    Route::put('/notice/update/{id}', [NoticeController::class, 'update'])->name("notice.update");
-    Route::get('/notice/delete/{id}', [NoticeController::class, 'delete'])->name('notice.delete');
-    Route::resource('/roles', RoleController::class);
+        // // for activity
+        Route::get('/activity', [ActivityController::class, 'activity'])->name("activity");
+        Route::get('/activity/add', [ActivityController::class, 'list'])->name("activity_list");
+        Route::post('/activity/store', [ActivityController::class, 'store'])->name("activity_store");
+        Route::get('/activity/edit/{id}', [ActivityController::class, 'edit'])->name("activity.edit");
+        Route::put('/activity/update/{id}', [ActivityController::class, 'update'])->name("activity.update");
+        //for punishment
+        Route::get('/punishment', [PunishmentController::class, 'punishment'])->name("punishment");
+        Route::get('/punishment/add', [PunishmentController::class, 'list'])->name("punishment_list");
+        Route::post('/punishment/store', [PunishmentController::class, 'store'])->name("punishment_store");
+        Route::get('/punishment/edit/{id}', [PunishmentController::class, 'edit'])->name("punishment.edit");
+        Route::put('/punishment/update/{id}', [PunishmentController::class, 'update'])->name("punishment.update");
+        //for reports
+        Route::get('/reports', [ReportController::class, 'reports'])->name("reports");
+        //for gallery
+        Route::get('/gallery', [HomeController::class, 'gallery'])->name("gallery");
+        Route::get('/gallery/add', [HomeController::class, 'form'])->name("gallery.form");
+        Route::post('/gallery/store', [HomeController::class, 'picture_store'])->name("picture.store");
+        Route::get('/gallery/edit/{id}', [HomeController::class, 'edit'])->name("pic.edit");
+        Route::post('/gallery/update/{id}', [HomeController::class, 'update'])->name("gallery.update");
+        //for notice
+        Route::get('/notice', [NoticeController::class, 'notice'])->name("notice");
+        Route::get('/notice/form', [NoticeController::class, 'form'])->name("notice.form");
+        Route::post('/notice/form/store', [NoticeController::class, 'store'])->name("notice.store");
+        Route::get('/notice/edit/{id}', [NoticeController::class, 'edit'])->name("notice.edit");
+        Route::put('/notice/update/{id}', [NoticeController::class, 'update'])->name("notice.update");
+        Route::get('/notice/delete/{id}', [NoticeController::class, 'delete'])->name('notice.delete');
+        Route::resource('/roles', RoleController::class);
 
-    Route::get('/role/assign/{id}', [RoleController::class, 'showPermissions'])->name('role.assign');
-    Route::get('/permissions', [PermissionController::class, 'list'])->name('permission.list');
-    Route::post('/permissions-assign/{role_id}', [RoleController::class, 'assignPermissions'])->name('permissions.assign');
-    //payment
-    
-    Route::get('/payment', [PaymentController::class, 'payment'])->name('backend.payment');
-});
+        Route::get('/role/assign/{id}', [RoleController::class, 'showPermissions'])->name('role.assign');
+        Route::get('/permissions', [PermissionController::class, 'list'])->name('permission.list');
+        Route::post('/permissions-assign/{role_id}', [RoleController::class, 'assignPermissions'])->name('permissions.assign');
+        //payment
+
+        Route::get('/payment', [PaymentController::class, 'payment'])->name('backend.payment');
+    });
 });
 // frontend
 
@@ -155,5 +166,5 @@ Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 //SSLCOMMERZ END
-Route::get('/payment',[FrontendVisitorController::class,'paymentForm'])->name('payment.form');
+Route::get('/payment', [FrontendVisitorController::class, 'paymentForm'])->name('payment.form');
 Route::post("/get-activities", [ActivityController::class, "getActivities"])->name("get.activites");

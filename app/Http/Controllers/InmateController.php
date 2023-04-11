@@ -63,7 +63,7 @@ class InmateController extends Controller
             "religon" => $req->religon,
             "nid" => $req->nid,
             "gender" => $req->gender,
-            "ward_type" => $req->ward_id,
+           
             "ward_id" => $req->ward_id,
             "cell_id" => $req->cell_id,
             "relatives_name" => $req->relatives_name,
@@ -128,7 +128,7 @@ class InmateController extends Controller
         $inma->gender = $req->gender;
         $inma->religon = $req->religon;
 
-        $inma->ward_type = $req->ward_type;
+       
         $inma->ward_id = $req->ward_id;
         $inma->relatives_name = $req->relatives_name;
         $inma->relatives_number = $req->relatives_number;

@@ -8,7 +8,7 @@
       <th scope="col">Sl</th>
       <th scope="col">Inmate_Id</th>
       <th scope="col">Inmate_Name</th>
-      <th scope="col">Deposit Amount</th>
+      <th scope="col">Total Amount</th>
     </tr>
   </thead>
   <tbody>

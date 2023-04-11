@@ -46,8 +46,8 @@
                 <td>{{$data->activity->name}}</td>  -->
                <td>
                     <a href="{{route('case_view',$data->id)}}" class="btn btn-primary">View</a>
-                    <a href="" class="btn btn-danger">Delete</a>
-                    <a href="" class="btn btn-primary">Edit</a>
+                
+                    <a href="{{route('case.edit',$data->id)}}" class="btn btn-primary">Edit</a>
                   
                 </td>
             </tr>

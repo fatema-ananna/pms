@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string("gender", 20);
             $table->string("country", 50);
             $table->string("religon", 50);
-            $table->string("ward_type");
+         
             $table->foreignId("ward_id");
             $table->foreignId("cell_id");
             $table->string("relatives_name");

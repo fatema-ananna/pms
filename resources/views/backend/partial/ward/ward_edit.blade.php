@@ -17,16 +17,14 @@
         <label><b>Ward_Name</b> </label>
         <input type="text" class="form-control" name="name" value="{{$ward->name}}">
       </div>
-      <div class="form-row">
       <div class="form-group col-md-6">
-        <label><b>Ward_Type</b> </label>
-        <input type="text" class="form-control" name="name" value="{{$ward->ward_type}}">
-      </div>
-      <div class="form-row">
-        <div class="form-group col-md-6">
-          <label><b>Cell_no</b> </label>
-          <input type="number" class="form-control" name="cell_no" value="{{$ward->cell_no}}">
-        </div>
+            <label ><b>Ward_Type</b></label>
+            <select name="ward_type" id="" class="form-control">
+                <option value="female">Female</option>
+                <option value="male">Male</option>
+            </select>
+</div>
+     
         <div class="form-group col-md-6">
           <label><b>Status</b></label>
           <select name="status" id="" class="form-control">

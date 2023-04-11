@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('cells', function (Blueprint $table) {
             $table->id();
             $table->string("cell_no");
-            $table->foreignId("ward_id");
+            $table->foreignId("ward_id")->constrained('wards');
             $table->string("status");
             $table->boolean("isBooked")->default(false);
             $table->timestamps();

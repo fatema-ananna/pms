@@ -23,15 +23,9 @@
             <select name="ward_type" id="" class="form-control">
                 <option value="female">Female</option>
                 <option value="male">Male</option>
-             
-         
             </select>
 </div>
-<div class="form-row">
-<div class="form-group col-md-6">
-  <label ><b>Cell_no</b> </label>
-  <input type="number" class="form-control" name="cell_no">
-</div>
+
 <div class="form-group col-md-6">
             <label ><b>Status</b></label>
             <select name="status" id="" class="form-control">

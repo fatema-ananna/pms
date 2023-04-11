@@ -29,4 +29,22 @@ class PunishmentController extends Controller
 
         return redirect()->route('punishment')->with('message', 'Created successfully');
     }
+    public function edit($id){
+        $punish=Punishment::find($id);
+        return view('backend.partial.punishment.edit',compact('punish'));
+    }
+    public function update(Request $req, $id){
+        $punish=Punishment::find($id);
+
+        
+
+        $punish->name = $req->name;
+        $punish->type = $req->type;
+
+        $punish->update();
+
+
+        return redirect()->route('punishment')->with('message', 'successfully updated');
+
+    }
 }

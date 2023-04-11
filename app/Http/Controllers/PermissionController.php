@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class PermissionController extends Controller
 {
     public function list(){
-        $permission=Permission::paginate(2);
+        $permission=Permission::paginate(12);
         return view('backend.partial.permission.index',compact('permission'));
     }
 }

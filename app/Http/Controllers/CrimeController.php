@@ -28,4 +28,16 @@ class CrimeController extends Controller
 
         return redirect()->route('crime')->with('message', 'Created successfully');
     }
+    public function edit($id){
+      $cri=crime::find($id);
+      return view('backend.partial.crime.edit',compact('cri'));
+    }
+    public function update(Request $req, $id){
+      $cri=crime::find($id);
+
+      $cri->name = $req->name;
+      $cri->update();
+      return redirect()->route('crime')->with('message', 'successfully updated');
+
+    }
 }

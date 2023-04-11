@@ -31,7 +31,7 @@
       <td> 
         <!-- <a href="" class="btn btn-primary">View</a> -->
      
-        <a href="{{route('ward_edit',$data->id)}}" class="btn btn-warning">Edit</a>
+        <a href="{{route('cell.edit',$data->id)}}" class="btn btn-warning">Edit</a>
      </td>
     </tr>
     @endforeach

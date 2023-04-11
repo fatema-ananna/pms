@@ -78,7 +78,7 @@
       </div>
     </div>
 
-    <div class="form-group col-md-6">
+    <!-- <div class="form-group col-md-6">
       <label><b>Ward_Type</b></label>
       <select name="ward_id" id="" class="form-control">
 
@@ -87,7 +87,7 @@
 
         @endforeach
       </select>
-    </div>
+    </div> -->
 
     <div class="form-group col-md-6">
       <label><b>Ward</b></label>

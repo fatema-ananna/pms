@@ -35,4 +35,19 @@ class ActivityController extends Controller
     $activities = Activity::all();
     return $activities;
   }
+  public function edit($id){
+    
+    $act = Activity::find($id);
+       return view('backend.partial.activity_type.edit',compact('act'));
+  }
+  public function update(Request $req,$id ){
+    $act = Activity::find($id);
+
+    $act->name = $req->name;
+    $act->update();
+    return redirect()->route('activity')->with('message', 'successfully updated');
+
+
+
+  }
 }

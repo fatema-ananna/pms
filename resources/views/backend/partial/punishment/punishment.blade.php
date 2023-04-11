@@ -26,7 +26,7 @@
       
       <td> 
         <!-- <a href="" class="btn btn-primary">View</a> -->
-        <a href="" class="btn btn-warning">Edit</a>
+        <a href="{{route('punishment.edit',$data->id)}}" class="btn btn-warning">Edit</a>
      </td>
     </tr>
     @endforeach
