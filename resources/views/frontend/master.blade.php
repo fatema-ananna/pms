@@ -30,7 +30,7 @@
     <link href="{{url('frontend/css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{url('frontend/css/fontawesome-all.css')}}" rel="stylesheet">
     <link href="{{url('frontend/css/styles.css')}}" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     @notifyCss
     <!-- Favicon  -->
     <link rel="icon" href="images/favicon.png">
@@ -61,27 +61,6 @@
             width: 90%;
             margin: 0px auto;
             display: flex;
-        }
-
-        .swiper {
-            width: 100%;
-            height: 100%;
-        }
-
-        .swiper-slide {
-            text-align: center;
-            font-size: 18px;
-            background: #fff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .swiper-slide img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
     </style>
 </head>
@@ -217,22 +196,7 @@
     </div>
 
     </div>
-    <div class="swiper mySwiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">Slide 1</div>
-            <div class="swiper-slide">Slide 2</div>
-            <div class="swiper-slide">Slide 3</div>
-            <div class="swiper-slide">Slide 4</div>
-            <div class="swiper-slide">Slide 5</div>
-            <div class="swiper-slide">Slide 6</div>
-            <div class="swiper-slide">Slide 7</div>
-            <div class="swiper-slide">Slide 8</div>
-            <div class="swiper-slide">Slide 9</div>
-        </div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-    </div>
-
+    
     <!-- Footer -->
 
     @else
@@ -261,6 +225,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
 
 
@@ -279,11 +244,69 @@
     </script>
 
     <script>
-        var swiper = new Swiper(".mySwiper", {
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+        // HERO SLIDER
+        var menu = [];
+        jQuery('.swiper-slide').each(function(index) {
+            menu.push(jQuery(this).find('.slide-inner').attr("data-text"));
+        });
+        var interleaveOffset = 0.5;
+        var swiperOptions = {
+            loop: true,
+            speed: 1000,
+            parallax: true,
+            autoplay: {
+                delay: 6500,
+                disableOnInteraction: false,
             },
+            watchSlidesProgress: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            on: {
+                progress: function() {
+                    var swiper = this;
+                    for (var i = 0; i < swiper.slides.length; i++) {
+                        var slideProgress = swiper.slides[i].progress;
+                        var innerOffset = swiper.width * interleaveOffset;
+                        var innerTranslate = slideProgress * innerOffset;
+                        swiper.slides[i].querySelector(".slide-inner").style.transform =
+                            "translate3d(" + innerTranslate + "px, 0, 0)";
+                    }
+                },
+
+                touchStart: function() {
+                    var swiper = this;
+                    for (var i = 0; i < swiper.slides.length; i++) {
+                        swiper.slides[i].style.transition = "";
+                    }
+                },
+
+                setTransition: function(speed) {
+                    var swiper = this;
+                    for (var i = 0; i < swiper.slides.length; i++) {
+                        swiper.slides[i].style.transition = speed + "ms";
+                        swiper.slides[i].querySelector(".slide-inner").style.transition =
+                            speed + "ms";
+                    }
+                }
+            }
+        };
+
+        var swiper = new Swiper(".swiper-container", swiperOptions);
+
+        // DATA BACKGROUND IMAGE
+        var sliderBgSetting = $(".slide-bg-image");
+        sliderBgSetting.each(function(indx) {
+            if ($(this).attr("data-background")) {
+                $(this).css("background-image", "url(" + $(this).data("background") + ")");
+            }
         });
     </script>
 
