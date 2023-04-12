@@ -10,14 +10,29 @@ use App\Models\Cell;
 use App\Models\PoliceCase;
 use App\Models\Punishment;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class InmateController extends Controller
 {
-    public function inmate()
+    public function inmate(Request $request)
     {
         $cells = Cell::all();
 
         $inma = Inmate::paginate(5);
+
+        if ($request->ajax()) {
+            $data = Inmate::select('*');
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    
+                    $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
 
 
         return view("backend.partial.inmate.inmate", compact('inma', 'cells'));
@@ -63,7 +78,7 @@ class InmateController extends Controller
             "religon" => $req->religon,
             "nid" => $req->nid,
             "gender" => $req->gender,
-           
+
             "ward_id" => $req->ward_id,
             "cell_id" => $req->cell_id,
             "relatives_name" => $req->relatives_name,
@@ -127,8 +142,6 @@ class InmateController extends Controller
         $inma->country = $req->country;
         $inma->gender = $req->gender;
         $inma->religon = $req->religon;
-
-       
         $inma->ward_id = $req->ward_id;
         $inma->relatives_name = $req->relatives_name;
         $inma->relatives_number = $req->relatives_number;

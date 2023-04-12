@@ -14,8 +14,7 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Name</th>
-      <th scope="col">Image</th>
-      <th scope="col">Nid</th>
+      <th scope="col">Visitor</th>
     </tr>
   </thead>
   <tbody>
