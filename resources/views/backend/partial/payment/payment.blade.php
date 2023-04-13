@@ -14,10 +14,14 @@
   <tbody>
 
     <tr>
-      <th scope="row">1</th>
-      <td>{{$depo->inmate_id}}</td>
-      <td>{{$inma->first_name}} {{$inma->last_name}}</td>
-      <td>{{$depo!==null?$depo?->available_amount:0}}</td>
+      @foreach($depo as $key=>$data)
+
+      @dd($data->inmate)
+      <th scope="row">{{$key + 1}}</th>
+      <td>{{$data?->inmate_id}}</td>
+      <td>{{$data->inmate->first_name}} {{$data->inmate->last_name}}</td>
+      <td>{{$data->available_amount}}</td>
+      @endforeach
     </tr>
 
   

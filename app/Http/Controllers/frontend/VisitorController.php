@@ -126,7 +126,7 @@ class VisitorController extends Controller
     public function paymentForm()
     {
         // 20230405040402
-        $inma = Inmate::where('inmate_id', auth('frontendAuth')->user()->inmate_id)->first();
+        $inma = Inmate::find(auth('frontendAuth')->user()->inmate_id);
         $depo = InmateDeposit::where('inmate_id', auth('frontendAuth')->user()->inmate_id)->first();
         // dd($depo);
         // where("inmate_id",auth()->user()->inmate_id);

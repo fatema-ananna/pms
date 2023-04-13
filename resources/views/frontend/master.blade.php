@@ -158,7 +158,7 @@
                                     <blockquote class="blockquote mb-0">
                                         @foreach($not as $data)
                                         <div class="container ">
-                                            <p><a href="{{url('/backend/pdf/'.$data->pdf)}}" alt="pdf"><i class="fa fa-arrow-right" aria-hidden="true"></i> {{$data->name}}</a></p>
+                                            <p class="w-75"><a href="{{url('/backend/pdf/'.$data->pdf)}}" alt="pdf"><i class="fa fa-arrow-right" aria-hidden="true"></i> {{$data->name}}</a></p>
                                         </div>
                                         @endforeach
                                     </blockquote>
