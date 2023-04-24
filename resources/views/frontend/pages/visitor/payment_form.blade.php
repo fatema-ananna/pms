@@ -42,7 +42,7 @@
 
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Deposit Money</label>
-      <input type="number" class="form-control" name="money" placeholder=" You Can Deposite {{$depo !==null ? 5000 - $depo->available_amount : 5000}}" max="{{$depo !==null ? 5000 - $depo->available_amount : 5000}}" min="1">
+      <input type="number" class="form-control" name="money" placeholder=" You Can Deposite {{$depo !==null ? 2000 - $depo->available_amount : 2000}}" max="{{$depo !==null ? 2000 - $depo->available_amount : 2000}}" min="1">
     </div>
 
     <button type="submit" class="btn btn-primary">Deposit</button>

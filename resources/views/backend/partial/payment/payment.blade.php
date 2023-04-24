@@ -16,7 +16,6 @@
     <tr>
       @foreach($depo as $key=>$data)
 
-      @dd($data->inmate)
       <th scope="row">{{$key + 1}}</th>
       <td>{{$data?->inmate_id}}</td>
       <td>{{$data->inmate->first_name}} {{$data->inmate->last_name}}</td>

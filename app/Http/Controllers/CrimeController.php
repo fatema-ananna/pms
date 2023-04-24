@@ -10,7 +10,7 @@ class CrimeController extends Controller
       
     public function crime(){
       
-        $crim=Crime::paginate(2);
+        $crim=Crime::paginate(5);
 
       return view("backend.partial.crime.crime_type",compact('crim'));
     }

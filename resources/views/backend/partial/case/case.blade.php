@@ -47,7 +47,6 @@
                <td>
                     <a href="{{route('case_view',$data->id)}}" class="btn btn-primary">View</a>
                 
-                    <a href="{{route('case.edit',$data->id)}}" class="btn btn-primary">Edit</a>
                   
                 </td>
             </tr>
