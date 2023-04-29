@@ -25,17 +25,28 @@ class SslCommerzPaymentController extends Controller
     public function index(Request $request)
     {
 
+        $depoAmount = InmateDeposit::where("inmate_id",auth('frontendAuth')->user()->inmate_id)->whereMonth("created_at",now()->format('m'))->pluck("id")->toArray();
+        $details = InmateDepositDetail::whereIn("inmate_deposit_id",$depoAmount)->pluck("amount")->toArray();
+
+        $totalMonthlyAmount = array_sum($details);
+        if($totalMonthlyAmount >= 2000){
+            notify()->error("You Deposited maximum Amount for this month");
+            return to_route("frontend.visitor");
+        }
+        
+
+
 
         $depo = InmateDeposit::where('inmate_id', auth('frontendAuth')->user()->inmate_id)->first();
         $validation = null;
         if ($depo) {
-            $availAmount = 5000 - $depo->available_amount;
+            $availAmount = 2000 - $depo->available_amount;
             $validation = Validator::make($request->all(), [
                 "money" => "required|lte:$availAmount|gte:100",
             ]);
         } else {
             $validation = Validator::make($request->all(), [
-                "money" => "required|lte:5000|gte:100",
+                "money" => "required|lte:2000|gte:100",
             ]);
         }
         if ($validation->fails()) {
@@ -94,8 +105,9 @@ class SslCommerzPaymentController extends Controller
         $inmate_deposit = null;
         if ($depo) {
 
-            $inmate_deposit = InmateDeposit::where('inmate_id', auth('frontendAuth')->user()->inmate_id)->first()
-                ->update([
+            $inmate_deposit = InmateDeposit::where('inmate_id', auth('frontendAuth')->user()->inmate_id)->first();
+
+                $inmate_deposit->update([
                     "inmate_id" => auth('frontendAuth')->user()->inmate_id,
                     'available_amount' => $depo->available_amount + $post_data['total_amount'],
                     'status' => 'Pending',
@@ -172,7 +184,7 @@ class SslCommerzPaymentController extends Controller
         $post_data['value_d'] = "ref004";
 
         #Before  going to initiate the payment order status need to update as Pending.
-        $update_product = DB::table('orders')
+        $inmate_deposit = DB::table('orders')
             ->where('transaction_id', $post_data['tran_id'])
             ->updateOrInsert([
                 'name' => $post_data['cus_name'],
@@ -215,9 +227,9 @@ class SslCommerzPaymentController extends Controller
                 in order table as Processing or Complete.
                 Here you can also sent sms or email for successfull transaction to customer
                  */
-                $update_product = InmateDeposit::where('transaction_id', $tran_id)
-                    ->update(['status' => 'Processing']);
-                    InmateDepositDetail::where('inmate_deposit_id', $update_product->id)->update(['status' => 'Processing']);
+                $inmate_deposit = InmateDeposit::where('transaction_id', $tran_id)->first();
+                $inmate_deposit->update(['status' => 'Processing']);
+                    InmateDepositDetail::where('inmate_deposit_id', $inmate_deposit->id)->update(['status' => 'Processing']);
                 echo "<br >Transaction is successfully Completed";
             }
         } else if ($inmate_deposit->status == 'Processing' || $inmate_deposit->status == 'Complete') {
@@ -240,9 +252,9 @@ class SslCommerzPaymentController extends Controller
         $inmate_deposit = InmateDeposit::where('transaction_id', $tran_id)->select('transaction_id', 'status', 'available_amount')->first();
 
         if ($inmate_deposit->status == 'Pending') {
-            $update_product = InmateDeposit::where('transaction_id', $tran_id)
-                ->update(['status' => 'Failed']);
-                InmateDepositDetail::where('inmate_deposit_id', $update_product->id)->update(['status' => 'Failed']);
+            $inmate_deposit = InmateDeposit::where('transaction_id', $tran_id)->first();
+            $inmate_deposit->update(['status' => 'Failed']);
+                InmateDepositDetail::where('inmate_deposit_id', $inmate_deposit->id)->update(['status' => 'Failed']);
 
 
             echo "Transaction is Falied";
@@ -262,9 +274,9 @@ class SslCommerzPaymentController extends Controller
 
 
         if ($inmate_deposit->status == 'Pending') {
-            $inmate_deposit = InmateDeposit::where('transaction_id', $tran_id)
-                ->update(['status' => 'Canceled']);
-                InmateDepositDetail::where('inmate_deposit_id', $update_product->id)->update(['status' => 'Canceled']);
+            $inmate_deposit = InmateDeposit::where('transaction_id', $tran_id)->first();
+            $inmate_deposit->update(['status' => 'Canceled']);
+                InmateDepositDetail::where('inmate_deposit_id', $inmate_deposit->id)->update(['status' => 'Canceled']);
             echo "Transaction is Cancel";
         } else if ($inmate_deposit->status == 'Processing' || $inmate_deposit->status == 'Complete') {
             echo "Transaction is already Successful";
@@ -277,7 +289,8 @@ class SslCommerzPaymentController extends Controller
     public function ipn(Request $request)
     {
         #Received all the payement information from the gateway
-        if ($request->input('tran_id')) #Check transation id is posted or not. {
+        if ($request->input('tran_id')) #Check transation id is posted or not.
+        {
 
         $tran_id = $request->input('tran_id');
 
@@ -295,7 +308,7 @@ class SslCommerzPaymentController extends Controller
                 in order table as Processing or Complete.
                 Here you can also sent sms or email for successful transaction to customer
                  */
-                $update_product = DB::table('orders')
+                $inmate_deposit = DB::table('orders')
                     ->where('transaction_id', $tran_id)
                     ->update(['status' => 'Processing']);
 

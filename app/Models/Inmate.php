@@ -19,5 +19,8 @@ class Inmate extends Model
     public function cell (){
         return $this->belongsTo(cell::class);
     }
+    public function getNameAttribute(){
+        return $this->first_name ." " . $this->last_name;
+    }
    
 }

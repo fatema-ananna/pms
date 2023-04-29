@@ -5,7 +5,7 @@
 <br>
 
 <table class="table">
-<thead class="bg-secondary">
+<thead class="bg-secondary text-white">
     <tr>
       <th scope="col">No</th>
       <th scope="col">Picture_Name</th>
@@ -19,7 +19,7 @@
     <tr>
     <th scope="row">{{$gallery->firstItem()+$key}}</th>
       <td>{{$data->name}}</td>
-      <td><img  src="{{url('/frontend/gallery.picture/'.$data->image)}}" alt="image" height="80px" width="auto"></td>
+      <td><img  src="{{url('/frontend/gallery.picture/'.$data->image)}}" alt="image" height="80px" width="100px"></td>
       <td> 
    
    <a href="{{route('pic.edit',$data->id)}}" class="btn btn-warning">Edit</a>

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('inmate_deposit_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('inmate_deposit_id')->constrained('inmate_deposits');
+            $table->foreignId('inmate_deposit_id')->constrained('inmate_deposit');
             $table->integer('amount');
             $table->integer('available_amount');
             $table->string("status")->default("pending");

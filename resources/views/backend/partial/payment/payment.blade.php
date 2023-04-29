@@ -13,15 +13,17 @@
   </thead>
   <tbody>
 
+    @foreach($depo as $key=>$data)
+    @if($data->inmate != null)
     <tr>
-      @foreach($depo as $key=>$data)
-
+      
       <th scope="row">{{$key + 1}}</th>
-      <td>{{$data?->inmate_id}}</td>
-      <td>{{$data->inmate->first_name}} {{$data->inmate->last_name}}</td>
+      <td>{{$data->inmate_id}}</td>
+      <td>{{$data->inmate->name}}</td>
       <td>{{$data->available_amount}}</td>
-      @endforeach
     </tr>
+    @endif
+    @endforeach
 
   
   </tbody>

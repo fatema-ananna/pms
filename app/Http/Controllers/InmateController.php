@@ -21,8 +21,7 @@ class InmateController extends Controller
         $inma = Inmate::paginate(5);
         
 
-        return view("backend.partial.inmate.inmate", compact('inma', 'cells'));
-
+                return view("backend.partial.inmate.inmate", compact('inma', 'cells'));
         if ($request->ajax()) {
             $data = Inmate::all();
             return DataTables::of($data)

@@ -35,13 +35,17 @@ class HomeController extends Controller
             "number" => "required",
             "inmate_id" => "required",
             "relation" => "required",
-            "email" => "required|email|unique:frontend_auths,email",
+            "email" => "required|email|unique:frontend_auth,email",
             "password" => "required",
         ]);
 
         if ($validation->fails()) {
-            notify()->error('please fill up all the field');
-            return back();
+            foreach ($validation->getMessageBag()->messages() as $key => $err) {
+                foreach ($err as $msg) {
+                    notify()->error($msg);
+                }
+            }
+            return redirect()->back();
         }
 
         $inmate = Inmate::where('inmate_id', $req->inmate_id)->first();
@@ -52,7 +56,7 @@ class HomeController extends Controller
         }
         $user = FrontendAuth::where('inmate_id', $req->inmate_id)->first();
         if ($user) {
-            notify()->error('inmate id already exist');
+            notify()->error('Already Have an Account for this inmate');
             return redirect()->back();
         }
         FrontendAuth::create([

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\FrontendAuth;
 use App\Models\Inmate;
 use App\Models\InmateDeposit;
+use App\Models\InmateDepositDetail;
 use App\Models\Visitor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -15,12 +16,14 @@ class VisitorController extends Controller
     public function visitor()
     {
         // dd(now()->format("M"));
-        $visitors = Visitor::where('frontend_auth_id', auth('frontendAuth')->user()->id)->paginate(2);
+        $visitors = Visitor::where('frontend_auth_id', auth('frontendAuth')->user()->id)->orderBy('id','DESC')->paginate(10);
 
         if (!$visitors) {
             $visitors = collect([]);
         }
-
+        $depo = InmateDeposit::where("inmate_id",auth('frontendAuth')->user()->inmate_id)->pluck("id")->toArray();
+        $DepositDetails = InmateDepositDetail::whereIn("inmate_deposit_id",$depo)->orderBy('id','DESC')->paginate(10);
+        // dd($details);
         $date = $visitors->pluck("created_at");
         $monthsCount = 0;
         foreach ($date as $data) {
@@ -37,7 +40,7 @@ class VisitorController extends Controller
             }
         }
         // dd($monthsCount);
-        return view('frontend.pages.visitor.visitor', compact('visitors', "monthsCount"));
+        return view('frontend.pages.visitor.visitor', compact('visitors', "monthsCount","DepositDetails"));
     }
     public function edit($id)
     {
@@ -88,7 +91,7 @@ class VisitorController extends Controller
         }
         //dd($req->all());
 
-        $todayAppoint = Visitor::where("appointment_date", now()->format("Y-m-d"))->where("frontend_auth_id", auth("frontend_auth")->user()->id)->count();
+        $todayAppoint = Visitor::where("appointment_date", now()->format("Y-m-d"))->where("frontend_auth_id", auth("frontendAuth")->user()->id)->count();
 
         if ($todayAppoint) {
             notify()->error("You have already taken an appointment today");

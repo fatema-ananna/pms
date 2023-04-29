@@ -169,6 +169,9 @@
                             </div>
                         </div>
                     </div>
+
+                    @if($DepositDetails->count() > 0)
+
                     <div class="card mb-3">
                         <div class="card-body">
                             <h4>Payment Records</h4>
@@ -183,12 +186,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($visitors as $key => $data)
+                                        @foreach ($DepositDetails as $key => $data)
+                                        
                                             <tr>
-                                                <th scope="row">{{ $visitors->firstItem() + $key }}</th>
-                                                <td>{{ $data->first_name }} {{ $data->last_name }}</td>
-                                                <td>{{ $data->inmate_id }}</td>
-                                                <td>{{ $data->appointment_date }}</td>
+                                                <th scope="row">{{ $DepositDetails->firstItem() + $key }}</th>
+                                                <td>{{ $data->created_at->toDateString() }}</td>
+                                                <td>{{ $data->amount }}</td>
+                                                <td>{{ $data->available_amount }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -196,6 +200,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

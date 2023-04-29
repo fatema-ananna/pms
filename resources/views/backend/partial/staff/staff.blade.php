@@ -6,7 +6,7 @@
 <br>
 
 <table class="table">
-  <thead class="bg-secondary">
+  <thead class="bg-secondary text-white">
     <tr>
       <th scope="col">No</th>
       <th scope="col">First_Name</th>

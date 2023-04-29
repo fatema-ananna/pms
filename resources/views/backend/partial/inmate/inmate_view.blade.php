@@ -43,7 +43,7 @@
                 <div class="container mt-5">
 
                     <table class="table">
-                        <thead class="bg-secondary">
+                        <thead class="bg-secondary text-white">
                             <tr>
                                 <th scope="col">No</th>
                                 <!-- <th scope="col">Inmate_Id</th> -->
