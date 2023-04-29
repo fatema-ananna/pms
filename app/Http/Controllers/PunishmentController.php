@@ -9,7 +9,7 @@ class PunishmentController extends Controller
 {
     public function punishment(){
       
-        $punish=Punishment::paginate(2);
+        $punish=Punishment::paginate(5);
 
       return view("backend.partial.punishment.punishment",compact('punish'));
     }

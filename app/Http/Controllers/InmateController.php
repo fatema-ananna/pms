@@ -19,9 +19,12 @@ class InmateController extends Controller
         $cells = Cell::all();
 
         $inma = Inmate::paginate(5);
+        
+
+        return view("backend.partial.inmate.inmate", compact('inma', 'cells'));
 
         if ($request->ajax()) {
-            $data = Inmate::select('*');
+            $data = Inmate::all();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function ($row) {
@@ -35,7 +38,7 @@ class InmateController extends Controller
         }
 
 
-        return view("backend.partial.inmate.inmate", compact('inma', 'cells'));
+        return view("backend.partial.inmate.inmate");
     }
     public function list()
     {

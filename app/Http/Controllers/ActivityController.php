@@ -10,7 +10,7 @@ class ActivityController extends Controller
   public function activity()
   {
 
-    $act = Activity::paginate(2);
+    $act = Activity::paginate(5);
 
     return view("backend.partial.activity_type.activity", compact('act'));
   }

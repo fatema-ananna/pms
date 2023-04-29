@@ -43,11 +43,7 @@ class VisitorController extends Controller
     }
     public function update(Request $req, $id)
     {
-        $req->validate(
-            [
-                "number" => "digits:11|required|unique:visitor,number"
-            ]
-        );
+
 
 
         $profile = FrontendAuth::find($id);
@@ -126,8 +122,15 @@ class VisitorController extends Controller
     public function paymentForm()
     {
         // 20230405040402
-        $inma = Inmate::where("inmate_id",auth('frontendAuth')->user()->inmate_id)->first();
-        $depo = InmateDeposit::where('inmate_id', auth('frontendAuth')->user()->inmate_id)->first();
+        $inma = collect([]);
+        $depo = collect([]);
+        if (auth("frontendAuth")?->user()?->id) {
+            $inma = Inmate::where("inmate_id", auth('frontendAuth')->user()->inmate_id)->first();
+            $depo = InmateDeposit::where('inmate_id', auth('frontendAuth')->user()->inmate_id)->first();
+        }
+        else{
+            return to_route("frontend.login");
+        }
         // dd($depo);
         // where("inmate_id",auth()->user()->inmate_id);
         // dd($inma);

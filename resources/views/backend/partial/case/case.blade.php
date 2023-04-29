@@ -9,7 +9,7 @@
         <thead class="bg-secondary">
             <tr>
                 <th scope="col">No</th>
-                <!-- <th scope="col">Inmate_Id</th> -->
+                <th scope="col">Inmate_Id</th>
                 <th scope="col">First_Name</th>
                 <th scope="col">Last_Name</th>
                 <th scope="col">Court_of_Comittal</th>
@@ -32,6 +32,8 @@
             
             <tr>
                 <th scope="row">{{$pcase->firstItem()+$key}}</th>
+                  
+                <td>{{$data->inmate->inmate_id}}</td>
                 <td>{{$data->first_name}}</td>
                 <td>{{$data->last_name}}</td>
                 <td>{{$data->court}}</td>

@@ -56,7 +56,7 @@
                     <div class="sb-nav-link-icon mr-2"><i class="fas fa-tachometer-alt"></i></div>
                     Crime Type
                 </a>
-
+<!-- 
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('roles.index')}}">
                         <span data-feather="file" class="align-text-bottom mr-2"></span>
@@ -69,23 +69,23 @@
                         <span data-feather="file" class="align-text-bottom mr-2"></span>
                         Permissions
                     </a>
-                </li>
-                <li class="nav-item">
+                </li> -->
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="{{route('admin.users')}}">
                         <span data-feather="file" class="align-text-bottom mr-2"></span>
                         Users
                     </a>
-                </li>
+                </li> -->
 
                 <a class="nav-link" href="{{route('backend.payment')}}">
                     <div class="fa fa-credit-card mr-2"><i class="fas fa-tachometer-alt"></i></div>
                     Payment
                 </a>
 
-                <a class="nav-link" href="{{route('reports')}}">
+                <!-- <a class="nav-link" href="{{route('reports')}}">
                     <div class="fa fa-address-book mr-2"><i class="fas fa-tachometer-alt"></i></div>
                     Report
-                </a>
+                </a> -->
                 <a class="nav-link" href="{{route('gallery')}}">
                     <div class="fa fa-address-book mr-2"><i class="fas fa-tachometer-alt"></i></div>
                     Gallery
