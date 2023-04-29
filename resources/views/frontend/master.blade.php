@@ -25,11 +25,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <link href="{{url('frontend/css/bootstrap.css')}}" rel="stylesheet">
-    <link href="{{url('frontend/css/fontawesome-all.css')}}" rel="stylesheet">
-    <link href="{{url('frontend/css/styles.css')}}" rel="stylesheet">
+    <link href="{{ url('frontend/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url('frontend/css/fontawesome-all.css') }}" rel="stylesheet">
+    <link href="{{ url('frontend/css/styles.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     @notifyCss
     <!-- Favicon  -->
@@ -62,8 +64,10 @@
             margin: 0px auto;
             display: flex;
         }
-        .notify{
-            margin-top: 50px;
+
+        .notify {
+            z-index: 999999;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -72,7 +76,7 @@
 
     <!-- Navigation -->
 
-    @include("frontend.fixed.header")
+    @include('frontend.fixed.header')
 
 
     @include('notify::components.notify')
@@ -86,124 +90,147 @@
 
 
     <!-- About-->
-    @if(request()->route()->getName() == "home")
-    <div id="about" class="basic-1 bg-gray">
+    @if (request()->route()->getName() == 'home')
+        <div id="about" class="basic-1 bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="text-container first">
+                            <h1>
+                                Bangladesh prison department at a glance</h1>
+                            <p>Prisons in modern civilization are institutions for reforming and educating prisoners to
+                                become members of civilized society. People can get involved in crime for a variety of
+                                reasons. Apart from punishing according to the law, it is the responsibility of the
+                                Bangladesh Prisons Department to correct and develop him. To help the misguided people
+                                in the jails of the country to understand and correct their mistakes by providing them
+                                with the right messages under the motto “Rakhib Sahbar Padhab Alo Path”</p>
+                        </div> <!-- end of text-container -->
+                    </div> <!-- end of col -->
+                    <div class="col-lg-4">
+                        <div class="text-container second">
+                            <h1>Vision</h1>
+                            <p>"Keep safe, show the way to light"</p>
+                            <br>
+                            <h1>Mission</h1>
+                            <p>
+                                To ensure safe custody of prisoners, to maintain strict security and order among
+                                prisoners, to treat prisoners humanely, to ensure their proper accommodation, food,
+                                medical care and access to relatives, friends and lawyers and to rehabilitate them into
+                                the society as a good citizen. Providing necessary referrals and training to the target.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="text-container third">
+                            <h1>
+                                Administrative infrastructure<h1>
+                                    <p>The Prison Department is one of the most important parts of the criminal justice
+                                        system of the Ministry of Home Affairs. The prison department of Bangladesh
+                                        consists of prison headquarters, 7 divisional prisons and 68 prisons. All the
+                                        activities of the prison department are controlled and managed from the prison
+                                        headquarters. The administrative activities of the prison department are
+                                        conducted under the leadership of the Inspector General of Prisons with 01
+                                        Additional Inspector General of Prisons and 08 Deputy Inspector General of
+                                        Prisons. Served as Jail Superintendent / Senior Jail Superintendent at Jail
+                                        level.</p>
+                        </div> <!-- end of text-container -->
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+            </div> <!-- end of container -->
+        </div> <!-- end of basic-1 -->
+        <!-- end of about -->
+
+
+        <!-- Gallery -->
         <div class="container">
             <div class="row">
-                <div class="col-lg-4">
-                    <div class="text-container first">
-                        <h1>
-                            Bangladesh prison department at a glance</h1>
-                        <p>Prisons in modern civilization are institutions for reforming and educating prisoners to become members of civilized society. People can get involved in crime for a variety of reasons. Apart from punishing according to the law, it is the responsibility of the Bangladesh Prisons Department to correct and develop him. To help the misguided people in the jails of the country to understand and correct their mistakes by providing them with the right messages under the motto “Rakhib Sahbar Padhab Alo Path”</p>
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-                <div class="col-lg-4">
-                    <div class="text-container second">
-                        <h1>Vision</h1>
-                        <p>"Keep safe, show the way to light"</p>
-                        <br>
-                        <h1>Mission</h1>
-                        <p>
-                            To ensure safe custody of prisoners, to maintain strict security and order among prisoners, to treat prisoners humanely, to ensure their proper accommodation, food, medical care and access to relatives, friends and lawyers and to rehabilitate them into the society as a good citizen. Providing necessary referrals and training to the target.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="text-container third">
-                        <h1>
-                            Administrative infrastructure<h1>
-                                <p>The Prison Department is one of the most important parts of the criminal justice system of the Ministry of Home Affairs. The prison department of Bangladesh consists of prison headquarters, 7 divisional prisons and 68 prisons. All the activities of the prison department are controlled and managed from the prison headquarters. The administrative activities of the prison department are conducted under the leadership of the Inspector General of Prisons with 01 Additional Inspector General of Prisons and 08 Deputy Inspector General of Prisons. Served as Jail Superintendent / Senior Jail Superintendent at Jail level.</p>
-                    </div> <!-- end of text-container -->
-                </div> <!-- end of col -->
-            </div> <!-- end of row -->
-        </div> <!-- end of container -->
-    </div> <!-- end of basic-1 -->
-    <!-- end of about -->
+                <div class="col-md-10">
+                    <div id="gallary">
+                        <h1 class=" text-center mb-4 pt-5" style="font-size:2.5rem">Photo Gallery</h1>
 
-
-    <!-- Gallery -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10">
-                <div id="gallary">
-                    <h1 class=" text-center mb-4 pt-5" style="font-size:2.5rem">Photo Gallery</h1>
-
-                    {{--
+                        {{--
                     <div class="row">
-                        @foreach($gallery as $data)
+                        @foreach ($gallery as $data)
                         <div class="col-lg-3 col-md-12 ">
                             <img src="{{url('/frontend/gallery.picture/'.$data->image)}}" class="w-70 shadow-1-strong rounded " alt="Boat on Calm Water" />
                 </div>
                 @endforeach
             </div>
             --}}
-            <div class="wrapper">
-                <div class="carousel">
-                    @foreach($gallery as $data)
-                    <div class="">
-                        <img src="{{url('/frontend/gallery.picture/'.$data->image)}}" class="w-70 shadow-1-strong rounded " alt="Boat on Calm Water" />
+                        <div class="wrapper">
+                            <div class="carousel">
+                                @foreach ($gallery as $data)
+                                    <div class="">
+                                        <img src="{{ url('/frontend/gallery.picture/' . $data->image) }}"
+                                            class="w-70 shadow-1-strong rounded " alt="Boat on Calm Water" />
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
 
-        <div id="notice" class="text-center">
+                    <div id="notice" class="text-center">
 
-            <div class="row">
+                        <div class="row">
 
 
-                <div class="col-md-12 mt-5">
-                    <div class="d-flex justify-content-center">
-                        <div class="card">
-                            <div class="card-body " style="background:#E4FFE4">
-                                <div class="w-75">
-                                    <h1 class="text-left" style="font-size:large">Notice Board</h1>
-                                    <blockquote class="blockquote mb-0">
-                                        @foreach($not as $data)
-                                        <div class="container ">
-                                            <p class="w-75"><a href="{{url('/backend/pdf/'.$data->pdf)}}" alt="pdf"><i class="fa fa-arrow-right" aria-hidden="true"></i> {{$data->name}}</a></p>
+                            <div class="col-md-12 mt-5">
+                                <div class="d-flex justify-content-center">
+                                    <div class="card">
+                                        <div class="card-body " style="background:#E4FFE4">
+                                            <div class="w-75">
+                                                <h1 class="text-left" style="font-size:large">Notice Board</h1>
+                                                <blockquote class="blockquote mb-0">
+                                                    @foreach ($not as $data)
+                                                        <div class="container ">
+                                                            <p class="w-75"><a
+                                                                    href="{{ url('/backend/pdf/' . $data->pdf) }}"
+                                                                    alt="pdf"><i class="fa fa-arrow-right"
+                                                                        aria-hidden="true"></i> {{ $data->name }}</a>
+                                                            </p>
+                                                        </div>
+                                                    @endforeach
+                                                </blockquote>
+                                            </div>
                                         </div>
-                                        @endforeach
-                                    </blockquote>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-md-2">
+                    <div class="my-4">
+                        <div class="bg-success w-100 text-white text-center pt-1" style="height:30px">স্বরাষ্ট্র মন্ত্রী
+                        </div>
+                        <div class="d-flex w-100 h-100 justify-content-center align-items-center my-3">
+                            <img src="{{ url('frontend/slider_image/p.jpg') }}" alt="">
+                        </div>
+                        <div class="">
+                            <p style="font-size:small">জনাব আসাদুজ্জামান খান, এমপি</p>
+                            <a href="#" style="font-size:small; text-decoration:underline">বিস্তারিত</a>
+                        </div>
+                    </div>
+                    <div class="my-4">
+                        <div class="bg-success w-100 text-white text-center pt-1" style="height:30px">স্বরাষ্ট্র মন্ত্রী
+                        </div>
+                        <div class="d-flex w-100 h-100 justify-content-center align-items-center my-3">
+                            <img src="{{ url('frontend/slider_image/p.jpg') }}" alt="">
+                        </div>
+                        <div class="">
+                            <p style="font-size:small">জনাব আসাদুজ্জামান খান, এমপি</p>
+                            <a href="#" style="font-size:small; text-decoration:underline">বিস্তারিত</a>
+                        </div>
+                    </div>
+                    <img src="{{ url('frontend/gallery.picture/sticker.jpg') }}" alt="">
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="col-md-2">
-        <div class="my-4">
-            <div class="bg-success w-100 text-white text-center pt-1" style="height:30px">স্বরাষ্ট্র মন্ত্রী</div>
-            <div class="d-flex w-100 h-100 justify-content-center align-items-center my-3">
-                <img src="{{url('frontend/slider_image/p.jpg')}}" alt="">
-            </div>
-            <div class="">
-                <p style="font-size:small">জনাব আসাদুজ্জামান খান, এমপি</p>
-              
-            </div>
-        </div>
-        <div class="my-4">
-            <div class="bg-success w-100 text-white text-center pt-1" style="height:30px">সচিব, সুরক্ষা সেবা বিভাগ</div>
-            <div class="d-flex w-100 h-100 justify-content-center align-items-center my-3">
-                <img src="{{url('frontend/slider_image/sidepic.jpg')}}" alt="">
-            </div>
-            <div class="">
-                <p style="font-size:small">জনাব মোঃ আবদুল্লাহ আল মাসুদ চৌধুরী</p>
-                
-            </div>
-        </div>
-        <img src="" alt="">
-    </div>
-    </div>
 
-    </div>
-    
-    <!-- Footer -->
+        </div>
 
+        <!-- Footer -->
     @else
-    @yield("content")
+        @yield('content')
     @endif
 
 
@@ -219,10 +246,10 @@
 
 
     <!-- Scripts -->
-    <script src="{{url('frontend/js/jquery.min.js')}}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
-    <script src="{{url('frontend/js/bootstrap.min.js')}}"></script> <!-- Bootstrap framework -->
-    <script src="{{url('frontend/js/jquery.easing.min.js')}}"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
-    <script src="{{url('frontend/js/scripts.js')}}"></script> <!-- Custom scripts -->
+    <script src="{{ url('frontend/js/jquery.min.js') }}"></script> <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="{{ url('frontend/js/bootstrap.min.js') }}"></script> <!-- Bootstrap framework -->
+    <script src="{{ url('frontend/js/jquery.easing.min.js') }}"></script> <!-- jQuery Easing for smooth scrolling between anchors -->
+    <script src="{{ url('frontend/js/scripts.js') }}"></script> <!-- Custom scripts -->
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
 
@@ -319,11 +346,13 @@
             var loader = function() {
                 var script = document.createElement("script"),
                     tag = document.getElementsByTagName("script")[0];
-                script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
+                script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(
+                    7);
                 tag.parentNode.insertBefore(script, tag);
             };
 
-            window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+            window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload",
+                loader);
         })(window, document);
     </script>
 </body>

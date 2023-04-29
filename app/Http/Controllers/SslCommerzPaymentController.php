@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use DB;
-use Illuminate\Http\Request;
 use App\Library\SslCommerz\SslCommerzNotification;
 use App\Models\InmateDeposit;
+use App\Models\InmateDepositDetail;
+use DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class SslCommerzPaymentController extends Controller
@@ -24,33 +25,30 @@ class SslCommerzPaymentController extends Controller
     public function index(Request $request)
     {
 
-       
-        $depo=InmateDeposit::where('inmate_id',auth('frontendAuth')->user()->inmate_id)->first();
+
+        $depo = InmateDeposit::where('inmate_id', auth('frontendAuth')->user()->inmate_id)->first();
         $validation = null;
-        if($depo){
-            $availAmount = 5000-$depo->available_amount;
-            $validation = Validator::make($request->all(),[
-                "money" => "required|lte:$availAmount|gte:100"
+        if ($depo) {
+            $availAmount = 5000 - $depo->available_amount;
+            $validation = Validator::make($request->all(), [
+                "money" => "required|lte:$availAmount|gte:100",
             ]);
-        }else{
-            $validation = Validator::make($request->all(),[
-                "money" => "required|lte:5000|gte:100"
+        } else {
+            $validation = Validator::make($request->all(), [
+                "money" => "required|lte:5000|gte:100",
             ]);
         }
-        if($validation->fails()){
+        if ($validation->fails()) {
             foreach ($validation->getMessageBag()->messages() as $key => $err) {
-                
-                foreach($err as $ana){
-                notify()->error($ana);
+
+                foreach ($err as $ana) {
+                    notify()->error($ana);
                 }
             }
             return redirect()->back();
         }
 
-
-
-
-       # Here you have to receive all the order data to initate the payment.
+        # Here you have to receive all the order data to initate the payment.
         # Let's say, your oder transaction informations are saving in a table called "orders"
         # In "orders" table, order unique identity is "transaction_id". "status" field contain status of the transaction, "amount" is the order amount to be paid and "currency" is for storing Site Currency which will be checked with paid currency.
 
@@ -93,25 +91,30 @@ class SslCommerzPaymentController extends Controller
         $post_data['value_d'] = "ref004";
 
         #Before  going to initiate the payment order status need to insert or update as Pending.
-        $update_product = null;
-        if($depo){
-           
-            $update_product = InmateDeposit::where('inmate_id',auth('frontendAuth')->user()->inmate_id)->first()
-                ->update([
-                    "inmate_id" =>auth('frontendAuth')->user()->inmate_id,
-                    'available_amount' =>$depo->available_amount + $post_data['total_amount'],
-                    'status' => 'Pending',
-                    'transaction_id' => $post_data['tran_id'],
-                ]);
-        }else{
+        $inmate_deposit = null;
+        if ($depo) {
 
-            $update_product = InmateDeposit::create([
-                    "inmate_id" =>auth('frontendAuth')->user()->inmate_id,
-                    'available_amount' =>$post_data['total_amount'],
+            $inmate_deposit = InmateDeposit::where('inmate_id', auth('frontendAuth')->user()->inmate_id)->first()
+                ->update([
+                    "inmate_id" => auth('frontendAuth')->user()->inmate_id,
+                    'available_amount' => $depo->available_amount + $post_data['total_amount'],
                     'status' => 'Pending',
                     'transaction_id' => $post_data['tran_id'],
                 ]);
+        } else {
+
+            $inmate_deposit = InmateDeposit::create([
+                "inmate_id" => auth('frontendAuth')->user()->inmate_id,
+                'available_amount' => $post_data['total_amount'],
+                'status' => 'Pending',
+                'transaction_id' => $post_data['tran_id'],
+            ]);
         }
+        InmateDepositDetail::create([
+            "inmate_deposit_id" => $inmate_deposit->id,
+            "amount" => $post_data['total_amount'],
+            "available_amount" => $inmate_deposit->available_amount,
+        ]);
         $sslc = new SslCommerzNotification();
         # initiate(Transaction Data , false: Redirect to SSLCOMMERZ gateway/ true: Show all the Payement gateway here )
         $payment_options = $sslc->makePayment($post_data, 'hosted');
@@ -168,7 +171,6 @@ class SslCommerzPaymentController extends Controller
         $post_data['value_c'] = "ref003";
         $post_data['value_d'] = "ref004";
 
-
         #Before  going to initiate the payment order status need to update as Pending.
         $update_product = DB::table('orders')
             ->where('transaction_id', $post_data['tran_id'])
@@ -180,7 +182,7 @@ class SslCommerzPaymentController extends Controller
                 'status' => 'Pending',
                 'address' => $post_data['cus_add1'],
                 'transaction_id' => $post_data['tran_id'],
-                'currency' => $post_data['currency']
+                'currency' => $post_data['currency'],
             ]);
 
         $sslc = new SslCommerzNotification();
@@ -203,31 +205,31 @@ class SslCommerzPaymentController extends Controller
         $sslc = new SslCommerzNotification();
 
         #Check order status in order tabel against the transaction id or order id.
-        $order_details = InmateDeposit::where('transaction_id', $tran_id)
+        $inmate_deposit = InmateDeposit::where('transaction_id', $tran_id)
             ->select('transaction_id', 'status', 'available_amount')->first();
-        if ($order_details->status == 'Pending') {
+        if ($inmate_deposit->status == 'Pending') {
             $validation = $sslc->orderValidate($request->all(), $tran_id, $amount);
-
             if ($validation) {
                 /*
                 That means IPN did not work or IPN URL was not set in your merchant panel. Here you need to update order status
                 in order table as Processing or Complete.
                 Here you can also sent sms or email for successfull transaction to customer
-                */
+                 */
                 $update_product = InmateDeposit::where('transaction_id', $tran_id)
-                  ->update(['status' => 'Pending']);
+                    ->update(['status' => 'Processing']);
+                    InmateDepositDetail::where('inmate_deposit_id', $update_product->id)->update(['status' => 'Processing']);
                 echo "<br >Transaction is successfully Completed";
             }
-        } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
+        } else if ($inmate_deposit->status == 'Processing' || $inmate_deposit->status == 'Complete') {
             /*
-             That means through IPN Order status already updated. Now you can just show the customer that transaction is completed. No need to udate database.
+            That means through IPN Order status already updated. Now you can just show the customer that transaction is completed. No need to udate database.
              */
             echo "Transaction is successfully Completed";
         } else {
             #That means something wrong happened. You can redirect customer to your product page.
             echo "Invalid Transaction";
         }
-        notify()->success('payment successfull');
+        notify()->success('payment successful');
         return redirect()->route('payment.form');
     }
 
@@ -235,16 +237,16 @@ class SslCommerzPaymentController extends Controller
     {
         $tran_id = $request->input('tran_id');
 
-        $order_details = DB::table('orders')
-            ->where('transaction_id', $tran_id)
-            ->select('transaction_id', 'status', 'currency', 'amount')->first();
+        $inmate_deposit = InmateDeposit::where('transaction_id', $tran_id)->select('transaction_id', 'status', 'available_amount')->first();
 
-        if ($order_details->status == 'Pending') {
-            $update_product = DB::table('orders')
-                ->where('transaction_id', $tran_id)
+        if ($inmate_deposit->status == 'Pending') {
+            $update_product = InmateDeposit::where('transaction_id', $tran_id)
                 ->update(['status' => 'Failed']);
+                InmateDepositDetail::where('inmate_deposit_id', $update_product->id)->update(['status' => 'Failed']);
+
+
             echo "Transaction is Falied";
-        } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
+        } else if ($inmate_deposit->status == 'Processing' || $inmate_deposit->status == 'Complete') {
             echo "Transaction is already Successful";
         } else {
             echo "Transaction is Invalid";
@@ -256,65 +258,62 @@ class SslCommerzPaymentController extends Controller
     {
         $tran_id = $request->input('tran_id');
 
-        $order_details = DB::table('orders')
-            ->where('transaction_id', $tran_id)
-            ->select('transaction_id', 'status', 'currency', 'amount')->first();
+       $inmate_deposit = InmateDeposit::where('transaction_id', $tran_id)->select('transaction_id', 'status', 'available_amount')->first();
 
-        if ($order_details->status == 'Pending') {
-            $update_product = DB::table('orders')
-                ->where('transaction_id', $tran_id)
+
+        if ($inmate_deposit->status == 'Pending') {
+            $inmate_deposit = InmateDeposit::where('transaction_id', $tran_id)
                 ->update(['status' => 'Canceled']);
+                InmateDepositDetail::where('inmate_deposit_id', $update_product->id)->update(['status' => 'Canceled']);
             echo "Transaction is Cancel";
-        } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
+        } else if ($inmate_deposit->status == 'Processing' || $inmate_deposit->status == 'Complete') {
             echo "Transaction is already Successful";
         } else {
             echo "Transaction is Invalid";
         }
-
 
     }
 
     public function ipn(Request $request)
     {
         #Received all the payement information from the gateway
-        if ($request->input('tran_id')) #Check transation id is posted or not.
-        {
+        if ($request->input('tran_id')) #Check transation id is posted or not. {
 
-            $tran_id = $request->input('tran_id');
+        $tran_id = $request->input('tran_id');
 
-            #Check order status in order tabel against the transaction id or order id.
-            $order_details = DB::table('orders')
-                ->where('transaction_id', $tran_id)
-                ->select('transaction_id', 'status', 'currency', 'amount')->first();
+        #Check order status in order tabel against the transaction id or order id.
+        $inmate_deposit = DB::table('orders')
+            ->where('transaction_id', $tran_id)
+            ->select('transaction_id', 'status', 'currency', 'amount')->first();
 
-            if ($order_details->status == 'Pending') {
-                $sslc = new SslCommerzNotification();
-                $validation = $sslc->orderValidate($request->all(), $tran_id, $order_details->amount, $order_details->currency);
-                if ($validation == TRUE) {
-                    /*
-                    That means IPN worked. Here you need to update order status
-                    in order table as Processing or Complete.
-                    Here you can also sent sms or email for successful transaction to customer
-                    */
-                    $update_product = DB::table('orders')
-                        ->where('transaction_id', $tran_id)
-                        ->update(['status' => 'Processing']);
+        if ($inmate_deposit->status == 'Pending') {
+            $sslc = new SslCommerzNotification();
+            $validation = $sslc->orderValidate($request->all(), $tran_id, $inmate_deposit->amount, $inmate_deposit->currency);
+            if ($validation == true) {
+                /*
+                That means IPN worked. Here you need to update order status
+                in order table as Processing or Complete.
+                Here you can also sent sms or email for successful transaction to customer
+                 */
+                $update_product = DB::table('orders')
+                    ->where('transaction_id', $tran_id)
+                    ->update(['status' => 'Processing']);
 
-                    echo "Transaction is successfully Completed";
-                }
-            } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
-
-                #That means Order status already updated. No need to udate database.
-
-                echo "Transaction is already successfully Completed";
-            } else {
-                #That means something wrong happened. You can redirect customer to your product page.
-
-                echo "Invalid Transaction";
+                echo "Transaction is successfully Completed";
             }
+        } else if ($inmate_deposit->status == 'Processing' || $inmate_deposit->status == 'Complete') {
+
+            #That means Order status already updated. No need to udate database.
+
+            echo "Transaction is already successfully Completed";
         } else {
-            echo "Invalid Data";
+            #That means something wrong happened. You can redirect customer to your product page.
+
+            echo "Invalid Transaction";
         }
+    } else {
+        echo "Invalid Data";
     }
+}
 
 }

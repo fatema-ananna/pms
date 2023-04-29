@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\frontend;
 
-use App\Models\Visitor;
-use App\Models\FrontendAuth;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\FrontendAuth;
 use App\Models\Inmate;
 use App\Models\InmateDeposit;
-use Carbon\Carbon;
+use App\Models\Visitor;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class VisitorController extends Controller
 {
@@ -17,7 +17,10 @@ class VisitorController extends Controller
         // dd(now()->format("M"));
         $visitors = Visitor::where('frontend_auth_id', auth('frontendAuth')->user()->id)->paginate(2);
 
-        if (!$visitors) $visitors = collect([]);
+        if (!$visitors) {
+            $visitors = collect([]);
+        }
+
         $date = $visitors->pluck("created_at");
         $monthsCount = 0;
         foreach ($date as $data) {
@@ -25,7 +28,6 @@ class VisitorController extends Controller
                 $monthsCount = $monthsCount + 1;
             }
         }
-
 
         $date = $visitors->pluck("created_at");
         $months = 0;
@@ -44,8 +46,6 @@ class VisitorController extends Controller
     public function update(Request $req, $id)
     {
 
-
-
         $profile = FrontendAuth::find($id);
         $fileName = $profile->image;
         if ($req->hasFile('image')) {
@@ -53,8 +53,6 @@ class VisitorController extends Controller
             $fileName = date('Ymdhmi') . '.' . $req->file('image')->getClientOriginalExtension();
             $req->file('image')->storeAs('/frontend/slider/', $fileName);
         }
-
-
 
         $profile->first_name = $req->first_name;
         $profile->last_name = $req->last_name;
@@ -75,13 +73,27 @@ class VisitorController extends Controller
     }
     public function visitor_store(Request $req)
     {
-        $req->validate(
-            [
-                "dob" => 'required|date|before:2002-04-15',
-                "number" => "digits:11|required|unique:visitors,number"
-            ]
-        );
+        $validation = Validator::make($req->all(), [
+            "dob" => 'required|date|before:2002-04-15',
+            "number" => "digits:11|required",
+            "appoint_date" => "required|date|after:today",
+        ]);
+        if ($validation->fails()) {
+            foreach ($validation->errors()->messages() as $key => $msg) {
+                foreach ($msg as $err) {
+                    notify()->error($err);
+                }
+            }
+            return back();
+        }
         //dd($req->all());
+
+        $todayAppoint = Visitor::where("appointment_date", now()->format("Y-m-d"))->where("frontend_auth_id", auth("frontend_auth")->user()->id)->count();
+
+        if ($todayAppoint) {
+            notify()->error("You have already taken an appointment today");
+            return back();
+        }
 
         $fileName = null;
         if ($req->hasFile('image')) {
@@ -89,7 +101,6 @@ class VisitorController extends Controller
             $fileName = date('Ymdhmi') . '.' . $req->file('image')->getClientOriginalExtension();
             $req->file('image')->storeAs('/frontend/slider/', $fileName);
         }
-
 
         Visitor::create([
             "frontend_auth_id" => auth('frontendAuth')->user()->id,
@@ -101,22 +112,36 @@ class VisitorController extends Controller
             "address" => $req->address,
             "number" => $req->number,
             "country" => $req->country,
+            "appointment_date" => $req->appoint_date,
             "religon" => $req->religon,
             "nid" => $req->nid,
             "gender" => $req->gender,
             "relation" => $req->relation,
-            "status" => "pending"
-
+            "status" => "pending",
 
         ]);
-        toastr()->success('successfully Done');
-        return redirect()->route('frontend.visitor')->with('message', 'Appointment successfully created');
+        notify()->success('Appointment successfully created');
+        return to_route('frontend.visitor');
     }
     public function visitor_status(Request $req, $id)
     {
-
         $visitor = Visitor::find($id);
-        $visitor->update(["status" => $req->status]);
+
+        $validation = Validator::make($req->all(), [
+            "appointment_date" => "date|after:today",
+        ]);
+
+        if ($validation->fails()) {
+            foreach ($validation->errors()->messages() as $msg) {
+                foreach ($msg as $err) {
+                    notify()->error($err);
+                }
+            }
+            return back();
+        }
+
+        $visitor->update(["status" => $req->status, "appointment_date" => $req->appointment_date]);
+        notify()->success('Status successfully updated');
         return redirect()->back();
     }
     public function paymentForm()
@@ -127,8 +152,7 @@ class VisitorController extends Controller
         if (auth("frontendAuth")?->user()?->id) {
             $inma = Inmate::where("inmate_id", auth('frontendAuth')->user()->inmate_id)->first();
             $depo = InmateDeposit::where('inmate_id', auth('frontendAuth')->user()->inmate_id)->first();
-        }
-        else{
+        } else {
             return to_route("frontend.login");
         }
         // dd($depo);
