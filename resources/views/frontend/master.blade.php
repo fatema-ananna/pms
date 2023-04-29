@@ -62,6 +62,9 @@
             margin: 0px auto;
             display: flex;
         }
+        .notify{
+            margin-top: 50px;
+        }
     </style>
 </head>
 
@@ -178,20 +181,20 @@
             </div>
             <div class="">
                 <p style="font-size:small">জনাব আসাদুজ্জামান খান, এমপি</p>
-                <a href="#" style="font-size:small; text-decoration:underline">বিস্তারিত</a>
+              
             </div>
         </div>
         <div class="my-4">
-            <div class="bg-success w-100 text-white text-center pt-1" style="height:30px">স্বরাষ্ট্র মন্ত্রী</div>
+            <div class="bg-success w-100 text-white text-center pt-1" style="height:30px">সচিব, সুরক্ষা সেবা বিভাগ</div>
             <div class="d-flex w-100 h-100 justify-content-center align-items-center my-3">
-                <img src="{{url('frontend/slider_image/p.jpg')}}" alt="">
+                <img src="{{url('frontend/slider_image/sidepic.jpg')}}" alt="">
             </div>
             <div class="">
-                <p style="font-size:small">জনাব আসাদুজ্জামান খান, এমপি</p>
-                <a href="#" style="font-size:small; text-decoration:underline">বিস্তারিত</a>
+                <p style="font-size:small">জনাব মোঃ আবদুল্লাহ আল মাসুদ চৌধুরী</p>
+                
             </div>
         </div>
-        <img src="{{url('frontend/gallery.picture/sticker.jpg')}}" alt="">
+        <img src="" alt="">
     </div>
     </div>
 

@@ -8,6 +8,7 @@
             <div class="card bg-primary text-white mb-4">
                 <div class="card-body">Total Inmate </div>
                 <div class="card-footer d-flex align-items-center     justify-content-between">
+                {{$count["inmate"]}}
                     <a class="small text-white stretched-link" href="{{route('inmate')}}">View Details</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
@@ -29,6 +30,7 @@
                     
                 </div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
+                {{$count["punishment"]}}
                     <a class="small text-white stretched-link" href="{{route('punishment')}}">View Details</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
@@ -38,6 +40,7 @@
             <div class="card bg-danger text-white mb-4">
                 <div class="card-body">Visitor Details</div>
                 <div class="card-footer d-flex align-items-center justify-content-between">
+                {{$count["visitor"]}}
                     <a class="small text-white stretched-link" href="{{route('visitor')}}">View Details</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>
@@ -47,6 +50,7 @@
             <div class="card bg-primary text-white mb-4">
                 <div class="card-body">Case Details</div>
                    <div class="card-footer d-flex align-items-center     justify-content-between">
+                   {{$count["case"]}}
                         <a class="small text-white stretched-link" href="{{route('case')}}">View Details</a>
                     <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                 </div>

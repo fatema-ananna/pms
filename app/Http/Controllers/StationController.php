@@ -22,7 +22,7 @@ class StationController extends Controller
         $req->validate(
             [
                 
-                'phone' => 'digits:11|required|numeric|unique:stations,phone',]
+                'phone' => 'unique:stations,phone',]
         );
    
         // $fileName = null;

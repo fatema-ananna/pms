@@ -141,6 +141,7 @@
           wardId
         },
         success: function(res) {
+          console.log(res)
           cellId.empty()
           if (res.length > 0) {
             cellId.append(`<option>Sellect a Cell</option>`)

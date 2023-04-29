@@ -19,6 +19,7 @@
   </thead>
   <tbody>
     <tr>
+      
       <th scope="row">Inmate Name</th>
       <td>{{$inma->first_name}} {{$inma->last_name}}</td>
       

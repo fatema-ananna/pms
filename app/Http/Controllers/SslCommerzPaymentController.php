@@ -215,7 +215,7 @@ class SslCommerzPaymentController extends Controller
                 Here you can also sent sms or email for successfull transaction to customer
                 */
                 $update_product = InmateDeposit::where('transaction_id', $tran_id)
-                  ->update(['status' => 'Processing']);
+                  ->update(['status' => 'Pending']);
                 echo "<br >Transaction is successfully Completed";
             }
         } else if ($order_details->status == 'Processing' || $order_details->status == 'Complete') {
